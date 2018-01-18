@@ -11783,11 +11783,9 @@ The dependent variable is response time.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The Null hypothesis H$_{0}$ is that there is no difference in mean ($\mu$) response time between incongruent and congruent tasks. (population mean Congruent time = $\mu_{C}$, population mean Incongruent time= $\mu_{I}$).</p>
-<p>$H_{0}: \mu_{C} = \mu_{I}$</p>
-<p>The Alternative hypothesis is that there is a difference in response time between incongruent and congruent tasks.</p>
-<p>$H_{1}: \mu_{C} \ne \mu_{I}$</p>
-<p>I expect to assume modeling continuous distribution, with a small random sample size, and therefore will perform a two sided, paired t-test on the data to determine significance with an alpha value of .05 - testing if the mean population response time difference between incongruent displays and congruent displays is due to chance. The reason for a t-test is that the sample size is relatively small - Z-tests are for large sample sizes. it is paired because each participant takes both versions and has response times for both congruent and incongruent displays.</p>
+<p>The Null hypothesis H$_{0}$ is that there is no difference in response time between incongruent and congruent tasks. (Congruent = Incongruent).</p>
+<p>The Alternative hypothesis is that there is a difference in response time between incongruent and congruent tasks. (Congruent &lt; Incongruent).</p>
+<p>I expect to assume modeling a normal, continuous distribution, and to perform a two sided t-test on the data to determine significance with an alpha value of .05 - testing if incongruent displays have a significantly different reponse time than congruent displays.</p>
 
 </div>
 </div>
@@ -12148,78 +12146,22 @@ DHRJaoSBLkmN+P9sQTlnM/eGugAAAABJRU5ErkJggg==
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">stats</span>
 
-<span class="n">test</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_rel</span><span class="p">(</span><span class="n">stroop</span><span class="o">.</span><span class="n">Incongruent</span><span class="p">,</span><span class="n">stroop</span><span class="o">.</span><span class="n">Congruent</span><span class="p">)</span>
-<span class="n">test</span><span class="o">.</span><span class="n">statistic</span>
+<span class="n">test</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">stroop</span><span class="o">.</span><span class="n">Incongruent</span><span class="p">,</span><span class="n">stroop</span><span class="o">.</span><span class="n">Congruent</span><span class="p">,</span><span class="n">equal_var</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 
 </div>
 </div>
 </div>
 
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[10]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>8.020706944109957</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">stroop</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area"><div class="prompt output_prompt">Out[13]:</div>
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>24</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>With a n=24, and therefore a df=23, we can compare our t-statistic with a t-table. 8.02 is beyond 99.95th percentile, indicating that we have strong evidence that there is a difference between the congruent and incongruent response time means. This backed up by the fully calculated p-value:</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">test</span><span class="o">.</span><span class="n">pvalue</span>
@@ -12233,11 +12175,11 @@ DHRJaoSBLkmN+P9sQTlnM/eGugAAAABJRU5ErkJggg==
 <div class="output">
 
 
-<div class="output_area"><div class="prompt output_prompt">Out[9]:</div>
+<div class="output_area"><div class="prompt output_prompt">Out[6]:</div>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>4.1030005857111781e-08</pre>
+<pre>6.5101673904426379e-08</pre>
 </div>
 
 </div>
@@ -12251,28 +12193,10 @@ DHRJaoSBLkmN+P9sQTlnM/eGugAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>As the p value is much less than .05, we can reject the null hypothesis that the two displays have the same response time.</p>
-<p>This matches expectations, as having congruent semantic and visual information means you can use either/both your semantic or visual processing to determine the correct response. A common theory is that semantic processing is faster (due to training, or because visual-to-word procesing requires a "translation" step) than visual processing, meaning if the semantic information matches the correct answer, you can effectively ignore the visual cue and use the faster pathway. When the semantic information is incongruent with the visual, the theory states that we must use the slower pathway while consciously supress the faster pathway - effectively traveling down a slower road with a heavier cognitive load.</p>
-<p>Some other simple experiments that could flesh out this theory include:</p>
-<p>Performing color identification on colored squares, eliminating semantic component and measuring the "slow" visual pathway speed unimpeded.</p>
-<p>Performing color identification on irrelevant words (animals, shape names etc.), to measure suppression of irrelevant vs actively interfering distractors.</p>
-<p>having participants respond with practiced color coded key strokes instead of verbal response, to test if the verbal response is the driving force of the "slow" visual pathway.</p>
+<p>As the p value is much less than .05, we can reject the null hypothesis that the two displays have the same response time. This matches expectations, and incongruent displays are perceptually more difficult to process.</p>
 
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-</div>
-</div>
-</div>
-
 </div>
     </div>
   </div>
