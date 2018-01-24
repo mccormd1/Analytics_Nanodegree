@@ -1,0 +1,56 @@
+---
+title: "Agriculture land"
+author: "Devin McCormack"
+date: "1/23/2018"
+output: html_document
+data source: https://www.gapminder.org/data/
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## percent agricultural land in 
+
+```{r}
+library(ggplot2)
+getwd()
+setwd('../lesson4')
+list.files()
+agri<-read.csv("agriculture land.csv")
+```
+## basic EDA for graphing
+
+```{r}
+summary(agri)
+```
+Notes: there are NAs, and that there are a bunch of years. This isn't "tidy" data.
+
+```{r}
+library(tidyverse)
+
+tidyagri<-gather(agri,"year","percent",2:53,na.rm=TRUE)
+  
+tidyagri$year<-as.numeric(gsub("[^0-9]","",tidyagri$year))
+```
+
+
+```{r}
+ggplot(data=subset(tidyagri,year>=1990),aes(x=percent))+
+  geom_histogram(binwidth=5)+
+  facet_wrap(~year,nrow=4)+
+  xlab('Percent of land used for agriculture')+
+  ylab('Number of Countries')
+ggsave('percentHistogram.png')
+```
+
+
+```{r}
+ggplot(data=subset(tidyagri,year%%10 %in% c(1,6)),aes(x=year,y=percent,group=year))+
+  geom_boxplot()+
+  xlab('Year')+
+  ylab('Percent of land')
+ggsave('percentbox.png')
+
+```
+
