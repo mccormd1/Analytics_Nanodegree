@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 This is an exploration of the diamonds dataset, which is embedded in the ggplot library.
 
 ```{r diamonds}
-library(ggplot2)
+library(tidyverse)
 summary(diamonds)
 length(diamonds$carat)
 length(diamonds)
@@ -162,3 +162,102 @@ ggplot(data=diamonds,aes(x=price/carat))+
 ggplot(data=diamonds,aes(x=carat))+
   geom_freqpoly(binwidth=.01)
 ```
+```{r scatter price v x}
+ggplot(data=diamonds,aes(x=x,y=price))+
+         geom_point()
+```
+
+What is going on? there is some exponential trend
+
+```{r correlations}
+with(diamonds,cor.test(x,price))
+with(diamonds,cor.test(y,price))
+with(diamonds,cor.test(z,price))
+
+```
+```{r price v depth}
+ggplot(data=diamonds,aes(x=depth,y=price))+
+  geom_point(alpha=1/100)+
+  scale_x_continuous(breaks=seq(2,80,2))
+
+```
+
+typical depth range is between 58 and 64.
+
+```{r corr depth and price}
+with(diamonds,cor.test(depth,price))
+```
+
+```{r scatter price v carat}
+ggplot(data=subset(diamonds,price<quantile(price,.99) & carat<quantile(carat,.99)),
+       aes(x=carat,y=price))+
+  geom_point()
+```
+
+```{r scatter price vs rough volume}
+diamonds%>%
+  mutate(volume=x*y*z)->diamonds
+ggplot(data=diamonds,aes(x=volume,y=price))+
+  geom_point()
+```
+
+How many diamonds have 0 volume??
+```{r diamond volume}
+sum(diamonds$volume==0)
+```
+## what is the correlation of price and volume, excluding diamonds with volume=0 or >=800
+
+```{r correlation price and volume}
+with(subset(diamonds,volume>0 & volume<=800),cor.test(price,volume))
+```
+## price vs volume
+We encourage you to think about this next question and to post your thoughts in the discussion section.
+
+Do you think this would be a useful model to estimate the price of diamonds? Why or why not?
+
+```{r fit o}
+ggplot(data=subset(diamonds,volume>0 & volume<=800),
+       aes(x=volume,y=price))+
+  geom_point(alpha=1/50)+
+  geom_smooth()
+```
+
+This does not seem like a great fit because it shows that at some point, diamonds get cheaper per volume, which is very false.
+
+
+Use the function dplyr package
+to create a new data frame containing
+info on diamonds by clarity.
+
+Name the data frame diamondsByClarity
+
+
+```{r}
+diamondsByClarity<-diamonds%>%
+  group_by(clarity)%>%
+  summarise(mean_price=mean(price),
+            median_price=median(price),
+            min_price=min(price),
+            max_price=max(price),
+            n=n())
+head(diamondsByClarity)
+```
+```{r two bar plots}
+library(gridExtra)
+
+diamonds_by_clarity <- group_by(diamonds, clarity)
+diamonds_mp_by_clarity <- summarise(diamonds_by_clarity, mean_price = mean(price))
+
+diamonds_by_color <- group_by(diamonds, color)
+diamonds_mp_by_color <- summarise(diamonds_by_color, mean_price = mean(price))
+
+diamonds_mp_by_clarity
+dclar<-ggplot(data=diamonds_mp_by_clarity,aes(x=clarity,y=mean_price))+
+  geom_col()
+
+dcol<-ggplot(data=diamonds_mp_by_color,aes(x=color,y=mean_price))+
+  geom_col()
+
+grid.arrange(dclar,dcol,ncol=1)
+```
+
