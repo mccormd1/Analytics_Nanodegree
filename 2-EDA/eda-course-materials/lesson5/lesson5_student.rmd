@@ -2,7 +2,7 @@ Lesson 5
 ========================================================
 
 ### Multivariate Data
-Notes:
+Notes: scatterplots are the simpliest form of multivarite visualization
 
 ***
 
@@ -13,8 +13,17 @@ Notes:
 
 ### Third Qualitative Variable
 Notes:
+```{r}
+library(tidyverse)
+pf<-read.csv('pseudo_facebook.tsv',sep='\t')
+
+ggplot(data=pf,aes(x=age,y=friend_count))+
+  geom_point()
+
+```
 
 ```{r Third Qualitative Variable}
+
 ggplot(aes(x = gender, y = age),
        data = subset(pf, !is.na(gender))) + geom_histogram()
 ```

@@ -12,13 +12,18 @@ Notes:
 Notes:
 
 ```{r Scatterplots}
+library(tidyverse)
+pf<-read.csv('pseudo_facebook.tsv',sep='\t')
+
+ggplot(data=pf,aes(x=age,y=friend_count))+
+  geom_point()
 
 ```
 
 ***
 
 #### What are some things that you notice right away?
-Response:
+Response:there are striations at specific dates, and young people have more friends than older users
 
 ***
 
@@ -26,7 +31,9 @@ Response:
 Notes:
 
 ```{r ggplot Syntax}
-
+ggplot(data=pf,aes(x=age,y=friend_count))+
+  geom_point()+
+  xlim(13,90)
 ```
 
 ***
@@ -35,11 +42,13 @@ Notes:
 Notes:
 
 ```{r Overplotting}
-
+ggplot(data=pf,aes(x=age,y=friend_count))+
+  geom_jitter(alpha=1/20)+
+  xlim(13,90)
 ```
 
 #### What do you notice in the plot?
-Response:
+Response:the bulk of young users have less than 1000 users.
 
 ***
 
@@ -47,7 +56,11 @@ Response:
 Notes:
 
 ```{r Coord_trans()}
-
+friendscatter<-ggplot(data=pf,aes(x=age,y=friend_count))+
+  geom_point(alpha=1/20,color="orange")+
+  xlim(13,90)+
+  coord_trans(y="sqrt")
+friendscatter
 ```
 
 #### Look up the documentation for coord_trans() and add a layer to the plot that transforms friend_count using the square root function. Create your plot!
@@ -57,34 +70,56 @@ Notes:
 ```
 
 #### What do you notice?
-
+ 
 ***
 
 ### Alpha and Jitter
+explore the relationship between friends initiated vs. age
 Notes:
 
 ```{r Alpha and Jitter}
-
+ggplot(data=pf,aes(x=age,y=friendships_initiated))+
+  geom_point(alpha=1/20,position=position_jitter(h=0))+
+  xlim(13,90)+
+  coord_trans(y="sqrt")
 ```
 
 ***
 
 ### Overplotting and Domain Knowledge
 Notes:
-
+friends that see posts makes more sense if you bound as a percentage based on how many total friends they have.
 ***
 
 ### Conditional Means
 Notes:
 
 ```{r Conditional Means}
+# age_groups<-group_by(pf,age)
+# pf.fc_by_age<-summarise(age_groups,
+#           friend_count_mean=mean(friend_count),
+#           friend_count_median=median(friend_count),
+#           n=n())
+# pf.fc_by_age<-arrange(pf.fc_by_age,age)
+# 
+# head(pf.fc_by_age)
 
+pf.fc_by_age<- pf%>%
+  group_by(age)%>%
+  summarise(friend_count_mean=mean(friend_count),
+            friend_count_median=median(friend_count),
+            n=n())%>%
+  arrange(age)
+
+head(pf.fc_by_age)
 ```
 
 Create your plot!
 
 ```{r Conditional Means Plot}
-
+friendline<-ggplot(data=pf.fc_by_age,aes(x=age,y=friend_count_mean))+
+  geom_line()
+friendline
 ```
 
 ***
@@ -93,11 +128,27 @@ Create your plot!
 Notes:
 
 ```{r Overlaying Summaries with Raw Data}
+ggplot(data=pf,aes(x=age,y=friend_count))+
+  geom_point(alpha=1/20,color="orange")+
+  geom_line(stat="summary",fun.y=mean)+
+  geom_line(stat="summary",fun.y=quantile,fun.args=list(probs=.1),
+            linetype=2,color="blue")+
+  geom_line(stat="summary",fun.y=quantile,fun.args=list(probs=.5),
+            color="blue")+
+  geom_line(stat="summary",fun.y=quantile,fun.args=list(probs=.9),
+            linetype=2,color="blue")+
+  coord_cartesian(xlim=c(13,70),ylim=c(0,1000))
 
 ```
-
 #### What are some of your observations of the plot?
-Response:
+Response:Note: ggplot 2.0.0 changes the syntax for parameter arguments to functions when using stat = 'summary'. To denote parameters that are being set on the function specified by fun.y, use the fun.args argument, e.g.:
+
+ggplot( ... ) +
+  geom_line(stat = 'summary', fun.y = quantile,
+            fun.args = list(probs = .9), ... )
+To zoom in, the code should use thecoord_cartesian(xlim = c(13, 90)) layer rather than xlim(13, 90) layer.
+
+Look up documentation for coord_cartesian() and quantile() if you're unfamiliar with them.
 
 ***
 
@@ -112,7 +163,9 @@ Notes:
 Notes:
 
 ```{r Correlation}
+cor.test(pf$age,pf$friend_count,method="pearson")
 
+with(pf,cor.test(age,friend_count,method="pearson"))
 ```
 
 Look up the documentation for the cor.test function.
@@ -126,21 +179,29 @@ Response:
 Notes:
 
 ```{r Correlation on Subsets}
-with(                 , cor.test(age, friend_count))
+with(subset(pf,age<=70), cor.test(age, friend_count),method='pearson')
 ```
 
 ***
 
 ### Correlation Methods
 Notes:
+The Pearson correlation evaluates the linear relationship between two continuous variables. ... The Spearman correlation coefficient is based on the ranked values for each variable rather than the raw data. Spearman correlation is often used to evaluate relationships involving ordinal variables.
+Pearson is far too sensitive to influential points/outliers for my taste, and while Spearman doesn't suffer from this problem, I personally find Kendall easier to understand, interpret and explain than Spearman. 
 
+If, for example, one variable is the identity of a college basketball program and another variable is the identity of a college football program, one could test for a relationship between the poll rankings of the two types of program: do colleges with a higher-ranked basketball program tend to have a higher-ranked football program? A rank correlation coefficient can measure that relationship, and the measure of significance of the rank correlation coefficient can show whether the measured relationship is small enough to likely be a coincidence.
+
+pearson > normal
+spearman > robust to outliers
 ***
 
 ## Create Scatterplots
 Notes:
 
 ```{r}
-
+ggplot(data=pf,aes(x=www_likes_received,y=likes_received))+
+  geom_point()+
+  coord_trans(x='sqrt',y='sqrt')
 ```
 
 ***
@@ -149,12 +210,17 @@ Notes:
 Notes:
 
 ```{r Strong Correlations}
-
+ggplot(data=pf,aes(x=www_likes_received,y=likes_received))+
+  geom_point()+
+  xlim(0,quantile(pf$likes_received,.95))+
+  ylim(0,quantile(pf$likes_received,.95))+
+  geom_smooth(method ='lm',color='red')
 ```
 
 What's the correlation betwen the two variables? Include the top 5% of values for the variable in the calculation and round to 3 decimal places.
 
 ```{r Correlation Calcuation}
+with(pf, cor.test(likes_received,www_likes_received,method='pearson'))
 
 ```
 
@@ -171,26 +237,29 @@ Notes:
 Notes:
 
 ```{r More Caution With Correlation}
-install.packages('alr3')
+# install.packages('alr3')
 library(alr3)
+data(Mitchell)
+?Mitchell
 ```
 
 Create your plot!
 
 ```{r Temp vs Month}
-
+ggplot(data=Mitchell,aes(x=Month,y=Temp))+
+  geom_point()
 ```
 
 ***
 
 ### Noisy Scatterplots
 a. Take a guess for the correlation coefficient for the scatterplot.
-
+0
 b. What is the actual correlation of the two variables?
 (Round to the thousandths place)
 
 ```{r Noisy Scatterplots}
-
+with(Mitchell,cor.test(Month,Temp,method='pearson'))
 ```
 
 ***
@@ -218,7 +287,9 @@ Notes:
 Notes:
 
 ```{r Understanding Noise: Age to Age Months}
-
+ggplot(data=Mitchell,aes(x=Month,y=Temp))+
+  geom_point()+
+  scale_x_continuous(breaks=seq(0,203,12))
 ```
 
 ***
@@ -226,12 +297,30 @@ Notes:
 ### Age with Months Means
 
 ```{r Age with Months Means}
+p1<-ggplot(data=subset(pf.fc_by_age,age<71),
+           aes(x=age,y=friend_count_mean))+
+  geom_line()
+p1
+pf%>%
+  mutate(age_with_months=age+(1-dob_month/12))->pf
 
+# pf$age_with_months <- with(pf, age + (1 - dob_month / 12))
 ```
 
 Programming Assignment
 ```{r Programming Assignment}
+  
+pf.fc_by_age_months<- pf%>%
+  group_by(age_with_months)%>%
+  summarise(friend_count_mean=mean(friend_count),
+            friend_count_median=median(friend_count),
+            n=n())%>%
+  arrange(age_with_months)
 
+p2<-ggplot(data=subset(pf.fc_by_age_months,age_with_months<71),
+       aes(x=age_with_months,y=friend_count_mean))+
+  geom_line()
+p2
 ```
 
 ***
@@ -239,7 +328,8 @@ Programming Assignment
 ### Noise in Conditional Means
 
 ```{r Noise in Conditional Means}
-
+library(gridExtra)
+grid.arrange(p2,p1,ncol=1)
 ```
 
 ***
@@ -248,18 +338,24 @@ Programming Assignment
 Notes:
 
 ```{r Smoothing Conditional Means}
+p1<-p1+geom_smooth()
+p2<-p2+geom_smooth()
+p3<-ggplot(data=subset(pf,age<71),
+           aes(x=round(age/5)*5,y=friend_count))+
+  geom_line(stat='summary',fun.y=mean)
 
+grid.arrange(p2,p1,p3,ncol=1)
 ```
 
 ***
 
 ### Which Plot to Choose?
-Notes:
+Notes: depends on the purpose - sometimes you need all of them!
 
 ***
 
 ### Analyzing Two Variables
-Reflection:
+Reflection:scatter plots reveal potential correlations that cor tests cannot, jitter and alpha helps with graph readability, and bin/smoothing can dramatically change the look of a graph.
 
 ***
 
