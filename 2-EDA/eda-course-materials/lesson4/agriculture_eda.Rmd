@@ -51,6 +51,34 @@ ggplot(data=subset(tidyagri,year%%10 %in% c(1,6)),aes(x=year,y=percent,group=yea
   xlab('Year')+
   ylab('Percent of land')
 ggsave('percentbox.png')
+data
+```
 
+## two variable analysis
+
+I need to load in some more data, tidy it up and merge it with the current dataset.
+
+
+```{r load in labor percent of age 15+}
+list.files()
+ labor<-read.csv("above 15 labour to pop percent.csv")
+ summary(labor)
+ length(labor)
+```
+```{r tidy up the labor data}
+tidylabor<-gather(labor,"year","percent",2:30,na.rm=TRUE)
+  
+tidylabor$year<-as.numeric(gsub("[^0-9]","",tidylabor$year))
+tidylabor
+```
+
+```{r join the two with dplyr}
+agrilabor<-inner_join(tidyagri,tidylabor,by=c("year","Agricultural.land....of.land.area."="Total.15..labour.to.population...."),suffix=c(".area",".labor"))
+agrilabor
+```
+
+```{r}
+ggplot(data=agrilabor,aes(x=percent.area,y=percent.labor,color=year))+
+  geom_point(alpha=1/10)
 ```
 
