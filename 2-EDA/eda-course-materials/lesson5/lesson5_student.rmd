@@ -25,7 +25,32 @@ ggplot(data=pf,aes(x=age,y=friend_count))+
 ```{r Third Qualitative Variable}
 
 ggplot(aes(x = gender, y = age),
-       data = subset(pf, !is.na(gender))) + geom_histogram()
+       data = subset(pf, !is.na(gender))) + geom_boxplot()+
+  stat_summary(fun.y=mean,geom="point",shape=4)
+
+ggplot(aes(x = age, y = friend_count),
+       data = subset(pf, !is.na(gender)))+
+  geom_line(aes(color=gender),stat='summary',fun.y=median)
+```
+
+
+Write code to create a new data frame,
+called 'pf.fc_by_age_gender', that contains
+information on each age AND gender group.
+
+The data frame should contain the following variables:
+
+mean_friend_count,
+median_friend_count,
+n (the number of users in each age and gender grouping)
+
+```{r}
+pf.fc_by_age_gender<-pf%>%
+  filter(!is.na(gender))%>%
+  group_by(age,gender)%>%
+  summarise(mean_friend_count=mean(friend_count),
+            median_friend_count=median(friend_count),
+            n=n())
 ```
 
 ***
@@ -34,7 +59,9 @@ ggplot(aes(x = gender, y = age),
 Notes:
 
 ```{r Plotting Conditional Summaries}
-
+ggplot(data=pf.fc_by_age_gender,
+       aes(x=age,y=median_friend_count,color=gender))+
+  geom_line()
 ```
 
 ***
