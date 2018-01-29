@@ -155,7 +155,7 @@ ggplot(aes(x = age, y = friend_count),
 Notes: friends per day of tenure
 
 ```{r Friending Rate}
-
+with(subset(pf,tenure>0),summary(friend_count/tenure))
 ```
 
 ***
@@ -167,8 +167,13 @@ What is the median friend rate?
 
 What is the maximum friend rate?
 
-```{r Friendships Initiated}
+median friend count is .2205, and max is 417
 
+Create a line graph of mean of friendships_initiated per day (of tenure) vs. tenure colored by year_joined.bucket.
+```{r Friendships Initiated}
+ggplot(data=subset(pf,tenure>0),
+       aes(x=tenure,y=friendships_initiated/tenure))+
+  geom_line(stat='summary',fun.y=mean,aes(color=year_joined.bucket))
 ```
 
 ***
@@ -202,17 +207,24 @@ ggplot(aes(x = 90 * round(tenure / 90), y = friendships_initiated / tenure),
             stat = "summary",
             fun.y = mean)
 
+
+```
+```{r}
+## use geom_smooth for same effect
+ggplot(aes(x = tenure, y = friendships_initiated / tenure),
+       data = subset(pf, tenure >= 1)) +
+  geom_smooth(aes(color = year_joined.bucket))
 ```
 
 ***
 
 ### Sean's NFL Fan Sentiment Study
-Notes:
+Notes:the correct average frame is important to use. for NFL, a 7 day moving average makes sense since they usually have 1 game a week.
 
 ***
 
 ### Introducing the Yogurt Data Set
-Notes:
+Notes: there is a history of purchase data over time. lets look at household purchases of 5 flavors of yogurt. many rows per household, one per purchase.
 
 ***
 
@@ -220,16 +232,29 @@ Notes:
 Notes:
 
 ```{r Histograms Revisited}
+yo<-read.csv('yogurt.csv')
 
+yo$id<-factor(yo$id)
+str(yo)
+
+ggplot(data=yo,aes(x=price))+
+  geom_histogram(binwidth=10)
 ```
 
 ***
 
 ### Number of Purchases
-Notes:
+Notes:Create a new variable called all.purchases, which gives the total counts of yogurt for each observation or household.
 
 ```{r Number of Purchases}
+summary(yo)
+length(yo)
+table(yo$price)
 
+yo<-transform(yo,all.purchases=strawberry+blueberry+pina.colada+plain+mixed.berry)
+
+ggplot(data=yo,aes(x=all.purchases))+
+  geom_histogram()
 ```
 
 ***
@@ -238,19 +263,28 @@ Notes:
 Notes:
 
 ```{r Prices over Time}
-
+ggplot(data=yo,aes(x=time,y=price))+
+  geom_jitter(alpha=1/20)
 ```
 
 ***
 
 ### Sampling Observations
-Notes:
+Notes: we might want to look at a small sample of households for more detail
 
 ***
 
 ### Looking at Samples of Households
 
 ```{r Looking at Sample of Households}
+set.seed(450)
+sample.ids<-sample(levels(yo$id),16)
+
+ggplot(data=subset(yo,id %in%  sample.ids),
+       aes(x=time,y=price))+
+  facet_wrap(~id)+
+  geom_line()+
+  geom_point(aes(size=all.purchases),pch=1)
 
 ```
 
@@ -268,6 +302,13 @@ Notes:
 
 ### Scatterplot Matrix
 Notes:
+```{r}
+library(GGally)
+set.seed(1836)
+pf_subset<-pf[,c(2:15)]
+names(pf_subset)
+ggpairs(pf_subset[sample.int(nrow(pf_subset),1000),])
+```
 
 ***
 
