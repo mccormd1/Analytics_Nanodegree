@@ -6,7 +6,7 @@
 *.zip
 *.mov
 *.mp4
-
+*.db
 
 # Mac OS
 .DS_Store
