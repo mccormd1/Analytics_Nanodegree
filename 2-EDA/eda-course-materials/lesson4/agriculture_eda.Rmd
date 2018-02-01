@@ -32,6 +32,8 @@ library(tidyverse)
 tidyagri<-gather(agri,"year","percent",2:53,na.rm=TRUE)
   
 tidyagri$year<-as.numeric(gsub("[^0-9]","",tidyagri$year))
+rename(tidyagri,country=Agricultural.land....of.land.area.)->tidyagri
+head(tidyagri)
 ```
 
 
@@ -69,16 +71,73 @@ list.files()
 tidylabor<-gather(labor,"year","percent",2:30,na.rm=TRUE)
   
 tidylabor$year<-as.numeric(gsub("[^0-9]","",tidylabor$year))
-tidylabor
+
+rename(tidylabor,country=Total.15..labour.to.population....)->tidylabor
+head(tidylabor)
 ```
 
 ```{r join the two with dplyr}
-agrilabor<-inner_join(tidyagri,tidylabor,by=c("year","Agricultural.land....of.land.area."="Total.15..labour.to.population...."),suffix=c(".area",".labor"))
-agrilabor
+agrilabor<-inner_join(tidyagri,tidylabor,by=c("year","country"),suffix=c(".area",".labor"))
+head(agrilabor)
 ```
 
 ```{r}
 ggplot(data=agrilabor,aes(x=percent.area,y=percent.labor,color=year))+
   geom_point(alpha=1/10)
 ```
+
+## Multiple variables
+
+load in third dataset, exports as percentage of GDP
+
+
+```{r load in exports}
+list.files()
+ exports<-read.csv("Exports_percent_GDP.csv")
+ summary(exports)
+head(exports)
+```
+
+
+### tidy it up
+
+```{r tidy up the export data}
+tidyexport<-gather(exports,"year","percent",2:52,na.rm=TRUE)
+  
+tidyexport$year<-as.numeric(gsub("[^0-9]","",tidyexport$year))
+
+rename(tidyexport,country=Exports.of.goods.and.services....of.GDP.)->tidyexport
+tidyexport
+```
+
+
+```{r again join with dplyr}
+inner_join(agrilabor,tidyexport,by=c("year","country"))%>%
+  rename(percent.export=percent)%>%
+  mutate(decade=cut(year,breaks=c(1979,1990,2000,2007)))->agrilaborexp
+agrilaborexp
+```
+
+
+```{r plot colored}
+ggplot(data=agrilaborexp,aes(x=percent.area,color=percent.labor,y=percent.export))+
+  geom_point(alpha=1/10)+
+  scale_y_log10()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
