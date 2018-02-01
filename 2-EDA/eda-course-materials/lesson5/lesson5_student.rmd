@@ -14,6 +14,7 @@ Notes:
 ### Third Qualitative Variable
 Notes:
 ```{r}
+
 library(tidyverse)
 pf<-read.csv('pseudo_facebook.tsv',sep='\t')
 
@@ -344,6 +345,54 @@ Reflection:
 
 ***
 
-Click **KnitHTML** to see all of your hard work and to have an html
-page of this lesson, your answers, and your notes!
+# QUIZ proportion of friendships initiated
+
+Your task is to create a new variable called 'prop_initiated' in the Pseudo-Facebook data set. The variable should contain
+the proportion of friendships that the user initiated.
+
+
+```{r create proportion friendships initiated}
+suppressWarnings(suppressMessages(library(dplyr)))
+pf %>%
+  mutate(prop_initiated=friendships_initiated/friend_count)->pf
+```
+
+
+# Create a line graph of the median proportion of friendships initiated ('prop_initiated') vs. tenure and color the line segment by year_joined.bucket.
+
+
+
+```{r median proportion initiated by tenure}
+ggplot(data=subset(pf,friend_count>0),
+       aes(x=tenure,y=prop_initiated,color=year_joined.bucket))+
+  geom_line(stat='summary',fun.y=median)
+```
+
+## Smoothed version
+
+```{r median proportion initiated by tenure smoothed}
+ggplot(data=subset(pf,friend_count>0),
+       aes(x=30 * round(tenure/30),
+           y=prop_initiated,color=year_joined.bucket))+
+  geom_line(stat='summary',fun.y=median)
+```
+
+Mean proportion of friendships initiated by year_joined.bucket
+
+
+```{r mean proportion initiated by year joined bucket}
+pf%>%
+  filter(friend_count>0)%>%
+  group_by(year_joined.bucket)%>%
+  summarise(mean(prop_initiated))
+```
+
+
+In theory, if we assume that people initate the most friendships when the first join, newer users have much more users that they can initiate friendships with.
+
+
+
+
+
+
 
