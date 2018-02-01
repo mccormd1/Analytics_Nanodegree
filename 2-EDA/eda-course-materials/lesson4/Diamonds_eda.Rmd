@@ -307,3 +307,16 @@ ggplot(data=subset(diamonds,volume<quantile(volume,.99)&
   
 ```
 
+## Create a scatter plot of the price/carat ratio of diamonds. The variable x should be assigned to cut. The points should be colored by diamond color, and the plot should be faceted by clarity.
+
+```{r}
+ggplot(data=diamonds,aes(x=cut,y=price/carat,color=color))+
+  geom_jitter(size=1)+
+  facet_wrap(~clarity)+
+  scale_color_brewer(type='div')
+```
+
+
+
+
+
