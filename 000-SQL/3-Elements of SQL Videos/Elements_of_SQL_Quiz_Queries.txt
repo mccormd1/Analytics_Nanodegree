@@ -1,0 +1,37 @@
+How many tracks are pop with MPEG type?
+
+SELECT COUNT(*)
+FROM Track AS t JOIN Genre AS g ON t.GenreId=g.GenreId 
+    JOIN MediaType AS m ON t.MediaTypeId=m.MediaTypeId
+WHERE m.Name=="MPEG audio file" AND g.Name=="Pop";
+
+
+How many unique customers have purchased a Jazz track?
+
+SELECT COUNT(DISTINCT i.CustomerId)
+FROM Invoice AS i JOIN InvoiceLine AS il ON i.InvoiceId=il.InvoiceID
+    JOIN Track AS t ON t.TrackId=il.TrackId
+    JOIN Genre As g ON g.GenreId=t.GenreId
+WHERE g.Name='Jazz';
+
+Which genre has the most songs of below average song length
+
+SELECT g.Name, COUNT(t.Name)
+FROM Genre AS g JOIN Track As t ON g.GenreId=t.GenreId, (SELECT avg(Milliseconds) As slen FROM Track) AS squery
+WHERE t.milliseconds < slen
+GROUP BY g.Name
+ORDER BY COUNT(t.Name) DESC;
+
+
+HIDDEN PHRASE # 1 : "SELECT sql, statement FROM Udacious WHERE queryId = 35;"
+
+***HIDDEN PHRASE 2/3***
+
+Table Name:
+Udacious 
+
+
+Columns:
+problemSet INTEGER, node INTEGER,  queryId INTEGER, title TEXT, sql TEXT, statement TEXT"
+
+HIDDEN MESSAGE #3 = Awesome.db
