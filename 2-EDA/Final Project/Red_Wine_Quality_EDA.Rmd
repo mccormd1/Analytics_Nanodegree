@@ -1,0 +1,54 @@
+---
+title: "Red_Wine_Quality"
+author: "Devin McCormack"
+date: "2/2/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Red Wine Quality EDA
+
+## What makes a good quality Red Wine?
+
+```{r Load data and libraries}
+library(tidyverse)
+wine<-read.csv('wineQualityReds.csv')
+
+summary(wine)
+```
+
+Based on this there are two things I might want to change: first dropping the unnecessary X column, and changing quality to a factor.
+
+```{r explore and clean}
+wine<-select(wine,-X)
+wine$quality<-as.factor(wine$quality)
+head(wine)
+```
+
+## A ggpairs summary
+
+```{r ggpairs}
+
+library(GGally)
+library(scales)
+library(memisc)
+
+ggpairs(wine,
+  lower = list(continuous = wrap("points", shape = I('.'))),
+  upper = list(combo = wrap("box", outlier.shape = I('.'))))
+```
+
+Looking at the .pdf (also in the git folder), we can see a few trends. In the scatter plots, we can see a predictable correlation between various acidities and the pH. Also interesting to see trends between fixed acidity, alcohol, and density. However, most central to this EDA is what attributes affect the overall quality score of the wine? Looking at the boxplots for quality, we see there may be a downward trend in volatile acidity that affects quality - where more acetic acid in the wine may affect quality - likely by affecting the smell of the wine. Conversely, there looks to be an upwards trend with citric acid. Citric acid is noted to give the wine a "fresh" smell, which may boost quality. One more that stands out is that higher quality wines seems to have higher alcohol content - maybe a small change in the tipsyness of judges affects how they grade for quality.
+
+
+
+
+
+
+
+
+
+
