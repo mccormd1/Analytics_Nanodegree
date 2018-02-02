@@ -317,6 +317,15 @@ ggplot(data=diamonds,aes(x=cut,y=price/carat,color=color))+
 ```
 
 
+# Linear Regression models
+
+Scatterplot review
+
+```{r}
+ggplot(data=subset(diamonds,carat<quantile(carat,.99)&price<quantile(price,.99)),aes(x=carat,y=price))+
+  geom_point(fill=I('#F79420'),color=I('black'),shape=21)
+```
+
 
 
 
