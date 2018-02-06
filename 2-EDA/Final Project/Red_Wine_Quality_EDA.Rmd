@@ -26,7 +26,7 @@ One thing worth noting right now is that the quality range isn't 1-10. There are
 
 At this point it is important to note the units of these measurements. All input variables besides pH, density, sulfur dioxides, and alcohol are in g/dm^3, aka grams per liter. Density is in g/cm^3, or grams per milliliter. This can be converted to g/dm^3 by multiplying by 1000. Alcohol is given in percent. Knowing that the density of pure ethanol is 789 g/dm^3, we can also convert percent into g/dm^3. Both sulfur dioxide measurements are in mg/dm^3, so we can divide by 1000 to get it into grams
 
-Finally, pH is a base 10 scale of acidity. The different acids measured (i.e. tartaric, acetic, citric) have different acidity levels based on concentrations and other components in the water. The sum of these components should be correlated with pH but not necessarily 
+Finally, pH is a base 10 scale of acidity. The different acids measured (i.e. tartaric, acetic, citric) have different acidity levels based on concentrations and other components in the water. The sum of these components should be negatively correlated with pH.
 
 ```{r explore and clean}
 wine<-select(wine,-X)
@@ -79,40 +79,50 @@ ggplot(data=wine,aes(x=quality))+
 
 Here we see, on a log10 scale, that there are order of magnitude more wines graded towards the 5 and 6 range versus the extremes (3 or 8). This is worth noting while looking ay graphs. There are just not very many of the "best" or "worst" wines.
 
+# Exploring some of the data
 
-```{r}
-ggplot(data=wine,aes(y=free.sulfur.dioxide/total.sulfur.dioxide,x=free.sulfur.dioxide,color=quality))+
-  geom_point()+
-  scale_color_brewer(palette='RdYlGn',guide = guide_legend(title = 'Quality', reverse = T,
-    override.aes = list(alpha = 1, size = 2)))
+First, I wanted to see if there was anything in the 
+
+```{r free vs total sulfur dioxide}
+ggplot(data=wine,aes(y=free.sulfur.dioxide/total.sulfur.dioxide,x=quality))+
+  geom_boxplot()
 ```
 
+We don't necessarily see any clean trends in quality with percent free sulfur dioxide.
 
+# Total Acids vs pH
 
-```{r}
-ggplot(data=wine,aes(x=volatile.acidity+fixed.acidity+citric.acid,y=pH,color=quality))+
-  geom_point(alpha=.5)+
-  scale_color_brewer(palette='RdYlGn',guide = guide_legend(title = 'Quality', reverse = T,
-    override.aes = list(alpha = 1, size = 2)))
-  
-```
+In order to look at reduncancy in our data, we want to look at acids and pH. pH is a common measurement of acidity, so it makes sense that these values would be correlated, and therefore we wouldn't need both for a regression.
 
-
-```{r}
-ggplot(data=wine,aes(x=citric.acid,y=volatile.acidity,color=quality))+
-  geom_point(alpha=.5)+
+```{r total acids vs pH}
+ggplot(data=wine,aes(x=total.acids,y=pH))+
+  geom_point(aes(color=quality),alpha=.5)+
+  geom_smooth(method='lm')+
   scale_color_brewer(palette='RdYlGn',guide = guide_legend(title = 'Quality', reverse = T,
     override.aes = list(alpha = 1, size = 2)))
   
 ```
 
 ```{r}
-ggplot(data=wine,aes(y=citric.acid,x=volatile.acidity,color=quality))+
+cor.test(wine$total.acids,wine$pH)
+```
+Here we see the predictable correlation between the acids and pH, however we don't see any sort of banding with quality. This indicates that pH may be redundant, and the type of acid is more important than just pH. This makes sense since citric acid and acetic acid have very different smells and flavors.
+
+# Probe acidity contributions
+
+One trend that stands out in the ggpairs plots is that higher rated wines tend to have less volatile acids, and more citric acids. Both of these components can affect the nose of a wine, with volatile acids presenting as vinegar, and citric acid presenting as freshness. I believe that the ratio of acids is more important than the total amounts.
+
+```{r citric acid vs volatile acid}
+ggplot(data=wine,aes(color=quality,x=citric.acid,y=volatile.acidity))+
   geom_point(alpha=.5)+
+  geom_abline(slope=1,linetype=2)+
   scale_color_brewer(palette='RdYlGn',guide = guide_legend(title = 'Quality', reverse = T,
     override.aes = list(alpha = 1, size = 2)))
-  
 ```
+
+This graph, with a dashed unity line, seems to show that good red wines tend to have higher citric acid amounts, and generally have more citric acid than volatile acids. 
+
+
 
 
 ```{r}
@@ -122,14 +132,19 @@ ggplot(data=wine,aes(x=total.sulfur.dioxide))+
 ```
 
 ```{r}
-ggplot(data=wine,aes(x=quality,y=alcohol,color=volatile.acidity))+
-  geom_jitter()
+ggplot(data=wine,aes(x=citric.acid,y=alcohol,color=quality))+
+  geom_point(alpha=.5)+
+  scale_color_brewer(palette='RdYlGn',guide = guide_legend(title = 'Quality', reverse = T,
+    override.aes = list(alpha = 1, size = 2)))
 ```
 
 
 
 ```{r}
-
+ggplot(data=wine,aes(x=density,y=alcohol,color=quality))+
+  geom_point(alpha=.5)+
+  scale_color_brewer(palette='RdYlGn',guide = guide_legend(title = 'Quality', reverse = T,
+    override.aes = list(alpha = 1, size = 2)))
 ```
 
 ```{r}
