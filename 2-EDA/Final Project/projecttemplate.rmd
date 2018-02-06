@@ -217,23 +217,27 @@ is almost universally a bad taste for wine.
 ```{r echo=FALSE, Univariate_Plots, SO2 content}
 
 p.free<-ggplot(data=wine,aes(x=free.sulfur.dioxide,))+
-  geom_histogram(binwidth=.005,aes(color=I('gray'),fill=I('lightgoldenrod')))
+  geom_histogram(bins=30,aes(color=I('gray'),fill=I('lightgoldenrod')))+
+  scale_x_log10()
 p.total<-ggplot(data=wine,aes(x=total.sulfur.dioxide,))+
-  geom_histogram(binwidth=.01,aes(color=I('gray'),fill=I('goldenrod')))
+  geom_histogram(bins=50,aes(color=I('gray'),fill=I('goldenrod')))+
+  scale_x_log10()
 p.sulphates<-ggplot(data=wine,aes(x=sulphates,))+
-  geom_histogram(binwidth=.05,aes(color=I('gray'),fill=I('darkgoldenrod')))
+  geom_histogram(bins=50,aes(color=I('gray'),fill=I('darkgoldenrod')))+
+  scale_x_log10()
 
-grid.arrange(p.free,p.total,p.sulphates,ncol=1)
+grid.arrange(p.free,p.total,p.sulphates,ncol=3)
 
 ```
 
-We see all three graphs have a right skew. All of these should be correlated,
-as total SO2 includes free SO2, and increased sulphates increases SO2.
+We see all three graphs have a right skew, that is normalized by scaling x log10.
+All of these should be correlated, as total SO2 includes free SO2, and increased
+sulphates increases SO2.
 
 ## Chlorides (salt)
 
-It is unclear how much this affects quality, as I've never had a "salty" wine, but
-it can potentially manifest as a mineral, metallic, or savory taste, and 
+It is unclear how much this affects quality, as I've never had a "salty" wine, 
+but it can potentially manifest as a mineral, metallic, or savory taste, and 
 influence texture - both components of sip.
 
 ```{r echo=FALSE, Univariate_Plots, Salt content}
@@ -253,29 +257,45 @@ tail.
 
 # Univariate Analysis
 
-
-
-<!-- > **Tip**: Now that you've completed your univariate explorations, it's time to -->
-<!-- reflect on and summarize what you've found. Use the questions below to help you -->
-<!-- gather your observations and add your own if you have other thoughts! -->
+Generally, we see that features are normal with a right skew, with density being
+an exception with no discernable skew. The main feature, quality, shows that 
+exceptional wines (both bad and good) are very uncommon. This can be due to
+the aggregation of the quality score (median of 3 or more tastes),
+psychological mean reversion due to contrast of qualitative measurements over
+time, or just a overall small difference between wines of this variety.
 
 ### What is the structure of your dataset?
+
+Data is structured where each row is a single bottle of Vihno Verde wine. There
+is no information about grape variety, vintage, winery, brand, or price. 
+Each wine has physicochemical measurements as well as a median aggregated 
+measure of quality from 3+ tastings by wine experts.
 
 ### What is/are the main feature(s) of interest in your dataset?
 
 The main feature of interest is quality, and we are using the rest of the
-features to try and model quality. The features of most interest to me are
-features that predominately affect one or more of the five "S" steps of tasting. 
-These include alcohol, sugar, acids,
+features to try and model quality. 
+
 ### What other features in the dataset do you think will help support your \
 investigation into your feature(s) of interest?
 
+The features of most interest to me are features that predominately affect 
+sniff, or multiple of the five "S" steps of tasting. These include alcohol, 
+sugar, acids, and sulfur dioxide.
+
 ### Did you create any new variables from existing variables in the dataset?
+
+I created a new alcohol variable to turn percent volume into g/L, but it is 
+still linearly related to alcohol, so it is not neccessarily a new variable in
+terms of linear regression.
 
 ### Of the features you investigated, were there any unusual distributions? \
 Did you perform any operations on the data to tidy, adjust, or change the form \
 of the data? If so, why did you do this?
 
+I converted features, when possible, to all have the same units of g/L. Due to 
+a right skew, many of the features can be scaled with log10, however I didn't
+convert the raw numbers to log10 scale at this time.
 
 # Bivariate Plots Section
 
