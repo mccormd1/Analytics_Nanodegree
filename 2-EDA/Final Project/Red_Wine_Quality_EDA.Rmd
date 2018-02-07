@@ -141,7 +141,7 @@ ggplot(data=wine,aes(x=citric.acid,y=alcohol,color=quality))+
 
 
 ```{r}
-ggplot(data=wine,aes(x=density,y=alcohol,color=quality))+
+ggplot(data=wine,aes(x=fixed.acidity,y=alcohol,color=quality))+
   geom_point(alpha=.5)+
   scale_color_brewer(palette='RdYlGn',guide = guide_legend(title = 'Quality', reverse = T,
     override.aes = list(alpha = 1, size = 2)))

@@ -1,16 +1,8 @@
-TITLE by YOUR_NAME_HERE
+Red Wine Quality by Devin McCormack
 ========================================================
 
-<!-- > **Tip**: You will see quoted sections like this throughout the template to -->
-<!-- help you construct your report. Make sure that you remove these notes before -->
-<!-- you finish and submit your project! -->
 
-<!-- > **Tip**: One of the requirements of this project is that your code follows -->
-<!-- good formatting techniques, including limiting your lines to 80 characters or -->
-<!-- less. If you're using RStudio, go into Preferences \> Code \> Display to set up -->
-<!-- a margin line to help you keep track of this guideline! -->
-
-```{r echo=FALSE, message=FALSE, warning=FALSE, packages}
+```{r echo=FALSE, message=FALSE, warning=FALSE, "packages"}
 # Load all of the packages that you end up using in your analysis in this code
 # chunk.
 
@@ -23,14 +15,14 @@ TITLE by YOUR_NAME_HERE
 # for other code chunks once you have verified that each plot comes out as you
 # want it to. This will clean up the flow of your report.
 library(tidyverse)
-
+library(gridExtra)
 ```
 
-```{r echo=FALSE, Load_the_Data}
+```{r echo=FALSE, "Load the Data"}
 # Load the Data
 wine<-read.csv('wineQualityReds.csv')
 
-summary(wine)
+
 ```
 
 This dataset tabulates the physicochemical properties, as well
@@ -43,6 +35,7 @@ The specific wine variety tested is a Portuguese wine called "Vinho Verde".
 There are 11 attributes of these wines mearued with physicochemical tests,
 most measurements in grams (or milligrams) per liter. Exceptions are pH, which 
 is a scale, and alcohol, which is given in percentage by volume.
+
 
 These 11 attributes are measured in an attempt to model a "quality" score.
 Here quality is a median of at least 3 evaluations made by wine experts.
@@ -71,6 +64,12 @@ Now into data cleaning!
 
 ## Data cleaning
 
+```{r echo=FALSE, "summary"}
+
+summary(wine)
+
+```
+
 Based on the summary output there are two things I might want to change: 
 first dropping the unnecessary X column, and changing quality to a factor. 
 
@@ -90,7 +89,7 @@ Finally, pH is a base 10 scale of acidity. The different acids measured
 concentrations and other components in the water. The sum of these components 
 should be negatively correlated with pH.
 
-```{r echo=FALSE, Explore and clean data}
+```{r "Explore and clean data"}
 
 wine<-select(wine,-X)
 wine$quality<-as.factor(wine$quality)
@@ -116,7 +115,7 @@ First a quick look at what we are trying to model, the quality score of the wine
 <!-- There should be multiple code chunks and text sections; the first one below is -->
 <!-- just to help you get started. -->
 
-```{r echo=FALSE, Univariate_Plots, quality distribution}
+```{r echo=FALSE, "Univariate_Plots, quality distribution"}
 ggplot(data=wine,aes(x=quality))+
   geom_bar()+
   scale_y_log10()
@@ -134,7 +133,7 @@ It is rare for wines to be much better or worse than average.
 Acids are important to wine, and the type and amount of acidity affects the
 smell, sip, and savor steps of winetasting.
 
-```{r echo=FALSE, Univariate_Plots, total acids}
+```{r echo=FALSE, "Univariate_Plots, total acids"}
 p.fixed<-ggplot(data=wine,aes(x=fixed.acidity,))+
   geom_histogram(binwidth = .5,aes(color=I('gray'),fill=I('mediumpurple')))
 p.volatile<-ggplot(data=wine,aes(x=volatile.acidity,))+
@@ -166,7 +165,7 @@ Later it will be worth looking at how correlated these variables are.
 Density is a major component of both swirling and sipping, and therefore may be
 a big factor in quality.
 
-```{r echo=FALSE, Univariate_Plots, density}
+```{r echo=FALSE, "Univariate_Plots, density"}
 ggplot(data=wine,aes(x=density))+
 geom_histogram(binwidth=1,color=I('gray'),fill=I('cornflowerblue'))
 
@@ -181,7 +180,7 @@ and it generally makes up ~10% of the volume.
 Alcohol affects the swirl, sip, and savor components. Alcohol also has effects
 on physiological conditions, and could influence scoring beyond the 5 "s" steps.
 
-```{r echo=FALSE, Univariate_Plots, Alcohol content}
+```{r echo=FALSE, "Univariate_Plots, Alcohol content"}
 ggplot(data=wine,aes(x=alcohol))+
 geom_histogram(binwidth=.5,color=I('gray'),fill=I('cornflowerblue'))
 
@@ -194,7 +193,7 @@ and there seems to be a positive skew.
 
 Sugar affects see, sip, and savor.
 
-```{r echo=FALSE, Univariate_Plots, Sugar content}
+```{r echo=FALSE, "Univariate_Plots, Sugar content"}
 ggplot(data=wine,aes(x=residual.sugar))+
 geom_histogram(binwidth=.5,color=I('gray'),fill=I('cornflowerblue'))
 
@@ -214,7 +213,7 @@ any of the tested wines were spoiled. Too much can give a sulfur taste, which
 is almost universally a bad taste for wine.
 
 
-```{r echo=FALSE, Univariate_Plots, SO2 content}
+```{r echo=FALSE, "Univariate_Plots, SO2 content"}
 
 p.free<-ggplot(data=wine,aes(x=free.sulfur.dioxide,))+
   geom_histogram(bins=30,aes(color=I('gray'),fill=I('lightgoldenrod')))+
@@ -240,7 +239,7 @@ It is unclear how much this affects quality, as I've never had a "salty" wine,
 but it can potentially manifest as a mineral, metallic, or savory taste, and 
 influence texture - both components of sip.
 
-```{r echo=FALSE, Univariate_Plots, Salt content}
+```{r echo=FALSE, "Univariate_Plots, Salt content"}
 ggplot(data=wine,aes(x=chlorides))+
 geom_histogram(binwidth=.01,color=I('gray'),fill=I('cornflowerblue'))
 
@@ -276,8 +275,7 @@ measure of quality from 3+ tastings by wine experts.
 The main feature of interest is quality, and we are using the rest of the
 features to try and model quality. 
 
-### What other features in the dataset do you think will help support your \
-investigation into your feature(s) of interest?
+### What other features in the dataset do you think will help support your investigation into your feature(s) of interest?
 
 The features of most interest to me are features that predominately affect 
 sniff, or multiple of the five "S" steps of tasting. These include alcohol, 
@@ -289,9 +287,7 @@ I created a new alcohol variable to turn percent volume into g/L, but it is
 still linearly related to alcohol, so it is not neccessarily a new variable in
 terms of linear regression.
 
-### Of the features you investigated, were there any unusual distributions? \
-Did you perform any operations on the data to tidy, adjust, or change the form \
-of the data? If so, why did you do this?
+### Of the features you investigated, were there any unusual distributions? Did you perform any operations on the data to tidy, adjust, or change the form of the data? If so, why did you do this?
 
 I converted features, when possible, to all have the same units of g/L. Due to 
 a right skew, many of the features can be scaled with log10, however I didn't
@@ -299,51 +295,237 @@ convert the raw numbers to log10 scale at this time.
 
 # Bivariate Plots Section
 
-> **Tip**: Based on what you saw in the univariate plots, what relationships
-between variables might be interesting to look at in this section? Don't limit
-yourself to relationships between a main output feature and one of the
-supporting variables. Try to look at relationships between supporting variables
-as well.
+<!-- > **Tip**: Based on what you saw in the univariate plots, what relationships -->
+<!-- between variables might be interesting to look at in this section? Don't limit -->
+<!-- yourself to relationships between a main output feature and one of the -->
+<!-- supporting variables. Try to look at relationships between supporting variables -->
+<!-- as well. -->
 
-```{r echo=FALSE, Bivariate_Plots}
+## ggpairs analysis
+
+First I can look at all the comparisions quickly with ggpairs, and then look
+closer with bigger plots.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, "ggpairs analysis"}
+library(GGally)
+library(scales)
+library(memisc)
+
+ggpairs(wine,
+  lower = list(continuous = wrap("points", shape = I('.'))),
+  upper = list(combo = wrap("box", outlier.shape = I('.'))))
+```
+
+Looking at the ggpairs (.pdf in the git folder), we can see a few trends. 
+In the scatter plots, we can see a predictable correlation between various 
+acidities and the pH. Also interesting to see trends between fixed acidity and 
+density, and alcohol and density. This makes sense since those are the largest 
+values in g/L, meaning they add the most mass to the liquid. 
+
+However, the most question central to this EDA is: what attributes affect the 
+overall quality score of the wine? Looking at the boxplots for quality, we see 
+there may be a downward trend in volatile acidity that affects quality - where 
+more acetic acid in the wine may affect quality - likely by affecting the smell
+of the wine. Conversely, there looks to be an upwards trend with citric acid. 
+Citric acid is noted to give the wine a "fresh" smell, which may boost quality. 
+One more that stands outis that higher quality wines seems to have higher 
+alcohol content - maybe a small change in the tipsyness of judges affects how 
+they grade for quality?
+
+## Acids vs pH
+
+```{r echo=FALSE, "Bivariate_Plots total acids vs pH"}
+ggplot(data=wine,aes(x=fixed.acidity+volatile.acidity+citric.acid,
+                     y=pH))+
+  geom_point(alpha=.5,color=I('aquamarine3'))+
+  geom_smooth(method='lm')
+
+with(wine,cor.test(fixed.acidity+volatile.acidity+citric.acid,pH))
+```
+
+The sum of the acid components is highly correlated with the pH, which makes
+sense, and makes pH a bit redundant. Looking at boxplots in ggpairs, the type
+of acid is more important than overall acidity, within the rangers we see in 
+this dataset.
+
+## fixed acidity vs density
+
+looking at the correlation between fixed acidity, the largest contribution of
+mass besides alcohol to the wine.
+
+```{r echo=FALSE, "Bivariate_Plots fixed acidity vs density"}
+ggplot(data=wine,aes(x=fixed.acidity,y=density))+
+  geom_point(alpha=.5,color=I('mediumpurple'))+
+  geom_smooth(method='lm')
+
+with(wine,cor.test(fixed.acidity,density))
 
 ```
 
+We see a lot of correlation between these two, which makes sense since tartaric
+acid is the largest dissolved contribution to mass besides alcohol.
+
+## Alcohol vs density
+
+Alcohol should also have a correlation with density, but it will be negative,
+since alcohol has less density than pure water.
+
+```{r echo=FALSE, "Bivariate_Plots alcohol vs density"}
+ggplot(data=wine,aes(x=alcohol,y=density))+
+  geom_point(alpha=.5,color=I('cornflowerblue'))+
+  geom_abline(slope=-2.11,intercept=1000,linetype=2)+
+  scale_y_continuous(limits=c(970,1010))
+
+with(wine,cor.test(alcohol,density))
+
+```
+
+
+Here we see that alcohol and density are negatively correlated, but there are 
+other components that affect density as well. A mix of ethanol and pure water
+would follow the density curve of density=-2.11*(alcohol% by vol)+1000, but the
+points are all well above these values, indicating that there are heavier than
+water components in wine, like tartaric acid, sugar, etc.
+
+
+## Total vs Free sulfur dioxide
+
+total sulfur dioxide (SO2) includes free SO2 in the measurment. It may be
+interesting to see what the ratio, of free SO2 to bound SO2 is in wines.
+
+```{r echo=FALSE, "Bivariate_Plots total vs free sulfur dioxide"}
+ggplot(data=wine,aes(x=total.sulfur.dioxide-free.sulfur.dioxide,y=free.sulfur.dioxide))+
+  geom_point(alpha=.5,color=I('goldenrod'))+
+  geom_abline(slope=1,linetype=2)+
+  geom_abline(slope=1/8)+
+  geom_abline(slope=8)+
+  coord_fixed()+
+  xlab('bound.sulfur.dioxide')
+
+with(wine,cor.test(total.sulfur.dioxide-free.sulfur.dioxide,free.sulfur.dioxide))
+
+```
+
+Here, plotted with a dashed unity line (which would indicate 50% free SO2), 
+and 2 solid lines indicating rough bounds. The boundaries of the data seem to
+be factors of 8, meaning that at most, there is ~8 times as much free SO2 than
+bound, and vice versa. the equilibrium between the two forms is likely highly 
+dependent on solution contents (and temperature), but it is not likely that 
+there are equilibrium points that create more than 8x as much of one form than 
+the other. We see that most wines have less than 50% of their SO2 in free form.
+There doesn't seem to be an obvious trend, especially if the two bound SO2
+points are discounted.
+
+## total sulfur dioxide and sulphates
+
+We might expect these to be correlated, since sulphates are often added to wine
+as to boost SO2, however we might also see that they are uncorrelated because
+adding sulphates may not be the only way to maintain SO2 levels in the wine.
+
+```{r echo=FALSE, "Bivariate_Plots Sulphates vs total Sulfur dioxide"}
+ggplot(data=subset(wine,total.sulfur.dioxide<.2),aes(x=total.sulfur.dioxide,y=sulphates))+
+  geom_point(alpha=.5,color=I('goldenrod'))+
+  geom_smooth(method='lm') #removed 2 oulier points
+
+with(wine,cor.test(total.sulfur.dioxide,sulphates))
+
+```
+
+We see very little correlation between to two, and this might indicate that
+sulphates may not be the only way to maintain SO2, or that sulphates are only
+added to correct low SO2 levels, and not added uniformly.
+
+## Quality box plots
+
+Importantly, we need to look at what features seem to vary with quality.
+
+```{r echo=FALSE, "quality vs citric and volatile acids"}
+
+q.cacid<-ggplot(data=wine,aes(x=quality,y=citric.acid))+
+  geom_boxplot(fill=I('limegreen'))
+q.vacid<-ggplot(data=wine,aes(x=quality,y=volatile.acidity))+
+  geom_boxplot(fill=I('tomato'))
+
+grid.arrange(q.cacid,q.vacid,ncol=1)
+
+```
+
+One trend that stands out in the ggpairs plots is that higher rated wines tend 
+to have less volatile acids, and more citric acids. Both of these components 
+can affect the nose of a wine, with volatile acids presenting as vinegar, and 
+citric acid presenting as freshness. I think that maybe the ratio of acids is 
+more important than the total amounts.
+
+```{r echo=FALSE, "quality vs alcohol and sulfates"}
+
+q.alcohol<-ggplot(data=wine,aes(x=quality,y=alcohol))+
+  geom_boxplot(fill=I('cornflowerblue'))
+q.sulfur<-ggplot(data=wine,aes(x=quality,y=sulphates))+
+  geom_boxplot(fill=I('goldenrod'))
+
+grid.arrange(q.alcohol,q.sulfur,ncol=1)
+
+```
+
+Alcohol shows a pretty inticing trend, with higher quality wines having higher
+alcohol content. At first glance, we may attribute this to some fractional
+higher level of happiness that the expert may feel after drinking more alcohol,
+but it is important to also consider that changing the alcohol concentration in
+the solution may greatly affect the soluability of volatile compounds that 
+affect the smell and taste of the wine.
+
+Sulphates show a mild trend, maybe indicating that better wines use more SO2 to
+prevent even the slightly amount of spoilage or improper fermentation, but it is
+hard to say it is conclusive since there is such a small difference between 
+levels, and there are a lot of outliers for middling wines.
+
 # Bivariate Analysis
 
-> **Tip**: As before, summarize what you found in your bivariate explorations
-here. Use the questions below to guide your discussion.
+<!-- > **Tip**: As before, summarize what you found in your bivariate explorations -->
+<!-- here. Use the questions below to guide your discussion. -->
 
-### Talk about some of the relationships you observed in this part of the \
-investigation. How did the feature(s) of interest vary with other features in \
-the dataset?
+### Talk about some of the relationships you observed in this part of the investigation. How did the feature(s) of interest vary with other features in the dataset?
 
-### Did you observe any interesting relationships between the other features \
-(not the main feature(s) of interest)?
+We see that quality is positively related to alcohol, citric acid, and 
+sulphates, and seems to be negatively related to volatile acidity.
+
+### Did you observe any interesting relationships between the other features (not the main feature(s) of interest)?
+
+We see that the sum of acids is highly correlated with the pH, which means that
+pH may be a redundant measurement. We also see high correlations between
+alcohol and density, and fixed acid and density.
 
 ### What was the strongest relationship you found?
+
+the strongest relationship I found was between sum total of acids and the pH, 
+with a correlation coefficient of -0.68. more mass of acids means lower pH.
 
 
 # Multivariate Plots Section
 
-> **Tip**: Now it's time to put everything together. Based on what you found in
-the bivariate plots section, create a few multivariate plots to investigate
-more complex interactions between variables. Make sure that the plots that you
-create here are justified by the plots you explored in the previous section. If
-you plan on creating any mathematical models, this is the section where you
-will do that.
+<!-- > **Tip**: Now it's time to put everything together. Based on what you found in -->
+<!-- the bivariate plots section, create a few multivariate plots to investigate -->
+<!-- more complex interactions between variables. Make sure that the plots that you -->
+<!-- create here are justified by the plots you explored in the previous section. If -->
+<!-- you plan on creating any mathematical models, this is the section where you -->
+<!-- will do that. -->
 
 ```{r echo=FALSE, Multivariate_Plots}
+ggplot(data=wine,aes(x=citric.acid))+
+  geom_histogram(binwidth=.025,aes(fill=quality))+
+  scale_y_log10()+
+  scale_fill_brewer(palette='RdYlGn',guide = guide_legend(title = 'Quality', reverse = T,
+    override.aes = list(alpha = 1, size = 2)))
 
 ```
 
 # Multivariate Analysis
 
-### Talk about some of the relationships you observed in this part of the \
-investigation. Were there features that strengthened each other in terms of \
-looking at your feature(s) of interest?
+### Talk about some of the relationships you observed in this part of the investigation. Were there features that strengthened each other in terms of looking at your feature(s) of interest?
 
 ### Were there any interesting or surprising interactions between features?
+
+
 
 ### OPTIONAL: Did you create any models with your dataset? Discuss the \
 strengths and limitations of your model.
