@@ -194,8 +194,15 @@ and there seems to be a positive skew.
 Sugar affects see, sip, and savor.
 
 ```{r echo=FALSE, "Univariate_Plots, Sugar content"}
-ggplot(data=wine,aes(x=residual.sugar))+
+
+sugarhist<-ggplot(data=wine,aes(x=residual.sugar))+
 geom_histogram(binwidth=.5,color=I('gray'),fill=I('cornflowerblue'))
+
+sugarbox<-ggplot(data=wine,aes(x=1,y=residual.sugar))+
+  geom_jitter(alpha=.3,color='cornflowerblue')+
+  geom_boxplot(alpha=.5,fill=I('cornflowerblue'))
+
+grid.arrange(sugarhist,sugarbox,ncol=2)
 
 ```
 
@@ -205,6 +212,12 @@ for a sweet wine, 45g/L. The fermentation process converts sugar to alcohol, so
 it would be reasonable that, if starting sugar was constant, that alcohol and 
 residual sugar would have a negative correlation.
 
+A boxplot explores these outliers even more. Generally, wines are called "dry"
+if they have less than 10 g of sugar, making it likely that it is hard to
+distinquish sugar levels much at these levels. An expert likey will be able to 
+taste that several of these outliers are "off-dry", but unless there is a clear
+trend in the bivariate plots, it likely isn't important for these wines.
+
 ## Sulfur Dioxide (preservatives)
 
 Sulfur Dioxide (SO2) is a preservative of wine, and can affect the sniff and sip. 
@@ -213,25 +226,21 @@ any of the tested wines were spoiled. Too much can give a sulfur taste, which
 is almost universally a bad taste for wine.
 
 
-```{r echo=FALSE, "Univariate_Plots, SO2 content"}
+```{r echo=FALSE, fig.width=8.5, "Univariate_Plots, SO2 content"}
 
 p.free<-ggplot(data=wine,aes(x=free.sulfur.dioxide,))+
-  geom_histogram(bins=30,aes(color=I('gray'),fill=I('lightgoldenrod')))+
-  scale_x_log10()
+  geom_histogram(bins=30,aes(color=I('gray'),fill=I('lightgoldenrod')))
 p.total<-ggplot(data=wine,aes(x=total.sulfur.dioxide,))+
-  geom_histogram(bins=50,aes(color=I('gray'),fill=I('goldenrod')))+
-  scale_x_log10()
+  geom_histogram(bins=50,aes(color=I('gray'),fill=I('goldenrod')))
 p.sulphates<-ggplot(data=wine,aes(x=sulphates,))+
-  geom_histogram(bins=50,aes(color=I('gray'),fill=I('darkgoldenrod')))+
-  scale_x_log10()
+  geom_histogram(bins=50,aes(color=I('gray'),fill=I('darkgoldenrod')))
 
 grid.arrange(p.free,p.total,p.sulphates,ncol=3)
 
 ```
 
-We see all three graphs have a right skew, that is normalized by scaling x log10.
-All of these should be correlated, as total SO2 includes free SO2, and increased
-sulphates increases SO2.
+We see all three graphs have a right skew. All of these should be correlated, 
+as total SO2 includes free SO2, and increased sulphates increases SO2.
 
 ## Chlorides (salt)
 
@@ -240,13 +249,21 @@ but it can potentially manifest as a mineral, metallic, or savory taste, and
 influence texture - both components of sip.
 
 ```{r echo=FALSE, "Univariate_Plots, Salt content"}
-ggplot(data=wine,aes(x=chlorides))+
+salthist<-ggplot(data=wine,aes(x=chlorides))+
 geom_histogram(binwidth=.01,color=I('gray'),fill=I('cornflowerblue'))
+
+saltbox<-ggplot(data=wine,aes(x=1,y=chlorides))+
+  geom_jitter(alpha=.3,color='cornflowerblue')+
+  geom_boxplot(alpha=.5,fill=I('cornflowerblue'))
+
+grid.arrange(salthist,saltbox,ncol=2)
+
 
 ```
 
 There appears to be a normal distribution near .1g/L, with a very long right
-tail.
+tail. It's hard to say if such low levels of chlorides has any appreciable
+affect on taste.
 
 <!-- > **Tip**: Make sure that you leave a blank line between the start / end of -->
 <!-- each code block and the end / start of your Markdown text so that it is -->
@@ -306,21 +323,29 @@ convert the raw numbers to log10 scale at this time.
 First I can look at all the comparisions quickly with ggpairs, and then look
 closer with bigger plots.
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, "ggpairs analysis"}
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.5, fig.height=8.5,"ggpairs analysis"}
 library(GGally)
 library(scales)
 library(memisc)
 
 ggpairs(wine,
   lower = list(continuous = wrap("points", shape = I('.'))),
-  upper = list(combo = wrap("box", outlier.shape = I('.'))))
+  upper = list(combo = wrap("box", outlier.shape = I('.'))),
+  columnLabels = c("tartaric","acetic","citric","sugar","salt","free_SO2",
+                   "bound_SO2","density","pH","sulphates","alcohol",
+                   "quality","g alcohol"))+
+  theme(axis.ticks=element_blank(),axis.text.x = element_blank(),
+        axis.text.y = element_blank())
 ```
 
 Looking at the ggpairs (.pdf in the git folder), we can see a few trends. 
 In the scatter plots, we can see a predictable correlation between various 
 acidities and the pH. Also interesting to see trends between fixed acidity and 
 density, and alcohol and density. This makes sense since those are the largest 
-values in g/L, meaning they add the most mass to the liquid. 
+values in g/L, meaning they add the most mass to the liquid. Looking at the 
+sugar boxplots, there doesn't seem to be a trend with sugar content, and the
+outliers seem to be all pretty mediocre grades. This confirms my thought that
+sugar likely is an afterthought in this type of wine.
 
 However, the most question central to this EDA is: what attributes affect the 
 overall quality score of the wine? Looking at the boxplots for quality, we see 
@@ -403,7 +428,7 @@ water components in wine, like tartaric acid, sugar, etc.
 total sulfur dioxide (SO2) includes free SO2 in the measurment. It may be
 interesting to see what the ratio, of free SO2 to bound SO2 is in wines.
 
-```{r echo=FALSE, "Bivariate_Plots total vs free sulfur dioxide"}
+```{r echo=FALSE, fig.width=8.5,"Bivariate_Plots total vs free sulfur dioxide"}
 ggplot(data=wine,aes(x=total.sulfur.dioxide-free.sulfur.dioxide,
                      y=free.sulfur.dioxide))+
   geom_point(alpha=.5,color=I('goldenrod'))+
@@ -455,26 +480,38 @@ Importantly, we need to look at what features seem to vary with quality.
 ```{r echo=FALSE, "quality vs citric and volatile acids"}
 
 q.cacid<-ggplot(data=wine,aes(x=quality,y=citric.acid))+
-  geom_boxplot(fill=I('limegreen'))
+  geom_jitter(alpha=.3,color='limegreen')+
+  geom_boxplot(alpha=.5,fill='limegreen')+
+  stat_summary(fun.y="mean",geom="point",color="red",shape=8,size=4)
 q.vacid<-ggplot(data=wine,aes(x=quality,y=volatile.acidity))+
-  geom_boxplot(fill=I('tomato'))
+  geom_jitter(alpha=.3,color='tomato')+
+  geom_boxplot(alpha=.5,fill='tomato')+
+  stat_summary(fun.y="mean",geom="point",color="green",shape=8,size=4)
 
 grid.arrange(q.cacid,q.vacid,ncol=1)
 
 ```
 
+Boxplots are plotted over a jittered scatter of the data, with means represented
+with a contrasting star point.
 One trend that stands out in the ggpairs plots is that higher rated wines tend 
 to have less volatile acids, and more citric acids. Both of these components 
 can affect the nose of a wine, with volatile acids presenting as vinegar, and 
 citric acid presenting as freshness. I think that maybe the ratio of acids is 
-more important than the total amounts.
+more important than the total amounts. Noteworthy is how far the 3 quality 
+median value of citric acid is below the mean. This means that there are a few 
+big outliers, but most are near zero.
 
 ```{r echo=FALSE, "quality vs alcohol and sulfates"}
 
 q.alcohol<-ggplot(data=wine,aes(x=quality,y=alcohol))+
-  geom_boxplot(fill=I('cornflowerblue'))
+  geom_jitter(alpha=.3,color='cornflowerblue')+
+  geom_boxplot(alpha=.5,fill='cornflowerblue')+
+  stat_summary(fun.y="mean",geom="point",color="red",shape=8,size=4)
 q.sulfur<-ggplot(data=wine,aes(x=quality,y=sulphates))+
-  geom_boxplot(fill=I('goldenrod'))
+  geom_jitter(alpha=.3,color='goldenrod')+
+  geom_boxplot(alpha=.5,fill='goldenrod')+
+  stat_summary(fun.y="mean",geom="point",color="red",shape=8,size=4)
 
 grid.arrange(q.alcohol,q.sulfur,ncol=1)
 
@@ -523,6 +560,7 @@ any grouping falls out in the data.
 ```{r echo=FALSE, "Multivariate_Plots, citric acid vs volatile acid, quality"}
 ggplot(data=wine,aes(color=quality,x=citric.acid,y=volatile.acidity))+
   geom_point(alpha=.5)+
+  geom_smooth(method='lm',se=FALSE,size=.5)+
   geom_abline(slope=1,linetype=2)+
   scale_color_brewer(palette='RdYlGn', 
                      guide = guide_legend(title = 'Quality', reverse = T, 
@@ -544,8 +582,9 @@ indicates some secondary fermentation that is usually stopped by sulphate
 preservatives.
 
 ```{r echo=FALSE, "Multivariate_Plots, sulphates vs volatile acid, quality"}
-ggplot(data=wine,aes(,x=sulphates,y=volatile.acidity))+
-  geom_point(alpha=.5,aes(color=quality))+
+ggplot(data=wine,aes(color=quality,x=sulphates,y=volatile.acidity))+
+  geom_point(alpha=.5)+
+  geom_smooth(method='lm',se=FALSE,size=.5)+
   scale_color_brewer(palette='RdYlGn', 
                      guide = guide_legend(title = 'Quality', reverse = T, 
                                           override.aes = list(alpha = 1, 
@@ -565,6 +604,7 @@ Alcohol and citric acid looked to both be positively related with quality.
 ```{r echo=FALSE, "Multivariate_Plots, citric acid vs alcohol and quality"}
 ggplot(data=wine,aes(x=citric.acid,y=alcohol,color=quality))+
   geom_point(alpha=.5)+
+  geom_smooth(method='lm',se=FALSE,size=.5)+
   scale_color_brewer(palette='RdYlGn',
                      guide = guide_legend(title = 'Quality', reverse = T,
                                           override.aes = list(alpha = 1,
@@ -650,6 +690,7 @@ hard to generalize. Interestingly, the only wine that the model classifies as an
 ggplot(data=wine,aes(color=quality,x=citric.acid,y=volatile.acidity))+
   geom_point(alpha=.5)+
   geom_abline(slope=1,linetype=2)+
+  geom_smooth(method='lm',se=FALSE,size=.5)+
   scale_color_brewer(palette='RdYlGn', 
                      guide = guide_legend(title = 'Quality', reverse = T, 
                                           override.aes = list(alpha = 1, 
@@ -664,12 +705,16 @@ ggplot(data=wine,aes(color=quality,x=citric.acid,y=volatile.acidity))+
 
 Here we see that higher quality wines tend to have greater than a 1:1 ratio of
 citric acid to volatile acid. This is most evident when looking at poor wines,
-which tend to have no citric acid and high amounts of volatile acid.
+which tend to have no citric acid and high amounts of volatile acid. The linear
+fit for each quality type shows that volatile acid seems to be the important
+stratifier for quality. This plot shows the importance of these two acids to
+wine quality.
 
 ### Plot Two
 ```{r echo=FALSE, Plot_Two}
-ggplot(data=wine,aes(,x=sulphates,y=volatile.acidity))+
-  geom_point(alpha=.5,aes(color=quality))+
+ggplot(data=wine,aes(color=quality,x=sulphates,y=volatile.acidity))+
+  geom_point(alpha=.5)+
+  geom_smooth(method='lm',se=FALSE,size=.5)+
   scale_color_brewer(palette='RdYlGn', 
                      guide = guide_legend(title = 'Quality', reverse = T, 
                                           override.aes = list(alpha = 1, 
@@ -695,6 +740,7 @@ spoilage, while worse winemakers may over-react and add too much.
 ```{r echo=FALSE, Plot_Three}
 ggplot(data=wine,aes(x=citric.acid,y=alcohol,color=quality))+
   geom_point(alpha=.5)+
+  geom_smooth(method='lm',se=FALSE,size=.5)+
   scale_color_brewer(palette='RdYlGn',
                      guide = guide_legend(title = 'Quality', reverse = T,
                                           override.aes = list(alpha = 1,
@@ -707,7 +753,11 @@ ggplot(data=wine,aes(x=citric.acid,y=alcohol,color=quality))+
 ### Description Three
 
 Higher quality wines tend to have higher than average alcohol and citric acid
-content. 
+content. This graph is important because it shows pretty nice stratification
+with the linear models. The lower quality wines have lower alcohol than higher
+quality wines. The negative slope in the highest quality group indicates a
+trend that lower alcohol wines can still be highly rated if they have higher
+citric acid content.
 
 ------
 
