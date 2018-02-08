@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)http://www.jeannicholashould.com/tidy-data-in-python.html -->
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="google-site-verification" content="5btonT88L8X5eDqd-03PIQP7Q-Vh9cpsEKUBG9vmAsU">
+  
+  <title>
+    
+      Tidy Data in Python · Jean-Nicholas Hould
+    
+  </title>
+
+  <!-- CSS -->
+  <link href="./Tidy Data in Python · Jean-Nicholas Hould_files/classic-10_7.css" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+  </style>
+  <link rel="stylesheet" href="./Tidy Data in Python · Jean-Nicholas Hould_files/poole.css">
+  <link rel="stylesheet" href="./Tidy Data in Python · Jean-Nicholas Hould_files/syntax.css">
+  <link rel="stylesheet" href="./Tidy Data in Python · Jean-Nicholas Hould_files/lanyon.css">
+  <link rel="stylesheet" href="./Tidy Data in Python · Jean-Nicholas Hould_files/custom.css">
+  <link rel="stylesheet" href="./Tidy Data in Python · Jean-Nicholas Hould_files/css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://www.jeannicholashould.com/public/apple-touch-icon-precomposed.png">
+  <link rel="shortcut icon" href="http://www.jeannicholashould.com/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.jeannicholashould.com/atom.xml">
+  <script type="text/javascript" async="" src="./Tidy Data in Python · Jean-Nicholas Hould_files/analytics.js"></script><script type="text/javascript" async="" src="./Tidy Data in Python · Jean-Nicholas Hould_files/gtm.js"></script><script type="text/javascript" async="" src="./Tidy Data in Python · Jean-Nicholas Hould_files/runtime.2.8.5.js"></script><script async="" src="./Tidy Data in Python · Jean-Nicholas Hould_files/script.js"></script><script type="text/javascript" async="" src="./Tidy Data in Python · Jean-Nicholas Hould_files/analytics.min.js"></script><script async="" src="./Tidy Data in Python · Jean-Nicholas Hould_files/gtm(1).js"></script><script src="./Tidy Data in Python · Jean-Nicholas Hould_files/jquery.min.js"></script>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-K3RDXKL');</script>
+  <!-- End Google Tag Manager -->
+<script src="./Tidy Data in Python · Jean-Nicholas Hould_files/CKJS4.js" id="_ck_js_tag"></script><style type="text/css">@font-face{font-family:gsc;src:url(//st.getsitecontrol.com/main/widgets/201801/ec0f75b9ec70a83cbd5546650a951fac/common/fonts/gsc.eot?) format('embedded-opentype');font-weight:400;font-style:normal}@font-face{font-family:gsc;src:url(data:application/octet-stream;base64,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) format('truetype');font-weight:400;font-style:normal}@font-face{font-family:emoji;src:local('Apple Color Emoji'),local('Android Emoji'),local('Segoe UI'),local(EmojiSymbols),local(Symbola);unicode-range:U+1F300-1F5FF,U+1F600-1F64F,U+1F680-1F6FF,U+2600-26FF}@-webkit-keyframes gscw-bounceInLeft{0%,100%,40%,65%,90%{transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate(-3000px,0);transform:translate(-3000px,0)}40%{opacity:1;-webkit-transform:translate(35px,0);transform:translate(35px,0)}65%{-webkit-transform:translate(-15px,0);transform:translate(-15px,0)}90%{-webkit-transform:translate(5px,0);transform:translate(5px,0)}100%{-webkit-transform:none;transform:none}}@keyframes gscw-bounceInLeft{0%,100%,40%,65%,90%{transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate(-3000px,0);transform:translate(-3000px,0)}40%{opacity:1;-webkit-transform:translate(35px,0);transform:translate(35px,0)}65%{-webkit-transform:translate(-15px,0);transform:translate(-15px,0)}90%{-webkit-transform:translate(5px,0);transform:translate(5px,0)}100%{-webkit-transform:none;transform:none}}@-webkit-keyframes gscw-bounceInRight{0%,100%,40%,65%,90%{transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate(3000px,0);transform:translate(3000px,0)}40%{opacity:1;-webkit-transform:translate(-35px,0);transform:translate(-35px,0)}65%{-webkit-transform:translate(15px,0);transform:translate(15px,0)}90%{-webkit-transform:translate(-5px,0);transform:translate(-5px,0)}100%{-webkit-transform:none;transform:none}}@keyframes gscw-bounceInRight{0%,100%,40%,65%,90%{transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate(3000px,0);transform:translate(3000px,0)}40%{opacity:1;-webkit-transform:translate(-35px,0);transform:translate(-35px,0)}65%{-webkit-transform:translate(15px,0);transform:translate(15px,0)}90%{-webkit-transform:translate(-5px,0);transform:translate(-5px,0)}100%{-webkit-transform:none;transform:none}}@-webkit-keyframes gscw-bounceInUp{0%,100%,40%,65%,90%{transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate(0,700px);transform:translate(0,700px)}40%{opacity:1;-webkit-transform:translate(0,-35px);transform:translate(0,-35px)}65%{-webkit-transform:translate(0,15px);transform:translate(0,15px)}90%{-webkit-transform:translate(0,-5px);transform:translate(0,-5px)}100%{-webkit-transform:none;transform:none}}@keyframes gscw-bounceInUp{0%,100%,40%,65%,90%{transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate(0,700px);transform:translate(0,700px)}40%{opacity:1;-webkit-transform:translate(0,-35px);transform:translate(0,-35px)}65%{-webkit-transform:translate(0,15px);transform:translate(0,15px)}90%{-webkit-transform:translate(0,-5px);transform:translate(0,-5px)}100%{-webkit-transform:none;transform:none}}@-webkit-keyframes gscw-bounceInDown{0%,100%,40%,65%,90%{transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate(0,-700px);transform:translate(0,-700px)}40%{opacity:1;-webkit-transform:translate(0,35px);transform:translate(0,35px)}65%{-webkit-transform:translate(0,-15px);transform:translate(0,-15px)}90%{-webkit-transform:translate(0,5px);transform:translate(0,5px)}100%{-webkit-transform:none;transform:none}}@keyframes gscw-bounceInDown{0%,100%,40%,65%,90%{transition-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:translate(0,-700px);transform:translate(0,-700px)}40%{opacity:1;-webkit-transform:translate(0,35px);transform:translate(0,35px)}65%{-webkit-transform:translate(0,-15px);transform:translate(0,-15px)}90%{-webkit-transform:translate(0,5px);transform:translate(0,5px)}100%{-webkit-transform:none;transform:none}}@-webkit-keyframes gscw-bounceOutLeft{20%{opacity:1;-webkit-transform:translate(20px,0);transform:translate(20px,0)}100%{opacity:0;-webkit-transform:translate(-2000px,0);transform:translate(-2000px,0)}}@keyframes gscw-bounceOutLeft{20%{opacity:1;-webkit-transform:translate(20px,0);transform:translate(20px,0)}100%{opacity:0;-webkit-transform:translate(-2000px,0);transform:translate(-2000px,0)}}@-webkit-keyframes gscw-bounceOutRight{20%{opacity:1;-webkit-transform:translate(-20px,0);transform:translate(-20px,0)}100%{opacity:0;-webkit-transform:translate(2000px,0);transform:translate(2000px,0)}}@keyframes gscw-bounceOutRight{20%{opacity:1;-webkit-transform:translate(-20px,0);transform:translate(-20px,0)}100%{opacity:0;-webkit-transform:translate(2000px,0);transform:translate(2000px,0)}}@-webkit-keyframes gscw-slideOutLeft{100%{-webkit-transform:translate(-100%,0);transform:translate(-100%,0)}}@keyframes gscw-slideOutLeft{100%{-webkit-transform:translate(-100%,0);transform:translate(-100%,0)}}@-webkit-keyframes gscw-slideOutRight{100%{-webkit-transform:translate(100%,0);transform:translate(100%,0)}}@keyframes gscw-slideOutRight{100%{-webkit-transform:translate(100%,0);transform:translate(100%,0)}}@-webkit-keyframes gscw-slideInLeft{0%{-webkit-transform:translate(-100%,0);transform:translate(-100%,0)}100%{-webkit-transform:none;transform:none}}@keyframes gscw-slideInLeft{0%{-webkit-transform:translate(-100%,0);transform:translate(-100%,0)}100%{-webkit-transform:none;transform:none}}@-webkit-keyframes gscw-slideInRight{0%{-webkit-transform:translate(100%,0);transform:translate(100%,0)}100%{-webkit-transform:none;transform:none}}@keyframes gscw-slideInRight{0%{-webkit-transform:translate(100%,0);transform:translate(100%,0)}100%{-webkit-transform:none;transform:none}}@-webkit-keyframes gscw-fadeIn{0%{opacity:0}100%{opacity:1}}@keyframes gscw-fadeIn{0%{opacity:0}100%{opacity:1}}@-webkit-keyframes gscw-fadeInLeft{0%{opacity:0;-webkit-transform:translate(-60%,0);transform:translate(-60%,0)}100%{opacity:1;-webkit-transform:none;transform:none}}@keyframes gscw-fadeInLeft{0%{opacity:0;-webkit-transform:translate(-60%,0);transform:translate(-60%,0)}100%{opacity:1;-webkit-transform:none;transform:none}}@-webkit-keyframes gscw-fadeInRight{0%{opacity:0;-webkit-transform:translate(60%,0);transform:translate(60%,0)}100%{opacity:1;-webkit-transform:none;transform:none}}@keyframes gscw-fadeInRight{0%{opacity:0;-webkit-transform:translate(60%,0);transform:translate(60%,0)}100%{opacity:1;-webkit-transform:none;transform:none}}@-webkit-keyframes gscw-fadeInUp{0%{opacity:0;-webkit-transform:translate(0,60%);transform:translate(0,60%)}100%{opacity:1;-webkit-transform:none;transform:none}}@keyframes gscw-fadeInUp{0%{opacity:0;-webkit-transform:translate(0,60%);transform:translate(0,60%)}100%{opacity:1;-webkit-transform:none;transform:none}}@-webkit-keyframes gscw-fadeInDown{0%{opacity:0;-webkit-transform:translate(0,-60%);transform:translate(0,-60%)}100%{opacity:1;-webkit-transform:none;transform:none}}@keyframes gscw-fadeInDown{0%{opacity:0;-webkit-transform:translate(0,-60%);transform:translate(0,-60%)}100%{opacity:1;-webkit-transform:none;transform:none}}@-webkit-keyframes gscw-fadeOut{0%{opacity:1}100%{opacity:0}}@keyframes gscw-fadeOut{0%{opacity:1}100%{opacity:0}}@-webkit-keyframes gscw-zoomIn{0%{opacity:0;-webkit-transform:scale(.3,.3);transform:scale(.3,.3)}50%{opacity:1}100%{-webkit-transform:none;transform:none}}@keyframes gscw-zoomIn{0%{opacity:0;-webkit-transform:scale(.3,.3);transform:scale(.3,.3)}50%{opacity:1}100%{-webkit-transform:none;transform:none}}@-webkit-keyframes gscw-zoomOut{0%{opacity:1}50%{opacity:0;-webkit-transform:scale(.3,.3);transform:scale(.3,.3)}100%{opacity:0}}@keyframes gscw-zoomOut{0%{opacity:1}50%{opacity:0;-webkit-transform:scale(.3,.3);transform:scale(.3,.3)}100%{opacity:0}}@-webkit-keyframes gscw-swing{0%{opacity:0}20%{-webkit-transform:rotate3d(0,0,1,15deg);transform:rotate3d(0,0,1,15deg)}40%{opacity:1;-webkit-transform:rotate3d(0,0,1,-10deg);transform:rotate3d(0,0,1,-10deg)}60%{-webkit-transform:rotate3d(0,0,1,5deg);transform:rotate3d(0,0,1,5deg)}80%{-webkit-transform:rotate3d(0,0,1,-5deg);transform:rotate3d(0,0,1,-5deg)}100%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}}@keyframes gscw-swing{0%{opacity:0}20%{-webkit-transform:rotate3d(0,0,1,15deg);transform:rotate3d(0,0,1,15deg)}40%{opacity:1;-webkit-transform:rotate3d(0,0,1,-10deg);transform:rotate3d(0,0,1,-10deg)}60%{-webkit-transform:rotate3d(0,0,1,5deg);transform:rotate3d(0,0,1,5deg)}80%{-webkit-transform:rotate3d(0,0,1,-5deg);transform:rotate3d(0,0,1,-5deg)}100%{-webkit-transform:rotate3d(0,0,1,0deg);transform:rotate3d(0,0,1,0deg)}}@-webkit-keyframes gscw-bounceIn{0%{opacity:0;-webkit-transform:scale(.3,.3);transform:scale(.3,.3)}30%{-webkit-transform:scale(1.3,1.3);transform:scale(1.3,1.3)}55%{opacity:1;-webkit-transform:scale(.8,.8);transform:scale(.8,.8)}72%{-webkit-transform:scale(1.13,1.13);transform:scale(1.13,1.13)}87%{-webkit-transform:scale(.97,.97);transform:scale(.97,.97)}100%{-webkit-transform:none;transform:none}}@keyframes gscw-bounceIn{0%{opacity:0;-webkit-transform:scale(.3,.3);transform:scale(.3,.3)}30%{-webkit-transform:scale(1.3,1.3);transform:scale(1.3,1.3)}55%{opacity:1;-webkit-transform:scale(.8,.8);transform:scale(.8,.8)}72%{-webkit-transform:scale(1.13,1.13);transform:scale(1.13,1.13)}87%{-webkit-transform:scale(.97,.97);transform:scale(.97,.97)}100%{-webkit-transform:none;transform:none}}@-webkit-keyframes gscw-flipTy{0%{transition-timing-function:ease-in;-webkit-transform:rotateY(180deg) scale(.4,.4);transform:rotateY(180deg) scale(.4,.4)}100%{-webkit-transform:rotateY(0) scale(1,1);transform:rotateY(0) scale(1,1)}}@keyframes gscw-flipTy{0%{transition-timing-function:ease-in;-webkit-transform:rotateY(180deg) scale(.4,.4);transform:rotateY(180deg) scale(.4,.4)}100%{-webkit-transform:rotateY(0) scale(1,1);transform:rotateY(0) scale(1,1)}}@-webkit-keyframes gscw-flip{0%{-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}100%{-webkit-transform:rotateY(0);transform:rotateY(0)}}@keyframes gscw-flip{0%{-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}100%{-webkit-transform:rotateY(0);transform:rotateY(0)}}@-webkit-keyframes gscw-typing{0%,100%,80%{opacity:0;-webkit-transform:scale(.8);transform:scale(.8)}40%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}}@keyframes gscw-typing{0%,100%,80%{opacity:0;-webkit-transform:scale(.8);transform:scale(.8)}40%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}}@-webkit-keyframes gscw-notify{0%{-webkit-transform:scale(.1,.1);transform:scale(.1,.1);opacity:.3}100%{opacity:1;-webkit-transform:none;transform:none}}@keyframes gscw-notify{0%{-webkit-transform:scale(.1,.1);transform:scale(.1,.1);opacity:.3}100%{opacity:1;-webkit-transform:none;transform:none}}@-webkit-keyframes gscw-highlight{100%{-webkit-transform:none;transform:none}0%,99%{-webkit-transform:translate(0,0);transform:translate(0,0)}20%{-webkit-transform:translate(-5px,0);transform:translate(-5px,0)}60%{-webkit-transform:translate(-2.5px,0);transform:translate(-2.5px,0)}40%{-webkit-transform:translate(5px,0);transform:translate(5px,0)}80%{-webkit-transform:translate(2.5px,0);transform:translate(2.5px,0)}}@keyframes gscw-highlight{100%{-webkit-transform:none;transform:none}0%,99%{-webkit-transform:translate(0,0);transform:translate(0,0)}20%{-webkit-transform:translate(-5px,0);transform:translate(-5px,0)}60%{-webkit-transform:translate(-2.5px,0);transform:translate(-2.5px,0)}40%{-webkit-transform:translate(5px,0);transform:translate(5px,0)}80%{-webkit-transform:translate(2.5px,0);transform:translate(2.5px,0)}}body.g-e5qu6x{overflow:hidden!important}html.g-fbbsrj,html.g-fbbsrj>body{overflow:hidden!important}.ghvkboh{cursor:pointer}body.g-p8nitw:before{transition:height .5s cubic-bezier(.455,.03,.515,.955);content:' ';display:block;visibility:hidden;height:0!important;padding:0;margin:0}.gcyyfqj.g-p8nitw:before{transition:none!important}body.g-p8nitw.g-2ylnfp:before{height:42px!important}body.g-p8nitw.g-qjykza:before{transition:none!important}w-div{display:block;vertical-align:inherit}.g3wgdqi,.gf0w0pv{-webkit-animation-name:gscw-highlight!important;animation-name:gscw-highlight!important;-webkit-animation-duration:.6s!important;animation-duration:.6s!important;-webkit-font-smoothing:subpixel-antialiased;-webkit-transform-origin:left;-ms-transform-origin:left;transform-origin:left}.gek0auq{position:absolute;top:-9999px;width:50px;height:50px;overflow:scroll}.g-qjykza *{transition:none!important}</style><script type="text/javascript" src="./Tidy Data in Python · Jean-Nicholas Hould_files/jquery.min(1).js"></script></head>
+
+
+  <body class="theme-base-08 g-p8nitw g-2ylnfp" style="">
+
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+     styles, `#sidebar-checkbox` for behavior. -->
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<!-- Toggleable sidebar -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-item">
+    <p>My journey learning data science.</p>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a class="sidebar-nav-item" href="http://www.jeannicholashould.com/">Home</a>
+
+    
+
+    
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://www.jeannicholashould.com/about.html">About</a>
+        
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://www.jeannicholashould.com/archive.html">Archives</a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://www.jeannicholashould.com/marathons.html">Running</a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a class="sidebar-nav-item" href="http://www.jeannicholashould.com/talks.html">Talks</a>
+        
+      
+    
+  </nav>
+
+  <div class="sidebar-item">
+    <p>
+      © 2017. All rights reserved.
+    </p>
+  </div>
+</div>
+
+    <script type="text/javascript">
+!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";
+analytics.load("uCqkqZyD8gxfF8IVkLYQZGBqeszSRtzo");
+analytics.page()
+}}();
+</script>
+
+
+    <script>
+  (function (w,i,d,g,e,t,s) {w[d] = w[d]||[];t= i.createElement(g);
+    t.async=1;t.src=e;s=i.getElementsByTagName(g)[0];s.parentNode.insertBefore(t, s);
+  })(window, document, '_gscq','script','//widgets.getsitecontrol.com/34832/script.js');
+</script>
+    <script type="text/javascript">
+window.onload = function () {
+  var links = document.links;
+
+  for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+     if (links[i].hostname != window.location.hostname) {
+         links[i].target = '_blank';
+     } 
+  }
+}
+</script>
+   
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          <h3 class="masthead-title">
+            <a href="http://www.jeannicholashould.com/" title="Home">Jean-Nicholas Hould</a>
+            <small>On Data Science</small>
+          </h3>
+        </div>
+      </div>
+
+      <div class="container content">
+        <div class="post">
+  <h1 class="post-title">Tidy Data in Python</h1>
+  <span class="post-date">06 Dec 2016</span>
+  <p>I recently came across a paper named <a href="http://vita.had.co.nz/papers/tidy-data.pdf" target="_blank">Tidy Data</a> by Hadley Wickham. Published back in 2014, the paper focuses on one aspect of cleaning up data, tidying data: structuring datasets to facilitate analysis. Through the paper, Wickham demonstrates how any dataset can be structured in a standardized way prior to analysis. He presents in detail the different types of data sets and how to wrangle them into a standard format.</p>
+
+<p>As a data scientist, I think you should get very familiar with this standardized structure of a dataset. Data cleaning is one the most frequent task in data science. No matter what kind of data you are dealing with or what kind of analysis you are performing, you will have to clean the data at some point. Tidying your data in a standard format makes things easier down the road. You can reuse a standard set of tools across your different analysis.</p>
+
+<p>In this post, I will summarize some tidying examples Wickham uses in his paper and I will demonstrate how to do so using the Python <a href="http://pandas.pydata.org/" target="_blank">pandas</a> library.</p>
+
+<h2 id="defining-tidy-data">Defining tidy data</h2>
+<p>The structure Wickham defines as tidy has the following attributes:</p>
+
+<ul>
+  <li>Each <em>variable</em> forms a column and contains <em>values</em></li>
+  <li>Each <em>observation</em> forms a row</li>
+  <li>Each type of <em>observational unit</em> forms a table</li>
+</ul>
+
+<p>A few definitions:</p>
+
+<ul>
+  <li>Variable: A measurement or an attribute. <small><em>Height, weight, sex, etc.</em></small></li>
+  <li>Value: The actual measurement or attribute. <small><em>152 cm, 80 kg, female, etc.</em></small></li>
+  <li>Observation: All values measure on the same unit. <small><em>Each person.</em></small></li>
+</ul>
+
+<p>An example of a <em>messy dataset</em>:</p>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th></th>
+      <th>Treatment A</th>
+      <th>Treatment B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>John Smith</th>
+      <td>-</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Jane Doe</th>
+      <td>16</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>Mary Johnson</th>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>An example of a <em>tidy dataset</em>:</p>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>Name</th>
+      <th>Treatment</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>John Smith</th>
+      <td>a</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <th>Jane Doe</th>
+      <td>a</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>Mary Johnson</th>
+      <td>a</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>John Smith</th>
+      <td>b</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Jane Doe</th>
+      <td>b</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>Mary Johnson</th>
+      <td>b</td>
+      <td>1</td>
+    </tr>    
+  </tbody>
+</table>
+</div>
+
+<h2 id="tidying-messy-datasets">Tidying messy datasets</h2>
+
+<p>Through the following examples extracted from Wickham’s paper, we’ll wrangle messy datasets into the tidy format. The goal here is not to analyze the datasets but rather prepare them in a standardized way prior to the analysis. These are the five types of messy datasets we’ll tackle:</p>
+
+<ul>
+  <li>Column headers are values, not variable names.</li>
+  <li>Multiple variables are stored in one column.</li>
+  <li>Variables are stored in both rows and columns.</li>
+  <li>Multiple types of observational units are stored in the same table.</li>
+  <li>A single observational unit is stored in multiple tables.</li>
+</ul>
+
+<p><em>Note: All of the code presented in this post is available on <a href="https://github.com/nickhould/tidy-data-python" target="_blank">Github</a>.</em></p>
+
+<h3 id="column-headers-are-values-not-variable-names">Column headers are values, not variable names</h3>
+
+<h4 id="pew-research-center-dataset">Pew Research Center Dataset</h4>
+<p>This dataset explores the relationship between income and religion.</p>
+
+<p>Problem: The columns headers are composed of the possible income values.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">listdir</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">join</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"./data/pew-raw.csv"</span><span class="p">)</span>
+<span class="n">df</span></code></pre></figure>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>religion</th>
+      <th>&lt;$10k</th>
+      <th>$10-20k</th>
+      <th>$20-30k</th>
+      <th>$30-40k</th>
+      <th>$40-50k</th>
+      <th>$50-75k</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Agnostic</td>
+      <td>27</td>
+      <td>34</td>
+      <td>60</td>
+      <td>81</td>
+      <td>76</td>
+      <td>137</td>
+    </tr>
+    <tr>
+      <td>Atheist</td>
+      <td>12</td>
+      <td>27</td>
+      <td>37</td>
+      <td>52</td>
+      <td>35</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <td>Buddhist</td>
+      <td>27</td>
+      <td>21</td>
+      <td>30</td>
+      <td>34</td>
+      <td>33</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <td>Catholic</td>
+      <td>418</td>
+      <td>617</td>
+      <td>732</td>
+      <td>670</td>
+      <td>638</td>
+      <td>1116</td>
+    </tr>
+    <tr>
+      <td>Dont know/refused</td>
+      <td>15</td>
+      <td>14</td>
+      <td>15</td>
+      <td>11</td>
+      <td>10</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <td>Evangelical Prot</td>
+      <td>575</td>
+      <td>869</td>
+      <td>1064</td>
+      <td>982</td>
+      <td>881</td>
+      <td>1486</td>
+    </tr>
+    <tr>
+      <td>Hindu</td>
+      <td>1</td>
+      <td>9</td>
+      <td>7</td>
+      <td>9</td>
+      <td>11</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <td>Historically Black Prot</td>
+      <td>228</td>
+      <td>244</td>
+      <td>236</td>
+      <td>238</td>
+      <td>197</td>
+      <td>223</td>
+    </tr>
+    <tr>
+      <td>Jehovahs Witness</td>
+      <td>20</td>
+      <td>27</td>
+      <td>24</td>
+      <td>24</td>
+      <td>21</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>Jewish</td>
+      <td>19</td>
+      <td>19</td>
+      <td>25</td>
+      <td>25</td>
+      <td>30</td>
+      <td>95</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>A tidy version of this dataset is one in which the income values would not be columns headers but rather values in an <code class="highlighter-rouge">income</code> column. In order to tidy this dataset, we need to <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.melt.html" target="_blank">melt</a> it. The <em>pandas</em> library has a built-in function that allows to do just that. It “unpivots” a DataFrame from a wide format to a long format. We’ll reuse this function a few times through the post.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">formatted_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
+                       <span class="p">[</span><span class="s">"religion"</span><span class="p">],</span>
+                       <span class="n">var_name</span><span class="o">=</span><span class="s">"income"</span><span class="p">,</span>
+                       <span class="n">value_name</span><span class="o">=</span><span class="s">"freq"</span><span class="p">)</span>
+<span class="n">formatted_df</span> <span class="o">=</span> <span class="n">formatted_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s">"religion"</span><span class="p">])</span>
+<span class="n">formatted_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code></pre></figure>
+
+<p>This outputs a tidy version of the dataset:</p>
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>religion</th>
+      <th>income</th>
+      <th>freq</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Agnostic</td>
+      <td>&lt;$10k</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>Agnostic</td>
+      <td>$30-40k</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <td>Agnostic</td>
+      <td>$40-50k</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <td>Agnostic</td>
+      <td>$50-75k</td>
+      <td>137</td>
+    </tr>
+    <tr>
+      <td>Agnostic</td>
+      <td>$10-20k</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <td>Agnostic</td>
+      <td>$20-30k</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <td>Atheist</td>
+      <td>$40-50k</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <td>Atheist</td>
+      <td>$20-30k</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <td>Atheist</td>
+      <td>$10-20k</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>Atheist</td>
+      <td>$30-40k</td>
+      <td>52</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h4 id="billboard-top-100-dataset">Billboard Top 100 Dataset</h4>
+
+<p>This dataset represents the weekly rank of songs from the moment they enter the Billboard Top 100 to the subsequent 75 weeks.</p>
+
+<p>Problems:</p>
+
+<ul>
+  <li>The columns headers are composed of values: the week number (<code class="highlighter-rouge">x1st.week</code>, …)</li>
+  <li>If a song is in the Top 100 for less than 75 weeks, the remaining columns are filled with missing values.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"./data/billboard.csv"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">"mac_latin2"</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code></pre></figure>
+
+<div>
+<table border="1" class="dataframe" style="table-layout: fixed;">
+  <thead style="word-wrap: break-word;">
+    <tr style="text-align: left;">
+      <th>year</th>
+      <th>artist.inverted</th>
+      <th>track</th>
+      <th>time</th>
+      <th>genre</th>
+      <th>date.entered</th>
+      <th>date.peaked</th>
+      <th>x1st.week</th>
+      <th>x2nd.week</th>
+      <th>...</th>
+    </tr>
+  </thead>
+  <tbody style="word-wrap: break-word;">
+    <tr>
+      <td>2000</td>
+      <td>Destiny's Child</td>
+      <td>Independent Women Part I</td>
+      <td>3:38</td>
+      <td>Rock</td>
+      <td>2000-09-23</td>
+      <td>2000-11-18</td>
+      <td>78</td>
+      <td>63.0</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>Santana</td>
+      <td>Maria, Maria</td>
+      <td>4:18</td>
+      <td>Rock</td>
+      <td>2000-02-12</td>
+      <td>2000-04-08</td>
+      <td>15</td>
+      <td>8.0</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>Savage Garden</td>
+      <td>I Knew I Loved You</td>
+      <td>4:07</td>
+      <td>Rock</td>
+      <td>1999-10-23</td>
+      <td>2000-01-29</td>
+      <td>71</td>
+      <td>48.0</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>Madonna</td>
+      <td>Music</td>
+      <td>3:45</td>
+      <td>Rock</td>
+      <td>2000-08-12</td>
+      <td>2000-09-16</td>
+      <td>41</td>
+      <td>23.0</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>Aguilera, Christina</td>
+      <td>Come On Over Baby (All I Want Is You)</td>
+      <td>3:38</td>
+      <td>Rock</td>
+      <td>2000-08-05</td>
+      <td>2000-10-14</td>
+      <td>57</td>
+      <td>47.0</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>Janet</td>
+      <td>Doesn't Really Matter</td>
+      <td>4:17</td>
+      <td>Rock</td>
+      <td>2000-06-17</td>
+      <td>2000-08-26</td>
+      <td>59</td>
+      <td>52.0</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>Destiny's Child</td>
+      <td>Say My Name</td>
+      <td>4:31</td>
+      <td>Rock</td>
+      <td>1999-12-25</td>
+      <td>2000-03-18</td>
+      <td>83</td>
+      <td>83.0</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>Iglesias, Enrique</td>
+      <td>Be With You</td>
+      <td>3:36</td>
+      <td>Latin</td>
+      <td>2000-04-01</td>
+      <td>2000-06-24</td>
+      <td>63</td>
+      <td>45.0</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>Sisqo</td>
+      <td>Incomplete</td>
+      <td>3:52</td>
+      <td>Rock</td>
+      <td>2000-06-24</td>
+      <td>2000-08-12</td>
+      <td>77</td>
+      <td>66.0</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>Lonestar</td>
+      <td>Amazed</td>
+      <td>4:25</td>
+      <td>Country</td>
+      <td>1999-06-05</td>
+      <td>2000-03-04</td>
+      <td>81</td>
+      <td>54.0</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>A tidy version of this dataset is one without the week’s numbers as columns but rather as values of a single column. In order to do so, we’ll <em>melt</em> the weeks columns into a single <code class="highlighter-rouge">date</code> column. We will create one row per week for each record. If there is no data for the given week, we will not create a row.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Melting</span>
+<span class="n">id_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s">"year"</span><span class="p">,</span>
+           <span class="s">"artist.inverted"</span><span class="p">,</span>
+           <span class="s">"track"</span><span class="p">,</span>
+           <span class="s">"time"</span><span class="p">,</span>
+           <span class="s">"genre"</span><span class="p">,</span>
+           <span class="s">"date.entered"</span><span class="p">,</span>
+           <span class="s">"date.peaked"</span><span class="p">]</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">frame</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">id_vars</span><span class="o">=</span><span class="n">id_vars</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s">"week"</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s">"rank"</span><span class="p">)</span>
+
+<span class="c"># Formatting </span>
+<span class="n">df</span><span class="p">[</span><span class="s">"week"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">'week'</span><span class="p">]</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s">'(</span><span class="err">\</span><span class="s">d+)'</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s">"rank"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">"rank"</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c"># Cleaning out unnecessary rows</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c"># Create "date" columns</span>
+<span class="n">df</span><span class="p">[</span><span class="s">'date'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'date.entered'</span><span class="p">])</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_timedelta</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">'week'</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s">'w'</span><span class="p">)</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s">"year"</span><span class="p">,</span> 
+         <span class="s">"artist.inverted"</span><span class="p">,</span>
+         <span class="s">"track"</span><span class="p">,</span>
+         <span class="s">"time"</span><span class="p">,</span>
+         <span class="s">"genre"</span><span class="p">,</span>
+         <span class="s">"week"</span><span class="p">,</span>
+         <span class="s">"rank"</span><span class="p">,</span>
+         <span class="s">"date"</span><span class="p">]]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s">"year"</span><span class="p">,</span><span class="s">"artist.inverted"</span><span class="p">,</span><span class="s">"track"</span><span class="p">,</span><span class="s">"week"</span><span class="p">,</span><span class="s">"rank"</span><span class="p">])</span>
+
+<span class="c"># Assigning the tidy dataset to a variable for future usage</span>
+<span class="n">billboard</span> <span class="o">=</span> <span class="n">df</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code></pre></figure>
+
+<p>A tidier version of the dataset is shown below. There is still a lot of repetition of the song details: the track name, time and genre. For this reason, this dataset is still not completely tidy as per Wickham’s definition. We will address this in the next example.</p>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>year</th>
+      <th>artist.inverted</th>
+      <th>track</th>
+      <th>time</th>
+      <th>genre</th>
+      <th>week</th>
+      <th>rank</th>
+      <th>date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>1</td>
+      <td>87</td>
+      <td>2000-02-26</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>2</td>
+      <td>82</td>
+      <td>2000-03-04</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>3</td>
+      <td>72</td>
+      <td>2000-03-11</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>4</td>
+      <td>77</td>
+      <td>2000-03-18</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>5</td>
+      <td>87</td>
+      <td>2000-03-25</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>6</td>
+      <td>94</td>
+      <td>2000-04-01</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>7</td>
+      <td>99</td>
+      <td>2000-04-08</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>2Ge+her</td>
+      <td>The Hardest Part Of Breaking Up (Is Getting Ba...</td>
+      <td>3:15</td>
+      <td>R&amp;B</td>
+      <td>1</td>
+      <td>91</td>
+      <td>2000-09-02</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>2Ge+her</td>
+      <td>The Hardest Part Of Breaking Up (Is Getting Ba...</td>
+      <td>3:15</td>
+      <td>R&amp;B</td>
+      <td>2</td>
+      <td>87</td>
+      <td>2000-09-09</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>2Ge+her</td>
+      <td>The Hardest Part Of Breaking Up (Is Getting Ba...</td>
+      <td>3:15</td>
+      <td>R&amp;B</td>
+      <td>3</td>
+      <td>92</td>
+      <td>2000-09-16</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="multiple-types-in-one-table">Multiple types in one table</h3>
+
+<p>Following up on the Billboard dataset, we’ll now address the repetition problem of the previous table.</p>
+
+<p>Problems:</p>
+
+<ul>
+  <li>Multiple observational units (the <code class="highlighter-rouge">song</code> and its <code class="highlighter-rouge">rank</code>) in a single table.</li>
+</ul>
+
+<p>We’ll first create a <code class="highlighter-rouge">songs</code> table which contains the details of each song:</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">songs_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s">"year"</span><span class="p">,</span> <span class="s">"artist.inverted"</span><span class="p">,</span> <span class="s">"track"</span><span class="p">,</span> <span class="s">"time"</span><span class="p">,</span> <span class="s">"genre"</span><span class="p">]</span>
+<span class="n">songs</span> <span class="o">=</span> <span class="n">billboard</span><span class="p">[</span><span class="n">songs_cols</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">songs</span> <span class="o">=</span> <span class="n">songs</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">songs</span><span class="p">[</span><span class="s">"song_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">songs</span><span class="o">.</span><span class="n">index</span>
+<span class="n">songs</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code></pre></figure>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>year</th>
+      <th>artist.inverted</th>
+      <th>track</th>
+      <th>time</th>
+      <th>genre</th>
+      <th>song_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2000</td>
+      <td>2 Pac</td>
+      <td>Baby Don't Cry (Keep Ya Head Up II)</td>
+      <td>4:22</td>
+      <td>Rap</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>2Ge+her</td>
+      <td>The Hardest Part Of Breaking Up (Is Getting Ba...</td>
+      <td>3:15</td>
+      <td>R&amp;B</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>3 Doors Down</td>
+      <td>Kryptonite</td>
+      <td>3:53</td>
+      <td>Rock</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>3 Doors Down</td>
+      <td>Loser</td>
+      <td>4:24</td>
+      <td>Rock</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>504 Boyz</td>
+      <td>Wobble Wobble</td>
+      <td>3:35</td>
+      <td>Rap</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>98�</td>
+      <td>Give Me Just One Night (Una Noche)</td>
+      <td>3:24</td>
+      <td>Rock</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>A*Teens</td>
+      <td>Dancing Queen</td>
+      <td>3:44</td>
+      <td>Pop</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>Aaliyah</td>
+      <td>I Don't Wanna</td>
+      <td>4:15</td>
+      <td>Rock</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>Aaliyah</td>
+      <td>Try Again</td>
+      <td>4:03</td>
+      <td>Rock</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>Adams, Yolanda</td>
+      <td>Open My Heart</td>
+      <td>5:30</td>
+      <td>Gospel</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>We’ll then create a <code class="highlighter-rouge">ranks</code> table which only contains the <code class="highlighter-rouge">song_id</code>, <code class="highlighter-rouge">date</code> and the <code class="highlighter-rouge">rank</code>.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">ranks</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">billboard</span><span class="p">,</span> <span class="n">songs</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s">"year"</span><span class="p">,</span><span class="s">"artist.inverted"</span><span class="p">,</span> <span class="s">"track"</span><span class="p">,</span> <span class="s">"time"</span><span class="p">,</span> <span class="s">"genre"</span><span class="p">])</span>
+<span class="n">ranks</span> <span class="o">=</span> <span class="n">ranks</span><span class="p">[[</span><span class="s">"song_id"</span><span class="p">,</span> <span class="s">"date"</span><span class="p">,</span><span class="s">"rank"</span><span class="p">]]</span>
+<span class="n">ranks</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code></pre></figure>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>song_id</th>
+      <th>date</th>
+      <th>rank</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>2000-02-26</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>2000-03-04</td>
+      <td>82</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>2000-03-11</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>2000-03-18</td>
+      <td>77</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>2000-03-25</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>2000-04-01</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>2000-04-08</td>
+      <td>99</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2000-09-02</td>
+      <td>91</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2000-09-09</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2000-09-16</td>
+      <td>92</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="multiple-variables-stored-in-one-column">Multiple variables stored in one column</h3>
+
+<h4 id="tubercolosis-records-from-world-health-organization">Tubercolosis Records from World Health Organization</h4>
+<p>This dataset documents the count of confirmed tuberculosis cases by country, year, age and sex.</p>
+
+<p>Problems:</p>
+
+<ul>
+  <li>Some columns contain multiple values: sex and age.</li>
+  <li>Mixture of zeros and missing values <code class="highlighter-rouge">NaN</code>. This is due to the data collection process and the distinction is important for this dataset.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"./data/tb-raw.csv"</span><span class="p">)</span>
+<span class="n">df</span></code></pre></figure>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>country</th>
+      <th>year</th>
+      <th>m014</th>
+      <th>m1524</th>
+      <th>m2534</th>
+      <th>m3544</th>
+      <th>m4554</th>
+      <th>m5564</th>
+      <th>m65</th>
+      <th>mu</th>
+      <th>f014</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AD</td>
+      <td>2000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>AE</td>
+      <td>2000</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>6</td>
+      <td>5</td>
+      <td>12</td>
+      <td>10</td>
+      <td>NaN</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>AF</td>
+      <td>2000</td>
+      <td>52</td>
+      <td>228</td>
+      <td>183</td>
+      <td>149</td>
+      <td>129</td>
+      <td>94</td>
+      <td>80</td>
+      <td>NaN</td>
+      <td>93</td>
+    </tr>
+    <tr>
+      <td>AG</td>
+      <td>2000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>AL</td>
+      <td>2000</td>
+      <td>2</td>
+      <td>19</td>
+      <td>21</td>
+      <td>14</td>
+      <td>24</td>
+      <td>19</td>
+      <td>16</td>
+      <td>NaN</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>AM</td>
+      <td>2000</td>
+      <td>2</td>
+      <td>152</td>
+      <td>130</td>
+      <td>131</td>
+      <td>63</td>
+      <td>26</td>
+      <td>21</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>AN</td>
+      <td>2000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>AO</td>
+      <td>2000</td>
+      <td>186</td>
+      <td>999</td>
+      <td>1003</td>
+      <td>912</td>
+      <td>482</td>
+      <td>312</td>
+      <td>194</td>
+      <td>NaN</td>
+      <td>247</td>
+    </tr>
+    <tr>
+      <td>AR</td>
+      <td>2000</td>
+      <td>97</td>
+      <td>278</td>
+      <td>594</td>
+      <td>402</td>
+      <td>419</td>
+      <td>368</td>
+      <td>330</td>
+      <td>NaN</td>
+      <td>121</td>
+    </tr>
+    <tr>
+      <td>AS</td>
+      <td>2000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>In order to tidy this dataset, we need to remove the different values from the header and unpivot them into rows. We’ll first need to melt the <code class="highlighter-rouge">sex + age group</code> columns into a single one. Once we have that single column, we’ll derive three columns from it: <code class="highlighter-rouge">sex</code>, <code class="highlighter-rouge">age_lower</code> and <code class="highlighter-rouge">age_upper</code>. With those, we’ll be able to properly build a tidy dataset.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s">"country"</span><span class="p">,</span><span class="s">"year"</span><span class="p">],</span> <span class="n">value_name</span><span class="o">=</span><span class="s">"cases"</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s">"sex_and_age"</span><span class="p">)</span>
+
+<span class="c"># Extract Sex, Age lower bound and Age upper bound group</span>
+<span class="n">tmp_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">"sex_and_age"</span><span class="p">]</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s">"(</span><span class="err">\</span><span class="s">D)(</span><span class="err">\</span><span class="s">d+)(</span><span class="err">\</span><span class="s">d{2})"</span><span class="p">)</span>    
+
+<span class="c"># Name columns</span>
+<span class="n">tmp_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">"sex"</span><span class="p">,</span> <span class="s">"age_lower"</span><span class="p">,</span> <span class="s">"age_upper"</span><span class="p">]</span>
+
+<span class="c"># Create `age`column based on `age_lower` and `age_upper`</span>
+<span class="n">tmp_df</span><span class="p">[</span><span class="s">"age"</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp_df</span><span class="p">[</span><span class="s">"age_lower"</span><span class="p">]</span> <span class="o">+</span> <span class="s">"-"</span> <span class="o">+</span> <span class="n">tmp_df</span><span class="p">[</span><span class="s">"age_upper"</span><span class="p">]</span>
+
+<span class="c"># Merge </span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">tmp_df</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c"># Drop unnecessary columns and rows</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'sex_and_age'</span><span class="p">,</span><span class="s">"age_lower"</span><span class="p">,</span><span class="s">"age_upper"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">"country"</span><span class="p">,</span> <span class="s">"year"</span><span class="p">,</span> <span class="s">"sex"</span><span class="p">,</span> <span class="s">"age"</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span></code></pre></figure>
+
+<p>This results in a <em>tidy dataset</em>.</p>
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>country</th>
+      <th>year</th>
+      <th>cases</th>
+      <th>sex</th>
+      <th>age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>AD</td>
+      <td>2000</td>
+      <td>0</td>
+      <td>m</td>
+      <td>0-14</td>
+    </tr>
+    <tr>
+      <td>AD</td>
+      <td>2000</td>
+      <td>0</td>
+      <td>m</td>
+      <td>15-24</td>
+    </tr>
+    <tr>
+      <td>AD</td>
+      <td>2000</td>
+      <td>1</td>
+      <td>m</td>
+      <td>25-34</td>
+    </tr>
+    <tr>
+      <td>AD</td>
+      <td>2000</td>
+      <td>0</td>
+      <td>m</td>
+      <td>35-44</td>
+    </tr>
+    <tr>
+      <td>AD</td>
+      <td>2000</td>
+      <td>0</td>
+      <td>m</td>
+      <td>45-54</td>
+    </tr>
+    <tr>
+      <td>AD</td>
+      <td>2000</td>
+      <td>0</td>
+      <td>m</td>
+      <td>55-64</td>
+    </tr>
+    <tr>
+      <td>AE</td>
+      <td>2000</td>
+      <td>3</td>
+      <td>f</td>
+      <td>0-14</td>
+    </tr>
+    <tr>
+      <td>AE</td>
+      <td>2000</td>
+      <td>2</td>
+      <td>m</td>
+      <td>0-14</td>
+    </tr>
+    <tr>
+      <td>AE</td>
+      <td>2000</td>
+      <td>4</td>
+      <td>m</td>
+      <td>15-24</td>
+    </tr>
+    <tr>
+      <td>AE</td>
+      <td>2000</td>
+      <td>4</td>
+      <td>m</td>
+      <td>25-34</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="variables-are-stored-in-both-rows-and-columns">Variables are stored in both rows and columns</h3>
+
+<h4 id="global-historical-climatology-network-dataset">Global Historical Climatology Network Dataset</h4>
+<p>This dataset represents the daily weather records for a weather station (MX17004) in Mexico for five months in 2010.</p>
+
+<p>Problems:</p>
+
+<ul>
+  <li>Variables are stored in both rows (<code class="highlighter-rouge">tmin</code>, <code class="highlighter-rouge">tmax</code>) and columns (<code class="highlighter-rouge">days</code>).</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"./data/weather-raw.csv"</span><span class="p">)</span>
+<span class="n">df</span></code></pre></figure>
+
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: left;">
+      <th>id</th>
+      <th>year</th>
+      <th>month</th>
+      <th>element</th>
+      <th>d1</th>
+      <th>d2</th>
+      <th>d3</th>
+      <th>d4</th>
+      <th>d5</th>
+      <th>d6</th>
+      <th>d7</th>
+      <th>d8</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>1</td>
+      <td>tmax</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>1</td>
+      <td>tmin</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>2</td>
+      <td>tmax</td>
+      <td>NaN</td>
+      <td>27.3</td>
+      <td>24.1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>2</td>
+      <td>tmin</td>
+      <td>NaN</td>
+      <td>14.4</td>
+      <td>14.4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>3</td>
+      <td>tmax</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>32.1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>3</td>
+      <td>tmin</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14.2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>4</td>
+      <td>tmax</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>4</td>
+      <td>tmin</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>5</td>
+      <td>tmax</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <td>MX17004</td>
+      <td>2010</td>
+      <td>5</td>
+      <td>tmin</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>In order to make this dataset tidy, we want to move the three misplaced variables (<code class="highlighter-rouge">tmin</code>, <code class="highlighter-rouge">tmax</code> and <code class="highlighter-rouge">days</code>) as three individual columns: <code class="highlighter-rouge">tmin</code>. <code class="highlighter-rouge">tmax</code> and <code class="highlighter-rouge">date</code>.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="c"># Extracting day</span>
+<span class="n">df</span><span class="p">[</span><span class="s">"day"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">"day_raw"</span><span class="p">]</span><span class="o">.</span><span class="nb">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="s">"d(</span><span class="err">\</span><span class="s">d+)"</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>  
+<span class="n">df</span><span class="p">[</span><span class="s">"id"</span><span class="p">]</span> <span class="o">=</span> <span class="s">"MX17004"</span>
+
+<span class="c"># To numeric values</span>
+<span class="n">df</span><span class="p">[[</span><span class="s">"year"</span><span class="p">,</span><span class="s">"month"</span><span class="p">,</span><span class="s">"day"</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s">"year"</span><span class="p">,</span><span class="s">"month"</span><span class="p">,</span><span class="s">"day"</span><span class="p">]]</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s">'ignore'</span><span class="p">))</span>
+
+<span class="c"># Creating a date from the different columns</span>
+<span class="k">def</span> <span class="nf">create_date_from_year_month_day</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s">"year"</span><span class="p">],</span> <span class="n">month</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s">"month"</span><span class="p">]),</span> <span class="n">day</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s">"day"</span><span class="p">])</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s">"date"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="nb">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">create_date_from_year_month_day</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s">'year'</span><span class="p">,</span><span class="s">"month"</span><span class="p">,</span><span class="s">"day"</span><span class="p">,</span> <span class="s">"day_raw"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c"># Unmelting column "element"</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s">"id"</span><span class="p">,</span><span class="s">"date"</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s">"element"</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s">"value"</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">df</span></code></pre></figure>
+
+<div>
+  <table border="1" class="dataframe">
+    <thead>
+      <tr style="text-align: left;">
+        <th>id</th>
+        <th>date</th>
+        <th>tmax</th>
+        <th>tmin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>MX17004</td>
+        <td>2010-02-02</td>
+        <td>27.3</td>
+        <td>14.4</td>
+      </tr>
+      <tr>
+        <td>MX17004</td>
+        <td>2010-02-03</td>
+        <td>24.1</td>
+        <td>14.4</td>
+      </tr>
+      <tr>
+        <td>MX17004</td>
+        <td>2010-03-05</td>
+        <td>32.1</td>
+        <td>14.2</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="one-type-in-multiple-tables">One type in multiple tables</h3>
+
+<p>Dataset: Illinois Male Baby Names for the year 2014/2015.</p>
+
+<p>Problems:</p>
+
+<ul>
+  <li>The data is spread across multiple tables/files.</li>
+  <li>The “Year” variable is present in the file name.</li>
+</ul>
+
+<p>In order to load those different files into a single DataFrame, we can run a custom script that will append the files together. Furthermore, we’ll need to extract the “Year” variable from the file name.</p>
+
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">extract_year</span><span class="p">(</span><span class="n">string</span><span class="p">):</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">".+(</span><span class="err">\</span><span class="s">d{4})"</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span> 
+    <span class="k">if</span> <span class="n">match</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span> <span class="k">return</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
+<span class="n">path</span> <span class="o">=</span> <span class="s">'./data'</span>
+<span class="n">allFiles</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">path</span> <span class="o">+</span> <span class="s">"/201*-baby-names-illinois.csv"</span><span class="p">)</span>
+<span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">df_list</span><span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">file_</span> <span class="ow">in</span> <span class="n">allFiles</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_</span><span class="p">,</span><span class="n">index_col</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">"year"</span><span class="p">]</span> <span class="o">=</span> <span class="n">extract_year</span><span class="p">(</span><span class="n">file_</span><span class="p">)</span>
+    <span class="n">df_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">df_list</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span></code></pre></figure>
+
+<div>
+    <table border="1" class="dataframe">
+      <thead>
+            <tr style="text-align: left;">
+                <th>rank</th>
+                <th>name</th>
+                <th>frequency</th>
+                <th>sex</th>
+                <th>year</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Noah</td>
+                <td>837</td>
+                <td>Male</td>
+                <td>2014</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Alexander</td>
+                <td>747</td>
+                <td>Male</td>
+                <td>2014</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>William</td>
+                <td>687</td>
+                <td>Male</td>
+                <td>2014</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Michael</td>
+                <td>680</td>
+                <td>Male</td>
+                <td>2014</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Liam</td>
+                <td>670</td>
+                <td>Male</td>
+                <td>2014</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 id="final-thoughts">Final Thoughts</h2>
+
+<p>In this post, I focused on one aspect of Wickham’s paper, the data manipulation part. My main goal was to demonstrate the data manipulations in Python. It’s important to mention that there is a significant section of his paper that covers the tools and visualizations from which you can benefit by tidying your dataset. I did not cover those in this post.</p>
+
+<p>Overall, I enjoyed preparing this post and wrangling the datasets into a streamlined format. The defined format makes it easier to query and filter the data. This approach makes it easier to reuse libraries and code across analysis. It also makes it easier to share a dataset with other data analysts.</p>
+
+</div>
+
+<!-- Convertkit - Start -->
+<div><div class="ck_form_container ck_inline" data-ck-version="6">
+  
+<div class="ck_form ck_vertical_subscription_form ck_horizontal">
+  <div class="ck_form_content">
+    <h3 class="ck_form_title">Learn How to Get Started in Data Science</h3>
+    <div class="ck_description">
+      <span class="ck_image">
+        
+      </span>
+      <p><span style="background-color: initial;">Subscribe to <span style="background-color: initial;">get a weekly email that will get you one step forward to becoming a data scientist.</span></span></p><p><span style="background-color: initial;">Every week, you will get fresh content in your inbox. I cover the topics of Data Analysis in Python, Applied Statistics, Machine Learning, SQL etc.</span></p>
+    </div>
+  </div>
+
+  <div class="ck_form_fields">
+    <div id="ck_success_msg" style="display:none;">
+      <p>Thank you! You are now subscribed.</p>
+    </div>
+
+    <!--  Form starts here  -->
+    <form id="ck_subscribe_form" class="ck_subscribe_form" action="https://forms.convertkit.com/landing_pages/147791/subscribe" data-remote="true">
+      <input type="hidden" value="{&quot;form_style&quot;:&quot;full&quot;,&quot;embed_style&quot;:&quot;inline&quot;,&quot;embed_trigger&quot;:&quot;scroll_percentage&quot;,&quot;scroll_percentage&quot;:&quot;70&quot;,&quot;delay_seconds&quot;:&quot;10&quot;,&quot;display_position&quot;:&quot;br&quot;,&quot;display_devices&quot;:&quot;all&quot;,&quot;days_no_show&quot;:&quot;15&quot;,&quot;converted_behavior&quot;:&quot;show&quot;}" id="ck_form_options">
+      <input type="hidden" name="id" value="147791" id="landing_page_id">
+      <input type="hidden" name="ck_form_recaptcha" value="" id="ck_form_recaptcha">
+      <div class="ck_errorArea">
+        <div id="ck_error_msg" style="display:none">
+          <p>There was an error submitting your subscription. Please try again.</p>
+        </div>
+      </div>
+      <div class="ck_control_group ck_first_name_field_group">
+        <label class="ck_label" for="ck_firstNameField">First Name</label>
+        <input type="text" name="first_name" class="ck_first_name" id="ck_firstNameField">
+      </div>
+      <div class="ck_control_group ck_email_field_group">
+        <label class="ck_label" for="ck_emailField">Email Address</label>
+        <input type="email" name="email" class="ck_email_address" id="ck_emailField" required="">
+      </div>
+      <div class="ck_control_group ck_captcha2_h_field_group ck-captcha2-h" style="position: absolute !important;left: -999em !important;">
+        <label class="ck_label" for="ck_captcha2_h">We use this field to detect spam bots. If you fill this in, you will be marked as a spammer.</label>
+        <input type="text" name="captcha2_h" class="ck-captcha2-h" id="ck_captcha2_h">
+      </div>
+
+        <label class="ck_checkbox" style="display:none;">
+          <input class="optIn ck_course_opted" name="course_opted" type="checkbox" id="optIn" checked="">
+          <span class="ck_opt_in_prompt">I'd like to receive the free email course.</span>
+        </label>
+
+      <button class="subscribe_button ck_subscribe_button btn fields" id="ck_subscribe_button">
+        Subscribe
+      </button>
+      <span class="ck_guarantee">
+         
+          <a class="ck_powered_by" href="https://convertkit.com/?utm_source=dynamic&amp;utm_medium=referral&amp;utm_campaign=poweredby&amp;utm_content=form" target="_blank">Powered by ConvertKit</a>
+      </span>
+    </form>
+  </div>
+
+</div>
+
+</div>
+
+
+<style type="text/css">/* Layout */
+  .ck_form {
+  /* divider image */
+	background: #fff url(data:image/gif;base64,R0lGODlhAQADAIABAMzMzP///yH/C1hNUCBEYXRhWE1QPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS41LWMwMTQgNzkuMTUxNDgxLCAyMDEzLzAzLzEzLTEyOjA5OjE1ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdFJlZj0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlUmVmIyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MUQ5NjM5RjgxQUVEMTFFNEJBQTdGNTQwMjc5MTZDOTciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MUQ5NjM5RjkxQUVEMTFFNEJBQTdGNTQwMjc5MTZDOTciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDoxRDk2MzlGNjFBRUQxMUU0QkFBN0Y1NDAyNzkxNkM5NyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoxRDk2MzlGNzFBRUQxMUU0QkFBN0Y1NDAyNzkxNkM5NyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAEALAAAAAABAAMAAAICRFIAOw==) repeat-y center top;
+	font-family: "Helvetica Neue", Helvetica, Arial, Verdana, sans-serif;
+	line-height: 1.5em;
+	overflow: hidden;
+	color: #666;
+	font-size: 16px;
+	border-top: solid 20px #3071b0;
+  border-top-color: #3071b0;
+	border-bottom: solid 10px #3d3d3d;
+  border-bottom-color: #1d446a;
+	-webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.3);
+	-moz-box-shadow: 0px 0px 5px rgba(0,0,0,.3);
+	box-shadow: 0px 0px 5px rgba(0,0,0,.3);
+	clear: both;
+	margin: 20px 0px;
+}
+
+.ck_form, .ck_form * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#ck_subscribe_form {
+  clear: both;
+}
+
+/* Element Queries — uses JS */
+
+.ck_form_content, .ck_form_fields {
+	width: 50%;
+	float: left;
+	padding: 5%;
+}
+
+.ck_form.ck_horizontal {
+}
+
+.ck_form_content {
+	border-bottom: none;
+}
+
+.ck_form.ck_vertical {
+	background: #fff;
+}
+
+.ck_vertical .ck_form_content, .ck_vertical .ck_form_fields {
+	padding: 10%;
+	width: 100%;
+	float: none;
+}
+
+.ck_vertical .ck_form_content {
+	border-bottom: 1px dotted #aaa;
+	overflow: hidden;
+}
+
+/* Trigger the vertical layout with media queries as well */
+
+@media all and (max-width: 499px) {
+
+	.ck_form {
+		background: #fff;
+	}
+
+	.ck_form_content, .ck_form_fields {
+		padding: 10%;
+		width: 100%;
+		float: none;
+	}
+
+	.ck_form_content {
+		border-bottom: 1px dotted #aaa;
+	}
+
+}
+
+/* Content */
+
+.ck_form_content h3 {
+	margin: 0px 0px 15px;
+	font-size: 24px;
+	padding: 0px;
+}
+
+
+.ck_form_content p {
+	font-size: 14px;
+}
+
+.ck_image {
+	float: left;
+	margin-right: 5px;
+}
+
+/* Form fields */
+
+.ck_errorArea {
+	display: none;
+}
+
+#ck_success_msg {
+	padding: 10px 10px 0px;
+	border: solid 1px #ddd;
+	background: #eee;
+}
+
+.ck_label {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.ck_form input[type="text"], .ck_form input[type="email"] {
+	font-size: 14px;
+	padding: 10px 8px;
+	width: 100%;
+	border: 1px solid #d6d6d6; /* stroke */
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px; /* border radius */
+	background-color: #f8f7f7; /* layer fill content */
+	margin-bottom: 5px;
+	height: auto;
+}
+
+.ck_form input[type="text"]:focus, .ck_form input[type="email"]:focus {
+	outline: none;
+	border-color: #aaa;
+}
+
+.ck_checkbox {
+  padding: 10px 0px 10px 20px;
+  display: block;
+  clear: both;
+}
+
+.ck_checkbox input.optIn {
+  margin-left: -20px;
+  margin-top: 0;
+}
+.ck_form .ck_opt_in_prompt {
+  margin-left: 4px;
+}
+.ck_form .ck_opt_in_prompt p {
+  display: inline;
+}
+
+.ck_form .ck_subscribe_button {
+    width: 100%;
+    color: #fff;
+    margin: 10px 0px 0px;
+    padding:  10px 0px;
+    font-size: 18px;
+    background: #0d6db8;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px; /* border radius */
+    cursor: pointer;
+    border: none;
+    text-shadow: none;
+  }
+
+
+.ck_form .ck_guarantee {
+	color: #626262;
+	font-size: 12px;
+	text-align: center;
+	padding: 5px 0px;
+	display: block;
+}
+
+.ck_form .ck_powered_by {
+	display: block;
+	color: #aaa;
+}
+
+.ck_form .ck_powered_by:hover {
+	display: block;
+	color: #444;
+}
+
+.ck_converted_content {
+  display: none;
+	padding: 5%;
+	background: #fff;
+}
+
+
+/* v6 */
+
+.ck_form_v6 #ck_success_msg {
+	padding: 0px 10px;
+}
+
+@media all and (max-width: 403px) {
+  .ck_form_v6.ck_modal .ck_close_link {
+    top: 30px;
+  }
+}
+
+@media all and (min-width: 404px) and (max-width: 499px) {
+  .ck_form_v6.ck_modal .ck_close_link {
+    top: 57px;
+  }
+}
+
+
+
+.ck_powered_by { display: none !important; }
+.ck_form .ck_subscribe_button { background-color: #057968;}
+.ck_form {
+    border-top-color: #057968;
+    border-bottom-color: #045c4f;
+}
+
+</style>
+</div><script async="" src="./Tidy Data in Python · Jean-Nicholas Hould_files/147791" id="_ck_147791"></script>
+<!-- Convertkit - End -->
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="http://www.jeannicholashould.com/profiling-a-dataset-of-craft-beers.html">
+            Profiling a Dataset of Craft Beers
+            <small>23 Apr 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="http://www.jeannicholashould.com/what-is-a-data-scientist.html">
+            What is a Data Scientist?
+            <small>06 Feb 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="http://www.jeannicholashould.com/python-web-scraping-tutorial-for-craft-beers.html">
+            Scraping for Craft Beers
+            <small>17 Jan 2017</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+
+      </div>
+
+      <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    </div>
+
+    <script>
+      (function(document) {
+        var toggle = document.querySelector('.sidebar-toggle');
+        var sidebar = document.querySelector('#sidebar');
+        var checkbox = document.querySelector('#sidebar-checkbox');
+
+        document.addEventListener('click', function(e) {
+          var target = e.target;
+
+          if(!checkbox.checked ||
+             sidebar.contains(target) ||
+             (target === checkbox || target === toggle)) return;
+
+          checkbox.checked = false;
+        }, false);
+      })(document);
+    </script>
+  
+
+<w-div id="g-pi1pxg" class="g306jtd g-yj51l2 g-ekuoqe g-s4ghq3 g-5lc6qz"><style media="print" type="text/css">#g-pi1pxg{display:none!important}</style><style media="handheld,screen,projection,tv" type="text/css">#g-pi1pxg{margin:0;padding:0;border:0;box-sizing:content-box!important;box-shadow:none;background-clip:padding-box!important;line-height:1.2;vertical-align:middle;text-align:left;font-weight:400;font-family:inherit;font-style:normal;letter-spacing:normal;text-shadow:none;text-transform:none;float:none;z-index:2147483635;-webkit-font-smoothing:subpixel-antialiased;-webkit-tap-highlight-color:rgba(0,0,0,0);filter:none}#g-pi1pxg a,#g-pi1pxg b,#g-pi1pxg div,#g-pi1pxg em,#g-pi1pxg form,#g-pi1pxg h1,#g-pi1pxg i,#g-pi1pxg img,#g-pi1pxg label,#g-pi1pxg li,#g-pi1pxg ol,#g-pi1pxg p,#g-pi1pxg span,#g-pi1pxg strong,#g-pi1pxg u,#g-pi1pxg ul{margin:0;padding:0;border:0;border-radius:0;vertical-align:inherit;width:auto;height:auto;min-width:0;min-height:0;max-width:none;max-height:none;text-shadow:none!important;box-shadow:none!important;font-family:inherit;line-height:inherit;letter-spacing:normal;color:inherit;background-color:transparent;position:static;font-size:inherit;font-weight:inherit;font-style:inherit;text-transform:inherit;text-decoration:inherit;text-align:inherit;float:none;outline:0;-webkit-tap-highlight-color:rgba(0,0,0,0)}#g-pi1pxg a,#g-pi1pxg a:active,#g-pi1pxg a:focus{-webkit-tap-highlight-color:rgba(0,0,0,0);text-decoration:none}#g-pi1pxg img{display:block}#g-pi1pxg .g-s93n4a{vertical-align:baseline;line-height:1.35}#g-pi1pxg .g-s93n4a b,#g-pi1pxg .g-s93n4a strong{font-weight:700}#g-pi1pxg .g-s93n4a em,#g-pi1pxg .g-s93n4a i{font-style:italic}#g-pi1pxg .g-s93n4a u{text-decoration:underline}#g-pi1pxg .g-s93n4a p{margin:0 0 10px 0}#g-pi1pxg .g-s93n4a a{text-decoration:underline}#g-pi1pxg .g-s93n4a.gco4xmy{display:inline;white-space:nowrap;margin:0;padding:0}#g-pi1pxg .g-s93n4a.gco4xmy *{white-space:nowrap;display:inline;margin:0;padding:0}#g-pi1pxg ::-webkit-input-placeholder{color:#cacaca!important;text-overflow:ellipsis!important;opacity:1;overflow:hidden;white-space:nowrap;vertical-align:middle;font-size:14px;text-align:left;font-weight:400;position:static}#g-pi1pxg :-moz-placeholder,#g-pi1pxg ::-moz-placeholder{color:#cacaca!important;text-overflow:ellipsis!important;opacity:1;overflow:hidden;white-space:nowrap;vertical-align:middle;font-size:14px;text-align:left;font-weight:400;position:static}#g-pi1pxg input:-ms-input-placeholder{color:#cacaca!important;text-overflow:ellipsis!important;opacity:1;overflow:hidden;white-space:nowrap;vertical-align:middle;font-size:14px;text-align:left;font-weight:400;position:static}#g-pi1pxg [placeholder]{text-overflow:ellipsis}#g-pi1pxg input:-moz-placeholder,#g-pi1pxg input:-ms-input-placeholder,#g-pi1pxg input::-moz-placeholder{text-overflow:ellipsis}#g-pi1pxg input,#g-pi1pxg input:focus,#g-pi1pxg select,#g-pi1pxg select:focus,#g-pi1pxg textarea,#g-pi1pxg textarea:focus{margin:0!important;padding:0;border:0;text-align:left!important;border-radius:3px!important;background:0 0;vertical-align:middle;width:auto!important;height:auto!important;min-width:0;min-height:0;max-width:none;max-height:none;text-shadow:none!important;box-shadow:none!important;font-family:inherit!important;background-clip:padding-box!important;line-height:1!important;letter-spacing:normal!important;outline:0 none!important;font-size:14px!important;float:none}#g-pi1pxg button,#g-pi1pxg input[type=submit]{margin:0;padding:0;background:0 0;width:auto;height:auto;text-shadow:none!important;box-shadow:none!important;font-family:inherit;line-height:1;letter-spacing:normal;float:none;font-weight:700;text-decoration:none;display:inline-block;text-align:center;border-radius:2px;vertical-align:middle;cursor:pointer;background-image:none;border:0;white-space:nowrap;outline:0;font-family:inherit;text-transform:none;overflow:visible}#g-pi1pxg button:active,#g-pi1pxg button:disabled,#g-pi1pxg button:focus,#g-pi1pxg button:hover,#g-pi1pxg input[type=submit]:active,#g-pi1pxg input[type=submit]:disabled,#g-pi1pxg input[type=submit]:focus,#g-pi1pxg input[type=submit]:hover{outline:0;text-decoration:none}#g-pi1pxg button::-moz-focus-inner,#g-pi1pxg input[type=submit]::-moz-focus-inner{padding:0;border:0}#g-pi1pxg textarea{line-height:1.2;overflow:auto;resize:none!important}#g-pi1pxg input:-webkit-autofill,#g-pi1pxg textarea:-webkit-autofill{background-color:transparent!important;-webkit-box-shadow:0 0 0 1000px #fff inset!important}#g-pi1pxg *{box-sizing:content-box!important;-webkit-filter:none;filter:none}#g-pi1pxg .g-jang7e,#g-pi1pxg .g-jang7e:focus{border:solid 1px #deeee7!important;background-color:#ffffff!important;font-size:14px!important;padding-left:8px!important;padding-right:8px!important;color:#333333!important;box-sizing:border-box!important;height:32px!important;width:100%!important;padding-top:8px\9;padding-bottom:8px\9}#g-pi1pxg .g-jang7e::-moz-placeholder,#g-pi1pxg .g-jang7e:focus::-moz-placeholder{font-size:14px;line-height:32px;height:32px}#g-pi1pxg .g-jang7e::-webkit-input-placeholder,#g-pi1pxg .g-jang7e:focus::-webkit-input-placeholder{font-size:14px;line-height:17px}#g-pi1pxg .g7lo8af{display:none}#g-pi1pxg .gi5gkf5{color:#ffffff!important;background:#07b69c!important;transition:background-color .2s ease-out!important;margin-top:1px;font-size:0;vertical-align:middle;line-height:1}#g-pi1pxg .gi5gkf5:active,#g-pi1pxg .gi5gkf5:hover{background:#20bda6!important;color:#ffffff!important}#g-pi1pxg .g-d7i17f{font-family:gsc!important;font-style:normal!important;font-weight:400!important;line-height:1;vertical-align:middle;display:inline-block;background-color:transparent;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:22px;line-height:30px;padding:0 6px;display:none}#g-pi1pxg .g-d7i17f:before{color:inherit!important;font-family:gsc!important;font-style:inherit!important;font-weight:inherit!important;vertical-align:baseline!important;background-color:inherit!important}#g-pi1pxg .g-d7i17f:before{content:"\e80a"}#g-pi1pxg .ggzeki1 .g-d7i17f{display:inline-block}#g-pi1pxg .g-lujuuq{padding:0 20px;font-size:14px;font-weight:700;vertical-align:middle;max-width:250px;line-height:30px;word-wrap:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block}#g-pi1pxg .ggzeki1 .g-lujuuq{display:none}#g-pi1pxg .g-56twpg{width:100%;display:table;margin:0 auto}#g-pi1pxg .g-oou2qn{display:table;width:100%}#g-pi1pxg .g-atr0n0{width:100%;display:table-cell;padding-right:5px}#g-pi1pxg .grsa4i0 .g-atr0n0{width:50%}#g-pi1pxg .grsa4i0 .g-lujuuq{line-height:32px}#g-pi1pxg .gi5gkf5{display:table-cell}#g-pi1pxg.g-5070r2 .grsa4i0 .g-oou2qn{table-layout:fixed}#g-pi1pxg.g-5070r2 .grsa4i0 .g-atr0n0{width:100%;display:block;margin-bottom:5px}#g-pi1pxg.g-5070r2 .grsa4i0 .g-atr0n0:last-child{margin-bottom:0}#g-pi1pxg.g-5070r2 .grsa4i0 .g-atr0n0{padding-right:0}#g-pi1pxg.g-5070r2 .grsa4i0 .gi5gkf5{margin-top:5px;display:block;width:100%}#g-pi1pxg.g-5070r2 .grsa4i0 .g-lujuuq{max-width:none;display:block}#g-pi1pxg.g-65r23h .g-oou2qn{table-layout:fixed}#g-pi1pxg.g-65r23h .g-lujuuq{display:block}#g-pi1pxg .gllnnso{display:none;text-align:left;z-index:2147483636;background-clip:padding-box}#g-pi1pxg .g-13mq3e{font-family:gsc!important;font-style:normal!important;font-weight:400!important;line-height:1;vertical-align:middle;display:inline-block;background-color:transparent;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-animation:gscw-flipTy .6s;animation:gscw-flipTy .6s;-webkit-backface-visibility:visible!important;backface-visibility:visible!important;text-align:center;font-size:120px;display:block}#g-pi1pxg .g-13mq3e:before{color:inherit!important;font-family:gsc!important;font-style:inherit!important;font-weight:inherit!important;vertical-align:baseline!important;background-color:inherit!important}#g-pi1pxg .g-13mq3e:before{content:"\e80b"}.g-ubs9c7#g-pi1pxg .g-u1dyje{display:none}.g-ubs9c7#g-pi1pxg .gllnnso{height:160px;-webkit-animation:gscw-fadeIn .6s;animation:gscw-fadeIn .6s;display:table;width:100%;table-layout:fixed}.g-qjykza.g-ubs9c7#g-pi1pxg .gllnnso{-webkit-animation:none!important;animation:none!important}.g-ubs9c7#g-pi1pxg .gllnnso>.g-cmo03{display:table-cell;vertical-align:middle}.g-584gb6#g-pi1pxg .gllnnso{opacity:1}#g-pi1pxg .gllnnso{display:block;position:absolute;top:0;left:0;bottom:0;right:0;text-align:center;z-index:2147483636;visibility:hidden;overflow:hidden;line-height:42px;color:#057968;background:#edf8f3;-webkit-transform-origin:bottom;-ms-transform-origin:bottom;transform-origin:bottom;-webkit-transform:rotateX(-90deg);transform:rotateX(-90deg);-webkit-backface-visibility:visible;backface-visibility:visible;-webkit-transform-style:preserve-3d;transform-style:preserve-3d;transition:visibility .5s,-webkit-transform .5s;transition:transform .5s,visibility .5s;transition:transform .5s,visibility .5s,-webkit-transform .5s}#g-pi1pxg.g-s4ghq3 .gllnnso{-webkit-transform-origin:top;-ms-transform-origin:top;transform-origin:top}#g-pi1pxg .g1k3s56{font-family:gsc!important;font-style:normal!important;font-weight:400!important;line-height:1;display:inline-block;background-color:transparent;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;vertical-align:middle;font-size:22px;line-height:42px}#g-pi1pxg .g1k3s56:before{color:inherit!important;font-family:gsc!important;font-style:inherit!important;font-weight:inherit!important;vertical-align:baseline!important;background-color:inherit!important}#g-pi1pxg .g1k3s56:before{content:"\e820"}#g-pi1pxg .g-bsbb17{margin-left:10px;font-size:14px;line-height:42px;display:inline-block;-webkit-user-select:text!important;-moz-user-select:text!important;-ms-user-select:text!important;user-select:text!important;word-wrap:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:80%}#g-pi1pxg .g-bphj4s{text-decoration:none;display:inline-block;text-align:center;border-radius:2px;vertical-align:middle;cursor:pointer;background-image:none;border:0;outline:0;font-family:inherit;text-transform:none;overflow:visible;color:#ffffff!important;background:#07b69c!important;transition:background-color .2s ease-out!important;margin-left:16px;padding:0 20px;line-height:32px;font-size:14px;font-weight:700;max-width:317px;word-wrap:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#g-pi1pxg .g-bphj4s:active,#g-pi1pxg .g-bphj4s:disabled,#g-pi1pxg .g-bphj4s:focus,#g-pi1pxg .g-bphj4s:hover{outline:0;text-decoration:none}#g-pi1pxg .g-bphj4s::-moz-focus-inner{padding:0;border:0}#g-pi1pxg .g-bphj4s:active,#g-pi1pxg .g-bphj4s:hover{background:#20bda6!important;color:#ffffff!important}#g-pi1pxg.g-ubs9c7 .gllnnso{visibility:visible;-webkit-transform:rotateX(0);transform:rotateX(0)}#g-pi1pxg.g-584gb6 .gllnnso{visibility:hidden;-webkit-transform:rotateX(-90deg);transform:rotateX(-90deg)}#g-pi1pxg .g-56twpg{width:auto;min-width:540px}#g-pi1pxg .grsa4i0 .g-lujuuq{line-height:30px}#g-pi1pxg .g-56twpg .gi5gkf5{color:#ffffff!important;background:#07b69c!important;transition:background-color .2s ease-out!important}#g-pi1pxg .g-56twpg .gi5gkf5:active,#g-pi1pxg .g-56twpg .gi5gkf5:hover{background:#20bda6!important;color:#ffffff!important}#g-pi1pxg .g-56twpg .g-6fhvef{min-width:250px!important}#g-pi1pxg .g-56twpg .g6b49yc{padding-right:16px;font-size:14px;display:table-cell;line-height:32px;width:1px}#g-pi1pxg{color:#057968!important;background:#edf8f3!important;display:block;white-space:nowrap!important;overflow:hidden;padding:5px 42px!important;text-align:center!important;left:0;right:0;position:fixed;font-size:0}#g-pi1pxg a,#g-pi1pxg a:active,#g-pi1pxg a:focus,#g-pi1pxg a:hover,#g-pi1pxg button,#g-pi1pxg button:active,#g-pi1pxg button:focus,#g-pi1pxg button:hover,#g-pi1pxg div,#g-pi1pxg input,#g-pi1pxg input:active,#g-pi1pxg input:focus,#g-pi1pxg label,#g-pi1pxg span,#g-pi1pxg textarea,#g-pi1pxg textarea:active,#g-pi1pxg textarea:focus{color:inherit}#g-pi1pxg.g-s4ghq3{transition:top .5s cubic-bezier(.455,.03,.515,.955);top:-42px}.g-qjykza#g-pi1pxg.g-s4ghq3{transition:none!important}#g-pi1pxg.g-s4ghq3.g-5lc6qz{top:0}#g-pi1pxg.gmbj66r{transition:bottom .5s cubic-bezier(.455,.03,.515,.955);bottom:-42px}.g-qjykza#g-pi1pxg.gmbj66r{transition:none!important}#g-pi1pxg.gmbj66r.g-5lc6qz{bottom:0}#g-pi1pxg.gimmn2k{position:absolute}#g-pi1pxg.g-wbqmac{position:fixed!important}#g-pi1pxg .g-cj8228{font-family:gsc!important;font-style:normal!important;font-weight:400!important;line-height:1;vertical-align:middle;display:inline-block;background-color:transparent;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:22px;height:30px;width:30px;text-indent:0!important;top:0!important;left:0!important;padding:6px;z-index:-1;position:absolute;display:block!important;text-decoration:none!important}#g-pi1pxg .g-cj8228:before{color:inherit!important;font-family:gsc!important;font-style:inherit!important;font-weight:inherit!important;vertical-align:baseline!important;background-color:inherit!important}#g-pi1pxg .g-cj8228:before{content:"\e809"}#g-pi1pxg .g-cj8228:before{background:#057968!important;color:#edf8f3!important;border-radius:50%;padding:4px;display:block}#g-pi1pxg .g-cj8228:active,#g-pi1pxg .g-cj8228:focus,#g-pi1pxg .g-cj8228:hover{outline:0;text-decoration:none}#g-pi1pxg .g9lh9gl{color:#057968!important;font-family:gsc!important;font-style:normal!important;font-weight:400!important;line-height:1;vertical-align:middle;display:inline-block;background-color:transparent;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:22px;height:22px;width:22px;transition:opacity .2s,-webkit-transform .2s!important;transition:transform .2s,opacity .2s!important;transition:transform .2s,opacity .2s,-webkit-transform .2s!important;-webkit-transform-origin:center center;-ms-transform-origin:center center;transform-origin:center center;opacity:.5;cursor:pointer;position:absolute;z-index:2147483637;padding:10px;right:0;top:0}#g-pi1pxg .g9lh9gl:before{color:inherit!important;font-family:gsc!important;font-style:inherit!important;font-weight:inherit!important;vertical-align:baseline!important;background-color:inherit!important}#g-pi1pxg .g9lh9gl:before{content:"\e81c"}#g-pi1pxg .g9lh9gl:hover{opacity:1;-webkit-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg)}#g-pi1pxg .gaxf086{font-size:14px;line-height:32px;display:inline-block;word-wrap:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:60%;max-width:calc(100% - 357px);margin-right:16px}#g-pi1pxg .ghyiyt1{text-decoration:none;display:inline-block;text-align:center;border-radius:2px;vertical-align:middle;cursor:pointer;background-image:none;border:0;outline:0;font-family:inherit;text-transform:none;overflow:visible;color:#ffffff!important;background:#07b69c!important;transition:background-color .2s ease-out!important;line-height:32px;font-size:14px;font-weight:700;max-width:317px;word-wrap:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#g-pi1pxg .ghyiyt1:active,#g-pi1pxg .ghyiyt1:disabled,#g-pi1pxg .ghyiyt1:focus,#g-pi1pxg .ghyiyt1:hover{outline:0;text-decoration:none}#g-pi1pxg .ghyiyt1::-moz-focus-inner{padding:0;border:0}#g-pi1pxg .ghyiyt1:active,#g-pi1pxg .ghyiyt1:hover{background:#20bda6!important;color:#ffffff!important}</style><div class="gllnnso">  <span class="g-bsbb17 "> <nobr class="g-s93n4a gco4xmy">  You have successfully subscribed.  </nobr> </span></div><form class="g-56twpg grsa4i0 g-8l6qkn" novalidate="novalidate">  <label for="subscribe56050email" class="g6b49yc "> Learn How To Get Started in Data Science. Subscribe Now: </label>  <div class="g-oou2qn"><w-div class="g-atr0n0"><label for="gscw_email_input" class="g7lo8af">Email</label><w-div class="g-6fhvef g-crws16"><input type="email" maxlength="1000" title="Email" placeholder="Email address" name="email" id="gscw_email_input" class="g-jang7e g32gijl"></w-div></w-div><w-div class="g-atr0n0"><label for="gscw_name_input" class="g7lo8af">Name</label><w-div class="g-6fhvef g-y6nwb0"><input type="text" maxlength="1000" title="Name" placeholder="First Name" name="name" id="gscw_name_input" class="g-jang7e g32gijl"></w-div></w-div> <button type="submit" class="gi5gkf5 "> <span class="g-lujuuq">Subscribe</span> <span class="g-d7i17f" title="Subscribe"></span></button></div></form><span class="g9lh9gl"></span><a href="https://getsitecontrol.com/subscribe-widget/?utm_content=subscribe&amp;utm_source=www.jeannicholashould.com&amp;utm_medium=referral&amp;utm_term=topBar&amp;utm_campaign=Widgets%20Logo" style="display: block !important;text-indent: 0 !important;" tabindex="-1" class="g-cj8228" target="_blank" title="Powered by GetSiteControl"></a></w-div></body></html>
