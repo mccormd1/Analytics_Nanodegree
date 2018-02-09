@@ -1,5 +1,5 @@
 # scraped html folder
-*/rt_html/*
+dir_to_ignore/rt_html/
 
 # large data files in image-processing
 *.p
