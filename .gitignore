@@ -1,3 +1,6 @@
+# scraped html folder
+*/rt_html/*
+
 # large data files in image-processing
 *.p
 *.tar.gz
