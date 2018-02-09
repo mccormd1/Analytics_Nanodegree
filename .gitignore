@@ -1,4 +1,5 @@
 # scraped html folder
+**/ebert_reviews/**
 **/rt_html/**
 
 # large data files in image-processing
