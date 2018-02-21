@@ -1,7 +1,3 @@
-# scraped html folder
-**/ebert_reviews/**
-**/bestofrt_posters/**
-**/rt_html/**
 
 # large data files in image-processing
 *.p
@@ -83,3 +79,13 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+# scraped html folder
+**/ebert_reviews/**
+**/bestofrt_posters/**
+**/rt_html/**
+
+# Data Wrangling project exemptions
+!twitter_archive_master.csv
+!image-predictions.tsv
+!twitter-archive-enhanced.csv
