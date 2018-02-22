@@ -1,0 +1,58 @@
+---
+title: "WeRateDogs"
+author: "Devin McCormack"
+date: "2/22/2018"
+output: html_document
+---
+
+
+## Data Overview
+Here you introduce the data sources, the intent of the EDA, etc. It should motivate your Exploration.
+
+# Load Data
+
+```{r message=FALSE, warning=FALSE, load_data }
+library(tidyverse)
+dogs<-read.csv("twitter_archive_master.csv")
+```
+
+# Visualizations
+
+## Univariate Analysis
+
+```{r univariate_plot}
+ggplot(data=dogs,aes(x=favorite_count,y=retweet_count))+
+  geom_point(alpha=.5)+
+  geom_smooth(method="lm")+
+  geom_abline(slope=1,linetype=2)+
+  labs(x="Number of Favorites", 
+       y="Number of Retweets",
+       title="Retweets vs. Favorites")
+```
+
+```{r univariate_plot}
+breeds<-c("golden_retriever","Labrador_retriever","pug","Pomeranian")
+
+ggplot(data=subset(dogs,p1 %in% breeds &
+                    retweet_count<quantile(retweet_count,.99) &
+                    p1_conf>.6 &
+                    num_dogs==1),
+       aes(x=p1,y=retweet_count/followers_count,fill=p1))+
+  geom_boxplot()+
+  labs(y="Normalized Retweets",
+       title="Retweets vs. Dog Breed")+
+  theme(axis.title.x = element_blank())+
+  scale_x_discrete(labels=c("Golden Retriever", "Labrador",
+                            "Pomeranian", "Pug"))+
+  scale_fill_manual(values=wes_palette(name="Darjeeling"),
+                    guide=FALSE)
+```
+
+```{r univariate_plot}
+ggplot(data=dogs,aes(x=favorite_count,y=retweet_count))+
+  geom_point(alpha=.5)+
+  geom_smooth(method="lm")+
+  labs(x="Number of Favorites", 
+       y="Number of Retweets",
+       title="Retweets vs. Favorites")
+```
