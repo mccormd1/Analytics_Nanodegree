@@ -11815,7 +11815,7 @@ div#notebook {
 <li><code>df_dog</code> variables <code>doggo</code>, <code>floofer</code>, <code>pupper</code> and <code>puppo</code> are a messy form of a single variable named <code>dog_stage</code>.</li>
 <li><code>df_dog</code> variables <code>rating_numerator</code> and <code>rating_denominator</code> are a messy form of a single ratio <code>rating</code>.</li>
 <li>All retweets and replies, marked with values in respective <code>..._status_id</code> variables, are invalid representations of original tweeted images/ratings.</li>
-<li>primary key tweet_id is valid (no duplicates) across all datasets, but was extracted in <code>df_tweet</code> as a string to ensure integrity in the API request process.</li>
+<li>primary key tweet_id is valid (no duplicates) across all datasets, but <code>df_dog</code> and <code>df_tweet</code> variable <code>tweet_id</code> is a int instead of string.</li>
 </ul>
 </li>
 <li><p>Accuracy</p>
@@ -11845,7 +11845,6 @@ div#notebook {
 <p>In order to create the new dog_stages variable, I concatenated the four variable values into one string value. For example, a tweet that only included one keyword, "pupper" would contain the value "NoneNonepupperNone". Then, with a dictionary of string replacements, I replaced these strings in <code>df_stage</code> with the appropriate keyword ("pupper"in the examples given). After replacement of simple category strings, A regular expression was then used to replace all values with mutliple keywords with the keyword "multiple". After verifying new variable <code>dog_stage</code>, variables <code>doggo</code>, <code>floofer</code>, <code>pupper</code>, <code>puppo</code> were dropped from <code>df_dog_clean</code>.</p>
 <hr>
 <p>Further tidying is done by inner joining the three tables on the variable <code>tweet_id</code>. This automatically reduces the dataset to only the tweet ids that has complete data across all three tables.</p>
-<p>Before doing so, I needed to convert <code>df_tweet_clean.tweet_id</code> to a 64bit integer to match the other tables.</p>
 <p>After merging, I had a single table with 2070 observations of 28 variables, called <code>df_dog_clean</code>.</p>
 <hr>
 <p>To remove retweets and replies, any tweet id that had non-null values in either <code>in_reply_to_status_id</code>, or <code>retweeted_status_id</code> were removed. After removing, <code>in_reply_to_status_id</code>, <code>in_reply_to_user_id</code>, <code>retweeted_status_id</code>, <code>retweeeted_status_user_id</code>, and <code>retweeted_status_timestamp</code> were dropped from <code>df_dog_clean</code>, resulting in a table with 1971 observations of 23 variables.</p>
@@ -11853,17 +11852,17 @@ div#notebook {
 <p>Quality of <code>name</code> was cleaned next. After probing and iterating, I created a regex solution to extract names from 1380 of 1971 observations, with fewer false positives and negatives than the original extraction. Reducing false negatives to zero would require complex regex extraction, or extensive manual modification.</p>
 <p>Additionally, this extraction delt with a quality issue by assigning null values to images without extracted names.</p>
 <hr>
-<p>Next, <code>rating_numerator</code> and <code>rating_denominator</code> were re-extracted. One tweet was found to not have a rating at all, and was dropped from <code>df_dog_clean</code>. Accurate denominators were found to always be multiples of 10, and to often be the very last fraction present in the text. Numerators were extracted by proximity to the accurate denominators.</p>
+<p>Next, <code>rating_numerator</code> and <code>rating_denominator</code> were re-extracted. One tweet was found to not have a rating at all, and was dropped from <code>df_dog_clean</code>. Accurate denominators were found to always be multiples of 10, and to often be the very last fraction present in the text. Numerators were extracted by proximity to the accurate denominators, with optional inclusion of decimal points in the numerator.</p>
 <p>After inspection, There were 24 tweets that potentially had mutliple valid ratings for multiple dogs within the image. The numerator and denominator for these 24 images was manually exracted and updated in <code>df_dog_clean</code>.</p>
 <hr>
-<p><code>rating_numerator</code> and <code>rating_denominator</code> were then made tidy by combining them into a single variable named <code>rating</code> by dividing <code>rating_numerator</code> by <code>rating_denominator</code>. After testing, <code>rating_numerator</code> and <code>rating_denominator</code>  were dropped from <code>df_dog_clean</code>, resulting in 22 variables.</p>
+<p><code>rating_numerator</code> and <code>rating_denominator</code> were then made tidy by combining them into a two variables named <code>rating</code> (<code>rating_numerator</code>/<code>rating_denominator</code>)and <code>num_dogs</code>(<code>rating_denominator</code>/10). After testing, <code>rating_numerator</code> and <code>rating_denominator</code>  were dropped from <code>df_dog_clean</code>, resulting in 23 variables.</p>
 <hr>
 <p>images where <code>p1_dog</code>,<code>p2_dog</code>, and <code>p3_dog</code> were False were spot checked. Visually inspecting these images seem to show a big challenge with NN image classification: if the dog is not the largest object in the image or blends in, the NN has issues "focusing" on the dog to make a classification. Some of the images are purposefully not dogs.</p>
 <p>This was determined to be something that <em>did not</em> need to be cleaned, however it should be kept in mind when aggregating data to make insights.</p>
 <hr>
-<p>Finally, the datatype of <code>timestamp</code> was changed to datetime, incase any time depended insights were wanted.</p>
+<p>Finally, the datatype of <code>timestamp</code> was changed to datetime, incase any time depended insights were wanted, and the datatype of <code>tweet_id</code> was changed to string, as it is an identifier.</p>
 <hr>
-<h2 id="Exporting">Exporting<a class="anchor-link" href="#Exporting">&#182;</a></h2><p>Data from the cleaned <code>df_dog_clean</code> dataframe was exported to a .csv file named <code>twitter_archive_master.csv</code></p>
+<h2 id="Exporting">Exporting<a class="anchor-link" href="#Exporting">&#182;</a></h2><p>Data from the cleaned <code>df_dog_clean</code> dataframe (1970 observations of 23 variables) was exported to a .csv file named <code>twitter_archive_master.csv</code></p>
 
 </div>
 </div>
