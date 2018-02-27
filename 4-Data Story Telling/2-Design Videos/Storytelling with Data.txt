@@ -1,0 +1,13 @@
+Storytelling with Data:
+
+Understand the context - this means knowing your audience and conveying a clear message about what you want your audience to know or do with the information you are providing.
+
+Choose an appropriate visual display - this was covered in the last lesson. Check out the recap page here if you need a quick refresher. 
+
+Eliminate clutter - you should only provide information to the user that helps convey your message.
+
+Focus attention where you want it - build visualizations that pull attention to the message you want to highlight. 
+
+Think like a designer - you will learn a number of design principles in this lesson to assist as you start to put together your own data visualizations.
+
+Tell a story - your visualizations should give the audience a story. The most powerful data visualizations move people to take action.
