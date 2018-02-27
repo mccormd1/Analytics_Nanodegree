@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+  <!--[if IEMobile 7]><html class="no-js ie iem7" lang="en" dir="ltr"><![endif]-->
+  <!--[if lte IE 6]><html class="no-js ie lt-ie9 lt-ie8 lt-ie7" lang="en" dir="ltr"><![endif]-->
+  <!--[if (IE 7)&(!IEMobile)]><html class="no-js ie lt-ie9 lt-ie8" lang="en" dir="ltr"><![endif]-->
+  <!--[if IE 8]><html class="no-js ie ie8 lt-ie9 lt-ie10 lt-ie11" lang="en" dir="ltr"><![endif]-->
+  <!--[if IE 9]><html class="no-js ie ie9 lt-ie10 lt-ie11" lang="en" dir="ltr"><![endif]-->
+  <!--[if IE 10]><html class="no-js ie ie10 lt-ie11" lang="en" dir="ltr"><![endif]-->
+  <!--[if (gt IE 10)|(gt IEMobile 7)]><html class="no-js ie" lang="en" dir="ltr" prefix="fb: http://ogp.me/ns/fb# og: http://ogp.me/ns# article: http://ogp.me/ns/article# book: http://ogp.me/ns/book# profile: http://ogp.me/ns/profile# video: http://ogp.me/ns/video# product: http://ogp.me/ns/product# content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema# schema: http://schema.org/"><![endif]-->
+  <!--[if !IE]><!--><html class="no-js" lang="en" dir="ltr" prefix="fb: http://ogp.me/ns/fb# og: http://ogp.me/ns# article: http://ogp.me/ns/article# book: http://ogp.me/ns/book# profile: http://ogp.me/ns/profile# video: http://ogp.me/ns/video# product: http://ogp.me/ns/product# content: http://purl.org/rss/1.0/modules/content/ dc: http://purl.org/dc/terms/ foaf: http://xmlns.com/foaf/0.1/ rdfs: http://www.w3.org/2000/01/rdf-schema# sioc: http://rdfs.org/sioc/ns# sioct: http://rdfs.org/sioc/types# skos: http://www.w3.org/2004/02/skos/core# xsd: http://www.w3.org/2001/XMLSchema# schema: http://schema.org/"><!--<![endif]-->
+<head>
+  <meta charset="utf-8" /><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UQMPWVNVGwEEXFRTBAU="};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(6);var b=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof b&&(this.bstStart=g.now())}),o.on(w,function(t,n){var e=t[0];e instanceof b&&i("bst",[e,n,this.bstStart,g.now()])}),a.on(m,function(t,n,e){this.bstStart=g.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t(18)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){var r=t("ee").get("history"),o=t(18)(r);n.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,n,e){var r=t("ee").get("raf"),o=t(18)(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t(18)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):w?w(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t(18)(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];n.exports=u;var b=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,b),b.prototype=p.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!w&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],10:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!n.aborted){if(e.duration=a.now()-this.startTime,4===t.readyState){n.status=t.status;var i=o(t,this.lastSize);if(i&&(e.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;e.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[n,e,this.startTime])}}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return h(r)}function i(t,n){var e=c(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.sameOrigin=e.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=h(r);i&&(e.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{f.emit("internal-error",[e])}catch(r){}}};for(var s=0;s<d;s++)n.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),f.on("xhr-load-added",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],n)}),f.on("removeEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],n)}),f.on("fn-start",function(t,n,e){n instanceof m&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,n){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,n],n)})}},{}],11:[function(t,n,e){n.exports=function(t){var n=document.createElement("a"),e=window.location,r={};n.href=t,r.port=n.port;var o=n.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=n.hostname||e.hostname,r.pathname=n.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!n.protocol||":"===n.protocol||n.protocol===e.protocol,a=n.hostname===document.domain&&n.port===e.port;return r.sameOrigin=i&&(!n.hostname||a),r}},{}],12:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(15),s=t(16),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],13:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],14:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],15:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],16:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],17:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],18:[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=h(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([g,e,r,a]),a}}function p(t,n){v[t]=h(t).concat(n)}function h(t){return v[t]||[]}function m(t){return d[t]=d[t]||o(e)}function w(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var v={},y={},g={on:p,emit:e,get:m,listeners:h,context:n,buffer:w,abort:a,aborted:!1};return g}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(15),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!x++){var t=b.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=l.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(15),u=t("ee"),d=window,l=d.document,p="addEventListener",h="attachEvent",m=d.XMLHttpRequest,w=m&&m.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1071.min.js"},g=m&&w&&w[p]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:v,features:{},xhrWrappable:g};t(12),l[p]?(l[p]("DOMContentLoaded",i,!1),d[p]("load",r,!1)):(l[h]("onreadystatechange",o),d[h]("onload",r)),c("mark",["firstbyte",s],null,"api");var x=0,E=t(17)},{}]},{},["loader",2,10,4,3]);</script>
+<link rel="dns-prefetch" href="//cdn.optimizely.com" />
+<link rel="dns-prefetch" href="//www.googletagmanager.com" />
+<link rel="dns-prefetch" href="//www.google-analytics.com" />
+<link rel="dns-prefetch" href="//publicstaticcdn.tableausoftware.com" />
+<link rel="dns-prefetch" href="//img.en25.com" />
+<link rel="dns-prefetch" href="//s840.t.eloqua.com" />
+<!--[if IE 9]>
+<link rel="prefetch" href="//cdn.optimizely.com" />
+<link rel="prefetch" href="//www.googletagmanager.com" />
+<link rel="prefetch" href="//www.google-analytics.com" />
+<link rel="prefetch" href="//publicstaticcdn.tableausoftware.com" />
+<link rel="prefetch" href="//img.en25.com" />
+<link rel="prefetch" href="//s840.t.eloqua.com" />
+<![endif]-->
+<link href="https://www.tableau.com/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" rel="alternate" hreflang="en" />
+<script>window['GoogleAnalyticsObject'] = 'ga';
+window['ga'] = window['ga'] || function() {
+  (window['ga'].q = window['ga'].q || []).push(arguments)
+};</script>
+<meta name="HandheldFriendly" content="true" />
+<link rel="profile" href="http://www.w3.org/1999/xhtml/vocab" />
+<script>var groucho = window.groucho || {}; groucho.config = {"taxonomyProperty":"entityTaxonomy","trackExtent":"500","favThreshold":"2","lastClicked":"a","trackProperties":["entityBundle","entityId","entityLanguage","entityTaxonomy"]};</script>
+<script>dataLayer = [{"drupalLanguage":"en","drupalCountry":"US","entityType":"node","entityBundle":"blog_post","entityId":"53463","entityLabel":"5 tips on designing colorblind-friendly visualizations","entityLanguage":"und","entityTnid":"0","entityCreated":"1461168013","entityChanged":"1491916233","entityStatus":"1","entityTaxonomy":{"vocabulary_3":{"1715":"Not Product Specific"},"lead_source":{"3035":"Blog"},"theme":{"2213":"Thought Leadership"},"blog_category":{"2898":"Visualizations"}},"userUid":0,"eloquaDetails":{"field_lead_src":"Blog","field_lead_source_detail":"5 tips on designing colorblind-friendly visualizations","field_campaign_id":""},"entityBundleNice":"Blog Post","dataModelFields":{"field_campaign_topic":["Business Dashboards","Data Visualization"]},"flatTaxonomy":{"vocabulary_3":"Not Product Specific","lead_source":"Blog","theme":"Thought Leadership","blog_category":"Visualizations"},"i18n":{"flatTaxonomy":{"vocabulary_3":"Not Product Specific","lead_source":"Blog","theme":"Thought Leadership","blog_category":"Visualizations"}},"userMail":null}];</script>
+<link rel="shortcut icon" href="https://www.tableau.com/favicon.ico" type="image/vnd.microsoft.icon" />
+<meta name="breadcrumb_l1_url" content="https://www.tableau.com/community" />
+<meta name="breadcrumb_l1_text" content="Community" />
+<meta name="section" content="community" />
+<link href="https://www.tableau.com/zh-cn/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" rel="alternate" hreflang="zh-hans-cn" />
+<meta name="content_type" content="blog_post" />
+<meta http-equiv="cleartype" content="on" />
+<link rel="image_src" href="https://cdns.tblsft.com/sites/default/files/blog/screen_shot_2016-04-20_at_9.33.50_am_20.png" />
+<meta name="media_thumb" content="https://cdns.tblsft.com/sites/default/files/blog/screen_shot_2016-04-20_at_9.33.50_am_20.png" />
+<script type="application/json" id="liftigniter-metadata">{"title":"5 tips on designing colorblind-friendly visualizations","bundle":"blog_post","language":"en","src":"override","url":"https:\/\/www.tableau.com\/about\/blog\/2016\/4\/examining-data-viz-rules-dont-use-red-green-together-53463","published":"2016-04-20T08:39:00-0700","thumbnail_cropped":"https:\/\/cdns.tblsft.com\/sites\/default\/files\/styles\/viz_gallery_thumb\/public\/blog\/screen_shot_2016-04-20_at_9.33.50_am_20.png"}</script>
+<link href="https://www.tableau.com/es-es/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" rel="alternate" hreflang="es" />
+<link href="https://www.tableau.com/fr-fr/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" rel="alternate" hreflang="fr" />
+<link href="https://www.tableau.com/de-de/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" rel="alternate" hreflang="de" />
+<link href="https://www.tableau.com/ja-jp/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" rel="alternate" hreflang="ja" />
+<link href="https://www.tableau.com/ko-kr/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" rel="alternate" hreflang="ko" />
+<link href="https://www.tableau.com/pt-br/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" rel="alternate" hreflang="pt-br" />
+<script type="application/mustache" id="li-recommendation-blog-widget">
+{{#items}}
+  <div class="card card--condensed recommended__item gallery-grid__item {{ modifier_class }}">
+    <div class="card__inner">
+      <a href="{{ url }}" class="card__thumbnail thumbnail {{ thumbnail_modifier_class }} ">
+        {{#thumbnail}}
+          <img src="{{ thumbnail }}" alt={{ title }}>
+        {{/thumbnail}}
+        {{#icon}}
+          <i class="icon {{ icon }}"></i>
+        {{/icon}}
+      </a>
+      <div class="card__details">
+        <div class="card__label">
+          {{#eyebrow}}
+            <span class="text--label">{{eyebrow}}</span>
+            <hr class="divider divider--dashed">
+          {{/eyebrow}}
+          <h4 class="card__title">
+            <a href="{{ url }}">{{ title }}{{#published}} - {{published}}{{/published}}</a>
+          </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/items}}
+</script>
+<meta name="MobileOptimized" content="width" />
+<meta http-equiv="x-dns-prefetch-control" content="on" />
+<link rel="dns-prefetch" href="//cdnl.tblsft.com" />
+<link rel="dns-prefetch" href="//cdns.tblsft.com" />
+<link rel="dns-prefetch" href="//www.tableau.com" />
+<meta name="description" content="Note: The following is the first installment in a series of guest posts by Tableau Zen Master Jeffrey Shaffer." />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="canonical" href="https://www.tableau.com/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" />
+<meta property="og:site_name" content="Tableau Software" />
+<meta property="og:url" content="https://www.tableau.com/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" />
+<meta property="og:title" content="5 tips on designing colorblind-friendly visualizations" />
+<meta property="og:description" content="Note: The following is the first installment in a series of guest posts by Tableau Zen Master Jeffrey Shaffer." />
+<meta property="og:image" content="https://cdns.tblsft.com/sites/default/files/blog/screen_shot_2016-04-20_at_9.33.50_am_20.png" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:creator" content="@tableau" />
+<meta name="twitter:url" content="https://www.tableau.com/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" />
+<meta name="twitter:title" content="5 tips on designing colorblind-friendly visualizations" />
+<meta name="twitter:description" content="This is a first in a series of posts about some of the well-known “data-viz rules.&quot; We often hear these rules, but the details behind them are often not examined in depth or overlooked completely. I wanted to examine a few of them to better understand how they should be applied. For the first in the series, I examined the issue of using red and green together." />
+<meta name="twitter:image" content="https://cdns.tblsft.com/sites/default/files/blog/screen_shot_2016-04-20_at_9.33.50_am_20.png" />
+  <title>5 tips on designing colorblind-friendly visualizations | Tableau Software</title>
+  <link type="text/css" rel="stylesheet" href="https://www.tableau.com/sites/default/files/cdn/css/https/css_JboPdRN_uH7l7a6KhWCMiThHYO0mk8WFw-BsiRxfT3Q.css" media="all" />
+<style type="text/css">.honeypot-textfield{display:none !important;}
+</style>
+<link type="text/css" rel="stylesheet" href="https://www.tableau.com/sites/default/files/cdn/css/https/css_86K9fP_KhH7KDHkFfOI2hvB_V05TnFIOPjg-Jjo8BYU.css" media="all" />
+  <!--[if lt IE 9]>
+  <script src="/sites/all/libraries/html5shiv/html5shiv.min.js"></script>
+  <script src="/sites/all/libraries/es5-shim/es5-shim.min.js"></script>
+  <script src="/sites/all/libraries/respondjs/respond.min.js"></script>
+  <![endif]-->
+
+<!-- Google Tag Manager -->
+<script type="text/javascript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0];var j=d.createElement(s);var dl=l!='dataLayer'?'&l='+l:'';j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;j.type='text/javascript';j.async=true;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-BVCN');</script>
+<!-- End Google Tag Manager --></head>
+<body class="html not-front not-logged-in page-node page-node- page-node-53463 node-type-blog-post i18n-en section-about">
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-BVCN" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager -->
+  <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UQMPWVNVGwEEXFRTBAU="};window.NREUM||(NREUM={}),__nr_require=function(t,n,e){function r(e){if(!n[e]){var o=n[e]={exports:{}};t[e][0].call(o.exports,function(n){var o=t[e][1][n];return r(o||n)},o,o.exports)}return n[e].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<e.length;o++)r(e[o]);return r}({1:[function(t,n,e){function r(t){try{s.console&&console.log(t)}catch(n){}}var o,i=t("ee"),a=t(15),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,n,e){r(e.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,n){return t}).join(", ")))},{}],2:[function(t,n,e){function r(t,n,e,r,s){try{p?p-=1:o(s||new UncaughtException(t,n,e),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,n,e){this.message=t||"Uncaught error with no additional information",this.sourceURL=n,this.line=e}function o(t,n){var e=n?null:c.now();i("err",[t,e])}var i=t("handle"),a=t(16),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,l="nr@seenError",p=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(8),t(7),"addEventListener"in window&&t(5),c.xhrWrappable&&t(9),d=!0)}s.on("fn-start",function(t,n,e){d&&(p+=1)}),s.on("fn-err",function(t,n,e){d&&!e[l]&&(f(e,l,function(){return!0}),this.thrown=!0,o(e))}),s.on("fn-end",function(){d&&!this.thrown&&p>0&&(p-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,n,e){t("loader").features.ins=!0},{}],4:[function(t,n,e){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(8),s=t(7),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",l="resource",p="-start",h="-end",m="fn"+p,w="fn"+h,v="bstTimer",y="pushState",g=t("loader");g.features.stn=!0,t(6);var b=NREUM.o.EV;o.on(m,function(t,n){var e=t[0];e instanceof b&&(this.bstStart=g.now())}),o.on(w,function(t,n){var e=t[0];e instanceof b&&i("bst",[e,n,this.bstStart,g.now()])}),a.on(m,function(t,n,e){this.bstStart=g.now(),this.bstType=e}),a.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),this.bstType])}),s.on(m,function(){this.bstStart=g.now()}),s.on(w,function(t,n){i(v,[n,this.bstStart,g.now(),"requestAnimationFrame"])}),o.on(y+p,function(t){this.time=g.now(),this.startPath=location.pathname+location.hash}),o.on(y+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(l)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],5:[function(t,n,e){function r(t){for(var n=t;n&&!n.hasOwnProperty(u);)n=Object.getPrototypeOf(n);n&&o(n)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,n){return t[1]}var a=t("ee").get("events"),s=t(18)(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";n.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,n){var e=t[1],r=c(e,"nr@wrapped",function(){function t(){if("function"==typeof e.handleEvent)return e.handleEvent.apply(e,arguments)}var n={object:t,"function":e}[typeof e];return n?s(n,"fn-",null,n.name||"anonymous"):e});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],6:[function(t,n,e){var r=t("ee").get("history"),o=t(18)(r);n.exports=r,o.inPlace(window.history,["pushState","replaceState"],"-")},{}],7:[function(t,n,e){var r=t("ee").get("raf"),o=t(18)(r),i="equestAnimationFrame";n.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],8:[function(t,n,e){function r(t,n,e){t[0]=a(t[0],"fn-",null,e)}function o(t,n,e){this.method=e,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,e)}var i=t("ee").get("timer"),a=t(18)(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";n.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],9:[function(t,n,e){function r(t,n){d.inPlace(n,["onreadystatechange"],"fn-",s)}function o(){var t=this,n=u.context(t);t.readyState>3&&!n.resolved&&(n.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,y,"fn-",s)}function i(t){g.push(t),h&&(x?x.then(a):w?w(a):(E=-E,O.data=E))}function a(){for(var t=0;t<g.length;t++)r([],g[t]);g.length&&(g=[])}function s(t,n){return n}function c(t,n){for(var e in t)n[e]=t[e];return n}t(5);var f=t("ee"),u=f.get("xhr"),d=t(18)(u),l=NREUM.o,p=l.XHR,h=l.MO,m=l.PR,w=l.SI,v="readystatechange",y=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],g=[];n.exports=u;var b=window.XMLHttpRequest=function(t){var n=new p(t);try{u.emit("new-xhr",[n],n),n.addEventListener(v,o,!1)}catch(e){try{u.emit("internal-error",[e])}catch(r){}}return n};if(c(p,b),b.prototype=p.prototype,d.inPlace(b.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,n){r(t,n),i(n)}),u.on("open-xhr-start",r),h){var x=m&&m.resolve();if(!w&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===v||a()})},{}],10:[function(t,n,e){function r(t){var n=this.params,e=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<d;r++)t.removeEventListener(u[r],this.listener,!1);if(!n.aborted){if(e.duration=a.now()-this.startTime,4===t.readyState){n.status=t.status;var i=o(t,this.lastSize);if(i&&(e.rxSize=i),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;e.cbTime=this.cbTime,f.emit("xhr-done",[t],t),s("xhr",[n,e,this.startTime])}}}function o(t,n){var e=t.responseType;if("json"===e&&null!==n)return n;var r="arraybuffer"===e||"blob"===e||"json"===e?t.response:t.responseText;return h(r)}function i(t,n){var e=c(n),r=t.params;r.host=e.hostname+":"+e.port,r.pathname=e.pathname,t.sameOrigin=e.sameOrigin}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(11),f=t("ee"),u=["load","error","abort","timeout"],d=u.length,l=t("id"),p=t(14),h=t(13),m=window.XMLHttpRequest;a.features.xhr=!0,t(9),f.on("new-xhr",function(t){var n=this;n.totalCbs=0,n.called=0,n.cbTime=0,n.end=r,n.ended=!1,n.xhrGuids={},n.lastSize=null,p&&(p>34||p<10)||window.opera||t.addEventListener("progress",function(t){n.lastSize=t.loaded},!1)}),f.on("open-xhr-start",function(t){this.params={method:t[0]},i(this,t[1]),this.metrics={}}),f.on("open-xhr-end",function(t,n){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&n.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),f.on("send-xhr-start",function(t,n){var e=this.metrics,r=t[0],o=this;if(e&&r){var i=h(r);i&&(e.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"===t.type&&(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof n.onload))&&o.end(n)}catch(e){try{f.emit("internal-error",[e])}catch(r){}}};for(var s=0;s<d;s++)n.addEventListener(u[s],this.listener,!1)}),f.on("xhr-cb-time",function(t,n,e){this.cbTime+=t,n?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof e.onload||this.end(e)}),f.on("xhr-load-added",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&!this.xhrGuids[e]&&(this.xhrGuids[e]=!0,this.totalCbs+=1)}),f.on("xhr-load-removed",function(t,n){var e=""+l(t)+!!n;this.xhrGuids&&this.xhrGuids[e]&&(delete this.xhrGuids[e],this.totalCbs-=1)}),f.on("addEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-added",[t[1],t[2]],n)}),f.on("removeEventListener-end",function(t,n){n instanceof m&&"load"===t[0]&&f.emit("xhr-load-removed",[t[1],t[2]],n)}),f.on("fn-start",function(t,n,e){n instanceof m&&("onload"===e&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),f.on("fn-end",function(t,n){this.xhrCbStart&&f.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,n],n)})}},{}],11:[function(t,n,e){n.exports=function(t){var n=document.createElement("a"),e=window.location,r={};n.href=t,r.port=n.port;var o=n.href.split("://");!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=n.hostname||e.hostname,r.pathname=n.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname);var i=!n.protocol||":"===n.protocol||n.protocol===e.protocol,a=n.hostname===document.domain&&n.port===e.port;return r.sameOrigin=i&&(!n.hostname||a),r}},{}],12:[function(t,n,e){function r(){}function o(t,n,e){return function(){return i(t,[f.now()].concat(s(arguments)),n?null:this,e),n?void 0:this}}var i=t("handle"),a=t(15),s=t(16),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],l="api-",p=l+"ixn-";a(d,function(t,n){u[n]=o(l+n,!0,"api")}),u.addPageAction=o(l+"addPageAction",!0),u.setCurrentRouteName=o(l+"routeName",!0),n.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,n){var e={},r=this,o="function"==typeof n;return i(p+"tracer",[f.now(),t,e],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],e),o)try{return n.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],e),t}finally{c.emit("fn-end",[f.now()],e)}}}};a("setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,n){h[n]=o(p+n)}),newrelic.noticeError=function(t){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now()])}},{}],13:[function(t,n,e){n.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(n){return}}}},{}],14:[function(t,n,e){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),n.exports=r},{}],15:[function(t,n,e){function r(t,n){var e=[],r="",i=0;for(r in t)o.call(t,r)&&(e[i]=n(r,t[r]),i+=1);return e}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],16:[function(t,n,e){function r(t,n,e){n||(n=0),"undefined"==typeof e&&(e=t?t.length:0);for(var r=-1,o=e-n||0,i=Array(o<0?0:o);++r<o;)i[r]=t[n+r];return i}n.exports=r},{}],17:[function(t,n,e){n.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],18:[function(t,n,e){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(16),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;n.exports=function(t,n){function e(t,n,e,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof e?e(r,a):e||{}}catch(f){l([f,"",[r,a,o],s])}u(n+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(n+"err",[r,a,d],s),d}finally{u(n+"end",[r,a,c],s)}}return r(t)?t:(n||(n=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,n,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<n.length;c++)s=n[c],a=t[s],r(a)||(t[s]=e(a,f?s+o:o,i,s))}function u(e,r,o){if(!c||n){var i=c;c=!0;try{t.emit(e,r,o,n)}catch(a){l([a,e,r,o])}c=i}}function d(t,n){if(Object.defineProperty&&Object.keys)try{var e=Object.keys(t);return e.forEach(function(e){Object.defineProperty(n,e,{get:function(){return t[e]},set:function(n){return t[e]=n,n}})}),n}catch(r){l([r])}for(var o in t)s.call(t,o)&&(n[o]=t[o]);return n}function l(n){try{t.emit("internal-error",n)}catch(e){}}return t||(t=o),e.inPlace=f,e.flag=a,e}},{}],ee:[function(t,n,e){function r(){}function o(t){function n(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function e(e,r,o,i){if(!l.aborted||i){t&&t(e,r,o);for(var a=n(o),s=h(e),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[e]];return d&&d.push([g,e,r,a]),a}}function p(t,n){v[t]=h(t).concat(n)}function h(t){return v[t]||[]}function m(t){return d[t]=d[t]||o(e)}function w(t,n){f(t,function(t,e){n=n||"feature",y[e]=n,n in u||(u[n]=[])})}var v={},y={},g={on:p,emit:e,get:m,listeners:h,context:n,buffer:w,abort:a,aborted:!1};return g}function i(){return new r}function a(){(u.api||u.feature)&&(l.aborted=!0,u=l.backlog={})}var s="nr@context",c=t("gos"),f=t(15),u={},d={},l=n.exports=o();l.backlog=u},{}],gos:[function(t,n,e){function r(t,n,e){if(o.call(t,n))return t[n];var r=e();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,n,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[n]=r,r}var o=Object.prototype.hasOwnProperty;n.exports=r},{}],handle:[function(t,n,e){function r(t,n,e,r){o.buffer([t],r),o.emit(t,n,e)}var o=t("ee").get("handle");n.exports=r,r.ee=o},{}],id:[function(t,n,e){function r(t){var n=typeof t;return!t||"object"!==n&&"function"!==n?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");n.exports=r},{}],loader:[function(t,n,e){function r(){if(!x++){var t=b.info=NREUM.info,n=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&n))return u.abort();f(y,function(n,e){t[n]||(t[n]=e)}),c("mark",["onload",a()+b.offset],null,"api");var e=l.createElement("script");e.src="https://"+t.agent,n.parentNode.insertBefore(e,n)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return E.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(15),u=t("ee"),d=window,l=d.document,p="addEventListener",h="attachEvent",m=d.XMLHttpRequest,w=m&&m.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:m,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var v=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1071.min.js"},g=m&&w&&w[p]&&!/CriOS/.test(navigator.userAgent),b=n.exports={offset:s,now:a,origin:v,features:{},xhrWrappable:g};t(12),l[p]?(l[p]("DOMContentLoaded",i,!1),d[p]("load",r,!1)):(l[h]("onreadystatechange",o),d[h]("onload",r)),c("mark",["firstbyte",s],null,"api");var x=0,E=t(17)},{}]},{},["loader",2,10,4,3]);</script>  <!--noindex:begin--><!--googleoff: all--><a href="#main-content" class="element-invisible element-focusable">Skip to main content</a><!--googleon: all--><!--noindex:end-->
+    <div id="page" class="l-page">
+
+  <!--noindex:begin-->
+  
+  <header class="global-nav bg--white">
+          <div class="global-nav__top content-container content-container--wide">
+        <div class="relative clearfix">
+                        <div class="l-region l-region--logo">
+    <div id="block-delta-blocks-logo" class="block block--delta-blocks block--delta-blocks-logo global-nav__logo">
+        <div class="block__content">
+    <div class="logo-img"><a href="https://www.tableau.com/" id="logo" title="Return to the Tableau Software home page"><img typeof="foaf:Image" src="https://cdns.tblsft.com/sites/all/themes/tabwow/logo.png" alt="Tableau Software" /></a></div>  </div>
+</div>
+  </div>
+                                <div class="global-nav__mobile-wrapper">
+                                <div class="l-region l-region--secondary-nav global-nav__secondary-menu">
+    <nav id="block-menu-block-tableau-megamenu-3" role="navigation" class="block block--menu-block block--menu-block-tableau-megamenu-3">
+      
+  <div class="menu-block-wrapper menu-block-tableau_megamenu-3 menu-name-menu-secondary-menu-anonymous parent-mlid-0 menu-level-1">
+  <ul class="link-list link-list--inline"><li class="first leaf menu-mlid-52858"><a href="/pricing" class="link">Pricing</a></li>
+<li class="leaf menu-mlid-52859"><a href="/sso-login" class="link">Sign In</a></li>
+<li class="leaf menu-mlid-52977"><a href="/search/all/try%2Btableau" class="global-nav__search-toggle">Search</a></li>
+<li class="last leaf menu-mlid-54160"><a href="/products/trial" data-name="global-cta" class="cta">Try Now</a></li>
+</ul></div>
+</nav>
+  </div>
+                              <div class="l-region l-region--main-nav">
+    <div id="block-coveo-global" class="block block--coveo block--coveo-global">
+        <div class="block__content">
+    <div class="global-nav__search">
+  <div class="coveo-search-block" data-tab-group="global" class="coveo-search-block">
+      <div class="CoveoSearchbox" data-enable-omnibox="true"  data-placeholder="Search" data-hide-until-first-query="true">
+      </div>
+      <a href="#" class="global-nav__search-close"></a>
+
+      <div class="CoveoAnalytics" data-search-hub="Tableau.comMain"></div>      <div class="CoveoAnalyticsSuggestions"></div>
+  </div>
+</div>
+  </div>
+</div>
+<nav id="block-menu-block-tableau-megamenu-1" role="navigation" class="block block--menu-block global-nav__primary-menu block--menu-block-tableau-megamenu-1">
+      
+  <div class="navMain">
+  <ul class="link-list link-list--inline"><li class="first leaf menu-mlid-52788"><a href="/products" data-drawer-id="menu-drawer-44517" data-name="primary-nav" class="expandable">Products</a></li>
+<li class="leaf menu-mlid-52789"><a href="/solutions" data-drawer-id="menu-drawer-44518" data-name="primary-nav" class="expandable">Solutions</a></li>
+<li class="leaf menu-mlid-52787"><a href="/learn" data-drawer-id="menu-drawer-44519" data-name="primary-nav" class="expandable">Learning</a></li>
+<li class="leaf menu-mlid-52786"><a href="/community" data-drawer-id="menu-drawer-44520" data-name="primary-nav" class="expandable">Community</a></li>
+<li class="leaf menu-mlid-52790"><a href="/support" data-drawer-id="menu-drawer-44521" data-name="primary-nav" class="expandable">Support</a></li>
+<li class="last leaf menu-mlid-52785"><a href="/about" data-drawer-id="menu-drawer-44522" data-name="primary-nav" class="expandable">About</a></li>
+</ul></div>
+</nav>
+  </div>
+            </div>
+            <div class="global-nav__hamburger">
+              <a class="hamburger" href="#">
+                <span class="hamburger__patty">Menu</span>
+              </a>
+            </div>
+                  </div>
+      </div>
+      <div class="global-nav__drawers">
+        <div><div about="/node/44517" typeof="sioc:Item foaf:Document" class="ds-1col node node--block internal-node view-mode-full  node--full node--block--full clearfix">
+
+  
+  <div class="field field--name-body field--type-text-with-summary field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><div class="global-nav__drawer" id="menu-drawer-44517">
+  <div class="global-nav__drawer-controls">
+    <span>
+      <a class="link link--arrow-before global-nav__drawer-close" href="#">Back</a>
+    </span>
+    <span class="float-right">
+      <a data-name="sub-nav" class="link" href="https://www.tableau.com/products">Products Overview</a>
+    </span>
+  </div>
+  <div class="global-nav__drawer-inner content-container content-container--wide">
+    <div class="global-nav__drawer-primary grid--8">
+      <div class="sub-nav__item grid--4">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/products/desktop" class="text--desktop">Tableau Desktop</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">Analytics anyone can use.</p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/products/desktop">Learn More</a>
+        </p>
+      </div>
+      <div class="sub-nav__item grid--4">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/products/server" class="text--server">Tableau Server</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">Analytics for organizations.</p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/products/server">Learn More</a>
+        </p>
+      </div>
+      <div class="sub-nav__item grid--4 grid--last">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/products/online" class="text--online">Tableau Online</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">Cloud analytics for organizations</p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/products/online">Learn More</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="global-nav__drawer-secondary">
+      <h3 class="text--label">More Tableau Products</h3>
+      <ul class="plain-list">
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://public.tableau.com/" target="_blank">Tableau Public</a>
+          </h5>
+          <p class="sub-nav__item-description mobile-hide">Publish interactive data on websites.</p>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/embedded-analytics">Embedded Analytics</a>
+          </h5>
+          <p class="sub-nav__item-description mobile-hide">Read Tableau Desktop files for free.</p>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/developer">Developer Tools</a>
+          </h5>
+          <p class="sub-nav__item-description mobile-hide">Extend Tableau to fit your organization's needs.</p>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/pricing">Pricing</a>
+          </h5>
+          <p class="sub-nav__item-description mobile-hide">Explore our pricing options.</p>
+        </li>
+        <li class="sub-nav__item tablet-show">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" target="_blank" href="https://vizable.tableau.com">Vizable</a>
+          </h5>
+          <p class="sub-nav__item-description">Explore data on an iPad, free.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div></div></div></div>
+
+<div about="/node/44518" typeof="sioc:Item foaf:Document" class="ds-1col node node--block internal-node view-mode-full  node--full node--block--full clearfix">
+
+  
+  <div class="field field--name-body field--type-text-with-summary field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><div class="global-nav__drawer" id="menu-drawer-44518">
+  <div class="global-nav__drawer-controls">
+    <span>
+      <a class="link link--arrow-before global-nav__drawer-close" href="#">Back</a>
+    </span>
+    <span class="float-right">
+      <a data-name="sub-nav" class="link" href="https://www.tableau.com/solutions">Solutions Overview</a>
+    </span>
+  </div>
+  <div class="global-nav__drawer-inner content-container content-container--wide">
+    <div class="global-nav__drawer-primary grid--8">
+      <div class="sub-nav__item grid--4">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/solutions?topic=industries" class="text--">Industries</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">Explore Tableau&rsquo;s solutions for your industry.</p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/solutions?topic=industries">Learn More</a>
+        </p>
+      </div>
+      <div class="sub-nav__item grid--4">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/solutions?topic=departments" class="text--">Departments</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">See what&rsquo;s possible for your department.</p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/solutions?topic=departments">Learn More</a>
+        </p>
+      </div>
+      <div class="sub-nav__item grid--4 grid--last">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/solutions?topic=technology" class="text--">Technology</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">Learn how we integrate with your data source.</p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/solutions?topic=technology">Learn More</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="global-nav__drawer-secondary">
+      <h3 class="text--label">More about our solutions</h3>
+      <ul class="plain-list">
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/solutions?topic=capabilities">Capabilities</a>
+          </h5>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/solutions/gallery">Viz Gallery</a>
+          </h5>
+          <p class="sub-nav__item-description mobile-hide">See what's possible with Tableau.</p>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/enterprise-IT">Enterprise IT</a>
+          </h5>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/resources/all/customer-stories">Customer Stories</a>
+          </h5>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div></div></div></div></div>
+
+<div about="/node/44519" typeof="sioc:Item foaf:Document" class="ds-1col node node--block internal-node view-mode-full  node--full node--block--full clearfix">
+
+  
+  <div class="field field--name-body field--type-text-with-summary field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><div class="global-nav__drawer" id="menu-drawer-44519">
+  <div class="global-nav__drawer-controls">
+    <span>
+      <a class="link link--arrow-before global-nav__drawer-close" href="#">Back</a>
+    </span>
+    <span class="float-right">
+      <a data-name="sub-nav" class="link" href="https://www.tableau.com/learning">Learning Overview</a>
+    </span>
+  </div>
+  <div class="global-nav__drawer-inner content-container content-container--wide">
+    <div class="global-nav__drawer-primary grid--8">
+      <div class="sub-nav__item grid--4">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/learn/training" class="text--">Free Training Videos</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">Learn Tableau with these bite-sized videos.</p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/learn/training">Learn More</a>
+        </p>
+      </div>
+      <div class="sub-nav__item grid--4">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/learn/training/elearning" class="text--">eLearning</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">Interactive, self-paced learning at scale.</p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/learn/training/elearning">Learn More</a>
+        </p>
+      </div>
+      <div class="sub-nav__item grid--4 grid--last">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/learn/classroom" class="text--">Classroom Training</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">Multi-day courses offered around the world.</p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/learn/classroom">Learn More</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="global-nav__drawer-secondary">
+      <h3 class="text--label">More Ways to Learn</h3>
+      <ul class="plain-list">
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/learn/live-training">Live Online Training</a>
+          </h5>
+          <p class="sub-nav__item-description mobile-hide">One-hour sessions led by a Tableau pro.</p>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/learn/whitepapers">Whitepapers</a>
+          </h5>
+          <p class="sub-nav__item-description mobile-hide">Technology, trends, and tips.</p>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/learn/webinars">On-Demand Webinars</a>
+          </h5>
+          <p class="sub-nav__item-description mobile-hide">Learn from experts.</p>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/learn/demos">Product Demos</a>
+          </h5>
+          <p class="sub-nav__item-description mobile-hide">Live, online product walkthroughs.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div></div></div></div></div>
+
+<div about="/node/44520" typeof="sioc:Item foaf:Document" class="ds-1col node node--block internal-node view-mode-full  node--full node--block--full clearfix">
+
+  
+  <div class="field field--name-body field--type-text-with-summary field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><div class="global-nav__drawer" id="menu-drawer-44520">
+  <div class="global-nav__drawer-controls">
+    <span>
+      <a class="link link--arrow-before global-nav__drawer-close" href="#">Back</a>
+    </span>
+    <span class="float-right">
+      <a data-name="sub-nav" class="link" href="https://www.tableau.com/community">Community Overview</a>
+    </span>
+  </div>
+  <div class="global-nav__drawer-inner content-container content-container--wide">
+    <div class="global-nav__drawer-primary grid--8">
+      <div class="sub-nav__item grid--4">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://community.tableau.com/welcome" target="_blank">Forums &amp; User Groups</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">Share knowledge and ideas with other Tableau users.</p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://community.tableau.com/welcome" target="_blank">Visit the Forums</a>
+        </p>
+      </div>
+      <div class="sub-nav__item grid--4">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/partners">Partners</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">Find a partner to help you make the most of Tableau.</p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/partners">Find a Partner</a>
+        </p>
+      </div>
+      <div class="sub-nav__item grid--4 grid--last">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/community/events">Events</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">Stay up-to-date with the latest virtual and in-person events.</p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/community/events">Learn More</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="global-nav__drawer-secondary">
+      <h3 class="text--label">More About Community</h3>
+      <ul class="plain-list">
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://tc17.tableau.com/tc18" target="_blank">Tableau Conference</a>
+          </h5>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://tc-europe18.tableau.com/" target="_blank">TC Europe</a>
+          </h5>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/about/blog">Blog</a>
+          </h5>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div></div></div></div></div>
+
+<div about="/node/44521" typeof="sioc:Item foaf:Document" class="ds-1col node node--block internal-node view-mode-full  node--full node--block--full clearfix">
+
+  
+  <div class="field field--name-body field--type-text-with-summary field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><div class="global-nav__drawer" id="menu-drawer-44521">
+  <div class="global-nav__drawer-controls">
+    <span>
+      <a class="link link--arrow-before global-nav__drawer-close" href="#">Back</a>
+    </span>
+    <span class="float-right">
+      <a data-name="sub-nav" class="link" href="https://www.tableau.com/support">Support Overview</a>
+    </span>
+  </div>
+  <div class="global-nav__drawer-inner content-container content-container--wide">
+    <div class="global-nav__drawer-primary grid--8">
+      <div class="sub-nav__item grid--4">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/support/desktop">Desktop Support</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">
+          Resources for Desktop authors.
+        </p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/support/desktop">Learn More</a>
+        </p>
+      </div>
+      <div class="sub-nav__item grid--4">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/support/server">Server Support</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">
+          Resources for Server administrators.
+        </p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/support/server">Learn More</a>
+        </p>
+      </div>
+      <div class="sub-nav__item grid--4 grid--last">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/support/online">Online Support</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">
+          Resources for Tableau in the cloud.
+        </p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/support/online">Learn More</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="global-nav__drawer-secondary">
+      <h3 class="text--label">More Support</h3>
+      <ul class="plain-list">
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/support/help">Tableau Help</a>
+          </h5>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/support/consulting">Consulting Services</a>
+          </h5>
+          <p class="sub-nav__item-description mobile-hide">Jump-start your deployment or dashboard.</p>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="//customer.tableausoftware.com/" target="_blank">Customer Portal</a>
+          </h5>
+          <p class="sub-nav__item-description mobile-hide">Manage your Tableau accounts, product keys, and support cases.</p>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/support/knowledgebase" target="_blank">Knowledge Base</a>
+          </h5>
+          <p class="sub-nav__item-description mobile-hide">Explore technical articles.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div></div></div></div></div>
+
+<div about="/node/44522" typeof="sioc:Item foaf:Document" class="ds-1col node node--block internal-node view-mode-full  node--full node--block--full clearfix">
+
+  
+  <div class="field field--name-body field--type-text-with-summary field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><div class="global-nav__drawer" id="menu-drawer-44522">
+  <div class="global-nav__drawer-controls">
+    <span>
+      <a class="link link--arrow-before global-nav__drawer-close" href="#">Back</a>
+    </span>
+    <span class="float-right">
+      <a data-name="sub-nav" class="link" href="https://www.tableau.com/about">About Us</a>
+    </span>
+  </div>
+  <div class="global-nav__drawer-inner content-container content-container--wide">
+    <div class="global-nav__drawer-primary grid--8">
+      <div class="sub-nav__item grid--4">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/about/mission" class="text--">Mission</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">This matters to us. </p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/about/mission">Learn More</a>
+        </p>
+      </div>
+      <div class="sub-nav__item grid--4">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/about/leadership" class="text--">Leadership</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">Our top brass.</p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/about/leadership">Learn More</a>
+        </p>
+      </div>
+      <div class="sub-nav__item grid--4 grid--last">
+        <h3 class="sub-nav__item-title heading-highlight heading--small">
+          <a data-name="sub-nav" href="https://www.tableau.com/about/newsroom" class="text--">Newsroom</a>
+        </h3>
+        <p class="sub-nav__item-description mobile-hide">Extra, extra! Read all about it.</p>
+        <p class="sub-nav__item-link tablet-hide">
+          <a data-name="sub-nav" class="link link--arrow" href="https://www.tableau.com/about/newsroom">Learn More</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="global-nav__drawer-secondary">
+      <h3 class="text--label">More About Our Company</h3>
+      <ul class="plain-list">
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://www.tableau.com/foundation">Tableau Foundation</a>
+          </h5>
+          <p class="sub-nav__item-description mobile-hide">Let's build a better world with data.</p>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="http://investors.tableau.com/" target="_blank">Investors</a>
+          </h5>
+          <p class="sub-nav__item-description mobile-hide">News, events, and investor releases.</p>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://careers.tableau.com/" target="_blank">Careers</a>
+          </h5>
+          <p class="sub-nav__item-description mobile-hide">Join our team.</p>
+        </li>
+        <li class="sub-nav__item">
+          <h5 class="sub-nav__item-title text--dropdown text--bold">
+            <a data-name="sub-nav" class="text--dark-body" href="https://research.tableau.com/" target="_blank">Research</a>
+          </h5>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div></div></div></div>
+
+<div about="/node/67150" typeof="sioc:Item foaf:Document" class="ds-1col node node--block internal-node view-mode-full  node--full node--block--full clearfix">
+
+  
+  <div class="field field--name-body field--type-text-with-summary field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><div class="global-nav__drawer" id="menu-drawer-customer">
+  <div class="global-nav__drawer-controls">
+    <span>
+      <a class="link link--arrow-before global-nav__drawer-close" href="#">Back</a>
+    </span>
+  </div>
+  <div class="global-nav__drawer-inner">
+    <div class="dropdown-nav__body">
+
+      
+
+<nav id="block-menu-block-tableau-megamenu-quick-links" role="navigation" class="block block--menu-block block--menu-block-tableau-megamenu-quick-links">
+        <h5 class="block__title dropdown-nav__menu-heading">
+      Quick Links    </h5>
+    
+  <div class="menu-block-wrapper menu-block-tableau_megamenu_quick_links menu-name-menu-secondary-menu-quick-links parent-mlid-0 menu-level-1">
+  <ul class="dropdown-nav__menu"><li class="first leaf menu-mlid-58077 dropdown-nav__menu-item"><a href="https://www.tableau.com/new-features" class="dropdown-nav__menu-link">New Features</a></li>
+<li class="leaf menu-mlid-58078 dropdown-nav__menu-item"><a href="https://www.tableau.com/learn/starter-kits" class="dropdown-nav__menu-link">Starter Kit</a></li>
+<li class="leaf menu-mlid-58079 dropdown-nav__menu-item"><a href="https://www.tableau.com/about/blog" class="dropdown-nav__menu-link">Blog</a></li>
+<li class="leaf menu-mlid-58080 dropdown-nav__menu-item"><a href="https://www.tableau.com/support/drivers" class="dropdown-nav__menu-link">Drivers</a></li>
+<li class="last leaf menu-mlid-58081 dropdown-nav__menu-item"><a href="https://www.tableau.com/support/certification" class="dropdown-nav__menu-link">Certification</a></li>
+</ul></div>
+</nav>
+
+
+<nav id="block-menu-block-tableau-megamenu-account" role="navigation" class="block block--menu-block block--menu-block-tableau-megamenu-account">
+        <h5 class="block__title dropdown-nav__menu-heading">
+      Account Settings    </h5>
+    
+  <div class="menu-block-wrapper menu-block-tableau_megamenu_account menu-name-menu-secondary-menu-account parent-mlid-0 menu-level-1">
+  <ul class="dropdown-nav__menu dropdown-nav__menu--last"><li class="first leaf menu-mlid-58083 dropdown-nav__menu-item"><a href="https://id.tableau.com/profile" class="dropdown-nav__menu-link">Edit Account</a></li>
+<li class="last leaf menu-mlid-58084 dropdown-nav__menu-item"><a href="https://www.tableau.com/sso-logout" class="dropdown-nav__menu-link">Sign Out</a></li>
+</ul></div>
+</nav>
+
+
+    </div>
+  </div>
+</div>
+</div></div></div></div>
+
+</div>
+      </div>
+      <hr class="divider divider--gradient">
+      </header>
+  <!--noindex:end-->
+
+  <div class="l-main clearfix">
+          <div class="l-region l-region--content-top hero">
+    <div class="content-inner hero__content">
+      <div id="block-tableau-sitewide-back-to-link" class="block block--tableau-sitewide block--tableau-sitewide-back-to-link back-to-link">
+        <div class="block__content content-container content-container--wide">
+    <a href="/about/blog" class="link link--arrow-before">Back to Blog</a>  </div>
+</div>
+<div id="block-delta-blocks-page-title" class="block block--delta-blocks block--delta-blocks-page-title content-container content-container--text-column margin-bottom-one">
+        <div class="block__content">
+    <h1 id="page-title" class="title text--merriweather-light">5 tips on designing colorblind-friendly visualizations</h1>  </div>
+</div>
+<div id="block-easy-social-easy-social-block-2" class="block block--easy-social block--easy-social-easy-social-block-2 text--centered">
+        <div class="block__content">
+    <div class="social-share">
+  <a class="social-share__toggle" href="#">
+    <i class="icon icon--share"></i>
+    Share  </a>
+
+  <div class="social-share__widgets">
+      <div class="social-share__widget">
+          <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.tableau.com/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463&amp;title5 tips on designing colorblind-friendly visualizations" target="_blank" data-social="linkedin" class="social-share__link social-share__link--linkedin"
+    onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">
+      <i class="icon icon--social-linkedin"></i>
+    </a>    </div>
+      <div class="social-share__widget">
+          <a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;u=https://www.tableau.com/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463&amp;title=5 tips on designing colorblind-friendly visualizations" target="_blank" data-social="facebook" class="social-share__link social-share__link--facebook"
+    onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">
+      <i class="icon icon--social-facebook"></i>
+    </a>    </div>
+      <div class="social-share__widget">
+          <a href="https://plus.google.com/share?url=https://www.tableau.com/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" target="_blank" data-social="gplus" class="social-share__link social-share__link--gplus"
+    onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">
+      <i class="icon icon--social-gplus"></i>
+    </a>    </div>
+      <div class="social-share__widget">
+          <a href="https://twitter.com/intent/tweet?status=5 tips on designing colorblind-friendly visualizations+https://www.tableau.com/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" target="_blank" data-social="twitter" class="social-share__link social-share__link--twitter"
+    onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;">
+      <i class="icon icon--social-twitter"></i>
+    </a>    </div>
+      <div class="social-share__widget">
+          <a href="mailto:?subject=Check out 5 tips on designing colorblind-friendly visualizations&body=I thought you would enjoy 5 tips on designing colorblind-friendly visualizations%0D%0Ahttps://www.tableau.com/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463%0D%0A" target="_blank" data-social="email" class="social-share__link social-share__link--email">
+      <i class="icon icon--email"></i>
+    </a>    </div>
+    </div>
+</div>
+  </div>
+</div>
+    </div>
+  </div>
+    <div class="l-content" role="main">
+      <!--noindex:begin-->
+      <a id="main-content"></a>
+                  <!--noindex:end-->
+        <div class="l-region l-region--content">
+    <div  about="/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" typeof="schema:blogPosting sioc:Item foaf:Document" class="ds-1col node node--blog-post view-mode-full  node--full node--blog-post--full clearfix">
+
+  
+  <div class="content-container content-container--text-column margin-top-three"><div class="author-byline " itemtype="https://schema.org/Blog">
+  <div class="author-byline__text">
+    <div itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <div class="author-byline__detail" itemprop="name">
+            Guest Author
+        </div>
+    </div>
+      <div class="author-byline__detail" itemprop="dateCreated">
+        April 20, 2016
+      </div>
+  </div>
+</div>
+</div>
+<div class="paragraphs-items paragraphs-items-field-sections paragraphs-items-field-sections-full paragraphs-items-full" class="paragraphs-items paragraphs-items-field-sections paragraphs-items-field-sections-full paragraphs-items-full">
+  <div class="field field--name-field-sections field--type-paragraphs field--label-hidden"><div class="field__items"><div class="field__item even"><section class="entity entity-paragraphs-item paragraphs-item-text-passage section padding-vert-one" about="" typeof="" class="entity entity-paragraphs-item paragraphs-item-text-passage section padding-vert-one">
+  <div  class="content-container content-container--text-column">
+    
+  <div class="field field--name-field-content field--type-text-long field--label-hidden">
+    <p><em>Note: The following is the first installment in a series of guest posts by <a href="https://twitter.com/HighVizAbility?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank">Tableau Zen Master Jeffrey Shaffer</a>.<br /></em></p>
+<p>This is a first in a series of posts about some of the well-known “data-viz rules." We often hear these rules, but the details behind them are often not examined in depth or overlooked completely. I wanted to examine a few of them to better understand how they should be applied. For the first in the series, I examined the issue of using red and green together. </p>
+<p><img src="https://cdns.tblsft.com/sites/default/files/blog/color1.png" /></p>
+<p><strong>The data-viz rule:</strong> “Don’t use red &amp; green together.”<br /><strong>The issue:</strong> "Ten percent of men are colorblind and mostly red/green issues."<br /><strong>Reaction: </strong>"Don't use red and green together."</p>
+<p>Studies have shown that around 8% of men and 0.5% of women have color vision deficiency (CVD). This is more commonly referred to as colorblindness, although colorblindness is not the most accurate term. </p>
+<p>Having CVD does not mean that a person can’t see color unless you are the very rare person (one in 33,000 people) with achromatopsia. For the more common person with CVD, the key problem is that colors most people see as different will look the same.</p>
+<p>The two most common types of CVD are deuteranomaly and deuteranopia, which together count for about 6% of men, and protanomaly and protanopia, which account for another 2% (more information available at <a href="http://www.color-blindness.com" target="_blank">color-blindness.com</a>). These conditions are also commonly referred to as “red weak” and “green weak” or “red-green colorblindness.” (Note: I will not discuss blue/yellow CVD because it is far less common.)</p>
+<p>Here are some tips for designing vizzes that are colorblind-friendly. </p>
+<h2>1. Red and green together can be problematic, but they can sometimes be used together</h2>
+<p>So indeed, using red and green together is a common problem. People with strong CVD (strong meaning a more severe condition of CVD) would see both red and green as brown. People with weak CVD can see strong red and green colors as red and green. However, this can still be problematic when the colors are weak or blended together. </p>
+<p>Keep in mind that being able to tell these colors apart is only an issue if color is the only encoding method used to make a distinct comparison—for example, a good number vs. a bad number in a table, or one line vs. another line in the same line chart. For example, in the chart below, color is needed to tell a good square from a bad square. Using deuteranope simulation, we can see how difficult this would be.</p>
+<p><img src="https://cdns.tblsft.com/sites/default/files/blog/color2.png" /></p>
+<p>I’ve seen critiques regarding the use of red and green together in the same visualization, but the colors weren’t being used in a way that required someone to tell the difference between them. If they stand alone—for example, two different charts, one red and one green—and they are labeled well, then it may not be an issue at all if they both appear brown in color. </p>
+<p>The chart below offers one example where it’s easy to see from the axis line that most numbers are positive and others are negative. Color is a secondary feature simply encoding positive vs. negative. While this may not be the best choice of colors, someone with CVD can interpret this chart without the use of color to make the comparison.</p>
+<p><img src="https://cdns.tblsft.com/sites/default/files/blog/color3.png" /></p>
+<h2>2. Be aware that it’s not just red and green</h2>
+<p>Many data visualization tools have a “stoplight” palette built into them, and there are many companies (and clients and bosses) that still insist on using the stoplight palette. With all the talk of stoplight colors and the nicknames for the CVD conditions, it’s no wonder that the data visualization rule has simply become “don’t use red and green.” Below is a simulation of Tableau’s stoplight colors using protanope simulation.</p>
+<p><img src="https://cdnl.tblsft.com/sites/default/files/blog/color4.png" /></p>
+<p>Notice that the problem here is much more complex than just simply red vs. green. Since red, green, and orange all appear to be brown for someone with strong CVD, it would be more accurate to say, “Don't use red/green/brown/orange together.” However, it doesn’t end there. When colors are mixed, they can also be problematic.</p>
+<p>One color combination that is frequently overlooked is using blue and purple together. In an RGB color model, purple is achieved by using blue and red together. If someone has issues with red, then the person may also have issues with purple, which would appear to look like blue. </p>
+<p>Also, pink and gray together and gray and brown together can be problematic. Below is the Tableau 10 color palette using a deuteranope simulation. Not only are red, green, and brown problematic but so are blue and purple, pink and gray, and gray and brown.</p>
+<p><img src="https://cdns.tblsft.com/sites/default/files/blog/color5.png" /></p>
+<p>My brother-in-law has CVD, so he is frequently the guinea pig for my color experiments. Off all of the things I’ve tested on him, the combination of colors on the image below (left) was the hardest for him to distinguish. He seems to suffer from protanopia, which is simulated below on the right.</p>
+<p><img src="https://cdnl.tblsft.com/sites/default/files/blog/color6.png" /></p>
+<p>So now that we know there are many more combinations of color that can be problematic, what should we do?</p>
+<h2>3. Use a colorblind-friendly palette when appropriate</h2>
+<p>One color used together in combination with another color is generally fine when one of them is not usually associated with CVD. For example, blue/orange is a common colorblind-friendly palette. Blue/red or blue/brown would also work. For the most common conditions of CVD, all of these work well, since blue would generally look blue to someone with CVD.</p>
+<p>Tableau has a built-in colorblind-friendly palette designed by Maureen Stone. This palette works very well for the common cases of CVD. Below is the Tableau colorblind-friendly palette under both deuteranope and protanope simulation. Notice how well this color palette works for the various comparisons of color.</p>
+<p><img src="https://cdns.tblsft.com/sites/default/files/blog/color7.png" /></p>
+<p><img src="https://cdns.tblsft.com/sites/default/files/blog/color8.png" /></p>
+<p>Maybe it’s the boss, the client, or even the company colors or style guide that requires you to use red and green. So now what can we do?</p>
+<h2>4. If you must use red and green together, leverage light vs. dark</h2>
+<p>For someone with CVD, the problem is primarily with color hue (e.g. red vs. green) and not with the color value (light vs. dark). </p>
+<p>Almost anyone can tell the difference between a very light color and a very dark color, so another option when using red and green together is to use a really light green, a medium yellow, and a very dark red. This would appear to be more of a sequential color scheme to someone who has strong CVD, but the person would at least be able to distinguish red from green based on light vs. dark. </p>
+<h2>5. If you must use red and green together, offer alternate methods of distinguishing data</h2>
+<p>Along those same lines, if using red and green, you can also add icons, directional arrows, labels, annotations, or other indicators that would allow a person with CVD to see that something is bad (red) vs. good (green).</p>
+<p>Another option might be a checkbox for a user to switch the color palette for the entire viz to a colorblind-friendly palette. This allows for the red/green pairing for the majority of the audience while offering a way for someone with CVD to change the palette entirely. </p>
+<p>Unfortunately, there isn’t an easy way to do this in Tableau. However, it can certainly be done. Below are two examples, one using a parameter to change the color palette (using both a sequential and categorical color scheme with transparency) and the other using a dashboard action, similar to what Tableau Zen Master Robert Rouse used in <a href="https://www.tableau.com/about/blog/2016/1/how-create-collapsible-menu-container-tableau-48610" target="_blank">his hidden-menu technique</a>.</p>
+<script type="text/javascript" src="https://public.tableau.com/javascripts/api/viz_v1.js"></script><div class="tableauPlaceholder overflow-trouch-scroll" style="width: 444px; height: 595px;"><noscript><a href="#"><img alt=" " src="https://public.tableau.com/static/images/Co/ColorblindMapSwapper/ColorSwapParameter/1_rss.png" style="border: none" /></a></noscript>
+<object class="tableauViz" width="444" height="595" style="display:none;"><param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" /><param name="site_root" value="" /><param name="name" value="ColorblindMapSwapper/ColorSwapParameter" /><param name="tabs" value="yes" /><param name="toolbar" value="yes" /><param name="static_image" value="https://public.tableau.com/static/images/Co/ColorblindMapSwapper/ColorSwapParameter/1.png" /><param name="animate_transition" value="yes" /><param name="display_static_image" value="yes" /><param name="display_spinner" value="yes" /><param name="display_overlay" value="yes" /><param name="display_count" value="yes" /><param name="showTabs" value="y" /></object></div>
+<p>Want to make sure the viz you designed is colorblind-friendly? In addition to a number of online colorblind simulators, there’s also a plug-in for that. The Chrome plug-in “NoCoffee” will simulate all types of CVD right in your browser, including your visualizations hosted on Tableau Public or Tableau Server. </p>
+<p>Try using the NoCoffee browser plug-in for an entire day, and you’ll be amazed at what the world looks like to someone with CVD. For images of your visualization without a browser, try <a href="http://asada.tukusi.ne.jp/webCVS/" target="_blank">this chromatic vision simulator</a>.</p>
+<p>I would like to thank <a href="https://research.tableau.com/user/maureen-stone" target="_blank">Maureen Stone</a> for the valuable review, input, and suggestions for this post.</p>
+<p><em>For more tips, ideas, and vizzes by Jeffrey Shaffer, check out his <a href="https://public.tableau.com/profile/jeffs8297#!/" target="_blank">Tableau Public page</a> and <a href="http://www.dataplusscience.com/" target="_blank">his blog</a>. You can also connect with him on Twitter <a href="https://twitter.com/highvizability" target="_blank">@HighVizAbility</a>.<br /></em></p>
+  </div>
+  </div>
+</section>
+</div></div></div></div>
+<div class="field field--name-tableau-blog-liftigniter-widget field--type-ds field--label-hidden"><div class="field__items"><div class="field__item even"><div id="block-liftigniter-widget-blog-widget" class="block block--liftigniter bg--light-gray-1 block--liftigniter-widget-blog-widget section section--padded-three">
+        <h2 class="content-container text--centered">You might also be interested in...</h2>
+      <div class="block__content content-container gallery-grid gallery-grid--4">
+    <div id="li-recommendation-blog-widget"></div>  </div>
+</div>
+</div></div></div><section id="comments" class="comment-wrapper comments content-container content-container--text-column padding-vert-four">
+          <h2 class="comments__title text--centered">Comments</h2>
+      
+  <a id="comment-51665"></a>
+<article about="/comment/51665#comment-51665" typeof="sioc:Post sioct:Comment" class="comment comment-by-anonymous">
+      <h3 property="dc:title" datatype=""></h3>
+  
+  <footer class="comment__info">
+        <p class="submitted comment__submitted"><span property="dc:date dc:created" content="2016-04-21T00:27:57-07:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" typeof="schema:Person sioc:UserAccount" property="schema:name" datatype="">priyatamil (not verified)</span> on April 21, 2016 - 12:27am</span></p>
+      </footer>
+
+  <div class="comment__content">
+    <span rel="sioc:reply_of" resource="/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" class="rdf-meta element-hidden"></span><div class="field field--name-comment-body field--type-text-long field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><p>Such as very good information,<br />
+Thank goodness someone is promoting quality content.these information was more effective content. Keep update more information..</p>
+<p>Android Training in Chennai</p>
+</div></div></div>      </div>
+
+  <ul class="links links--inline comment__links"><li class="comment-reply first last"><a href="/comment/reply/53463/51665">reply</a></li>
+</ul></article>
+<a id="comment-51667"></a>
+<article about="/comment/51667#comment-51667" typeof="sioc:Post sioct:Comment" class="comment comment-by-anonymous">
+      <h3 property="dc:title" datatype=""></h3>
+  
+  <footer class="comment__info">
+        <p class="submitted comment__submitted"><span property="dc:date dc:created" content="2016-04-21T03:47:04-07:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" typeof="schema:Person sioc:UserAccount" property="schema:name" datatype="">dhiya (not verified)</span> on April 21, 2016 - 3:47am</span></p>
+      </footer>
+
+  <div class="comment__content">
+    <span rel="sioc:reply_of" resource="/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" class="rdf-meta element-hidden"></span><div class="field field--name-comment-body field--type-text-long field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><p>Superb i really enjoyed very much with this article here. Really its a amazing article i had ever read. I hope it will help a lot for all. Thank you so much for this amazing posts and please keep update like this excellent article.</p>
+<p> Hadoop Training in Chennai</p>
+</div></div></div>      </div>
+
+  <ul class="links links--inline comment__links"><li class="comment-reply first last"><a href="/comment/reply/53463/51667">reply</a></li>
+</ul></article>
+<a id="comment-51668"></a>
+<article about="/comment/51668#comment-51668" typeof="sioc:Post sioct:Comment" class="comment">
+      <h3 property="dc:title" datatype=""></h3>
+  
+  <footer class="comment__info">
+        <p class="submitted comment__submitted"><span property="dc:date dc:created" content="2016-04-21T10:03:00-07:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" about="/user/2300124" typeof="schema:Person sioc:UserAccount" property="schema:name" datatype="">Diego Garcia</span> on April 21, 2016 - 10:03am</span></p>
+      </footer>
+
+  <div class="comment__content">
+    <span rel="sioc:reply_of" resource="/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" class="rdf-meta element-hidden"></span><div class="field field--name-comment-body field--type-text-long field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><p>Hi thank you for the useful tools like the chromatic vision simulator, please keep adding articles like this one.</p>
+<p>Modux Co, Bogota D.C. - Colombia</p>
+</div></div></div>      </div>
+
+  <ul class="links links--inline comment__links"><li class="comment-reply first last"><a href="/comment/reply/53463/51668">reply</a></li>
+</ul></article>
+<a id="comment-51683"></a>
+<article about="/comment/51683#comment-51683" typeof="sioc:Post sioct:Comment" class="comment comment-by-anonymous">
+      <h3 property="dc:title" datatype=""></h3>
+  
+  <footer class="comment__info">
+        <p class="submitted comment__submitted"><span property="dc:date dc:created" content="2016-04-23T08:27:07-07:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" typeof="schema:Person sioc:UserAccount" property="schema:name" datatype="">Mithileshwar Sharma (not verified)</span> on April 23, 2016 - 8:27am</span></p>
+      </footer>
+
+  <div class="comment__content">
+    <span rel="sioc:reply_of" resource="/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" class="rdf-meta element-hidden"></span><div class="field field--name-comment-body field--type-text-long field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><p>Good and useful tips. Thanks keep posting!</p>
+<p>Noida, India</p>
+</div></div></div>      </div>
+
+  <ul class="links links--inline comment__links"><li class="comment-reply first last"><a href="/comment/reply/53463/51683">reply</a></li>
+</ul></article>
+<a id="comment-51693"></a>
+<article about="/comment/51693#comment-51693" typeof="sioc:Post sioct:Comment" class="comment comment-by-anonymous">
+      <h3 property="dc:title" datatype=""></h3>
+  
+  <footer class="comment__info">
+        <p class="submitted comment__submitted"><span property="dc:date dc:created" content="2016-04-25T03:44:37-07:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" typeof="schema:Person sioc:UserAccount" property="schema:name" datatype="">sathya g (not verified)</span> on April 25, 2016 - 3:44am</span></p>
+      </footer>
+
+  <div class="comment__content">
+    <span rel="sioc:reply_of" resource="/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" class="rdf-meta element-hidden"></span><div class="field field--name-comment-body field--type-text-long field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><p>the blog is very interesting and will be much useful for us. thank you for sharing the blog with us. please keep on updating.</p>
+</div></div></div>      </div>
+
+  <ul class="links links--inline comment__links"><li class="comment-reply first last"><a href="/comment/reply/53463/51693">reply</a></li>
+</ul></article>
+<a id="comment-51858"></a>
+<article about="/comment/51858#comment-51858" typeof="sioc:Post sioct:Comment" class="comment comment-by-anonymous">
+      <h3 property="dc:title" datatype=""></h3>
+  
+  <footer class="comment__info">
+        <p class="submitted comment__submitted"><span property="dc:date dc:created" content="2016-05-25T07:54:38-07:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" typeof="schema:Person sioc:UserAccount" property="schema:name" datatype="">Annie (not verified)</span> on May 25, 2016 - 7:54am</span></p>
+      </footer>
+
+  <div class="comment__content">
+    <span rel="sioc:reply_of" resource="/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" class="rdf-meta element-hidden"></span><div class="field field--name-comment-body field--type-text-long field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><p>This is a beautifully written article giving guidance on color options in Tableau.</p>
+<p>However, what I was hoping to find was instructions to fill colored space with symbols in order to help a color blind person distinguish.  For example, using Red and Green is a very desirable color scheme for non-blind people because it already has a global "stop/go" definition.   So if those colors could be used, but optionally enhanced with fill of symbols (Circle with a line through it for Red, Checkmark for Green...for example), then color can be used as desired and the symbols would keep the chart valuable to colorblind users as well.</p>
+<p>If there is a trick that allows you to do that in Tableau, I do not yet know how to unlock it.</p>
+<p>Examples:<br />
+When a bubble chart is used, display a unique symbol in the center of the bubble.<br />
+When a map is displayed, include hatch marks that vary by color.</p>
+<p>It would be nice to have the option for an end user to "Turn ON Color Blind Features" so that the extra objects only are displayed when needed.  </p>
+<p>My husband is colorblind, and the problem is that they don't KNOW when they are not seeing things correctly.  Even when "colorblind friendly" colors are used, if there is nothing other than color to go on, it is easy to misinterpret data.</p>
+</div></div></div>      </div>
+
+  <ul class="links links--inline comment__links"><li class="comment-reply first last"><a href="/comment/reply/53463/51858">reply</a></li>
+</ul></article>
+<a id="comment-52040"></a>
+<article about="/comment/52040#comment-52040" typeof="sioc:Post sioct:Comment" class="comment">
+      <h3 property="dc:title" datatype=""></h3>
+  
+  <footer class="comment__info">
+        <p class="submitted comment__submitted"><span property="dc:date dc:created" content="2016-07-14T16:51:18-07:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" about="/user/1358468" typeof="schema:Person sioc:UserAccount" property="schema:name" datatype="">Phillip Browning</span> on July 14, 2016 - 4:51pm</span></p>
+      </footer>
+
+  <div class="comment__content">
+    <span rel="sioc:reply_of" resource="/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" class="rdf-meta element-hidden"></span><div class="field field--name-comment-body field--type-text-long field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><p>I love Annie's comments. This should be a top priority for Tableau.</p>
+</div></div></div>      </div>
+
+  <ul class="links links--inline comment__links"><li class="comment-reply first last"><a href="/comment/reply/53463/52040">reply</a></li>
+</ul></article>
+<hr class="divider divider--gradient margin-vert-four">
+      <h2 class="comments__form-title text--centered">Add new comment</h2>
+    <form class="comment-form user-info-from-cookie comment-form" action="/comment/reply/53463" method="post" id="comment-form" accept-charset="UTF-8"><div><div class="form-item form-field form__field form-type-textfield form-item-name">
+  <label class="form-field__label" for="edit-name">Your name </label>
+ <input type="text" id="edit-name" name="name" value="" size="30" maxlength="60" class="form-text" />
+<div class="form-field__description description"></div>
+</div>
+<div class="form-item form-field form__field form-type-textfield form-item-mail">
+  <label class="form-field__label" for="edit-mail">E-mail </label>
+ <input type="text" id="edit-mail" name="mail" value="" size="30" maxlength="64" class="form-text" />
+<div class="form-field__description description">The content of this field is kept private and will not be shown publicly.</div>
+</div>
+<div class="field-type-text-long field-name-comment-body field-widget-text-textarea margin-bottom-one form-wrapper" id="edit-comment-body"><div id="comment-body-add-more-wrapper"><div class="text-format-wrapper"><div class="form-item form-field form__field form-type-textarea form-item-comment-body-und-0-value">
+  <label class="form-field__label" for="edit-comment-body-und-0-value">Comment <span class="form-required" title="This field is required.">*</span></label>
+ <div class="form-textarea-wrapper resizable"><textarea class="text-full form-textarea required" id="edit-comment-body-und-0-value" name="comment_body[und][0][value]" cols="60" rows="5"></textarea></div>
+<div class="form-field__description description"></div>
+</div>
+</div>
+</div></div><input type="hidden" name="form_build_id" value="form-cCV05SzLfKWmtqaJ0GbUwrd8_pO-pqDCsX7r-72fBRs" />
+<input type="hidden" name="form_id" value="comment_node_blog_post_form" />
+<div class="form-item form-field form__field form-type-checkbox form-field--checkbox form-item-notify">
+ <input type="checkbox" id="edit-notify" name="notify" value="1" class="form-checkbox" />  <label class="form-field__label option" for="edit-notify">Notify me when new comments are posted </label>
+
+<div class="form-field__description description"></div>
+</div>
+<input type="hidden" name="notify_type" value="1" />
+<input class="mollom-content-id" type="hidden" name="mollom[contentId]" value="" />
+<input class="mollom-captcha-id" type="hidden" name="mollom[captchaId]" value="" />
+<div style="display: none;"><div class="form-item form-field form__field form-type-textfield form-item-mollom-homepage">
+ <input autocomplete="off" type="text" id="edit-mollom-homepage" name="mollom[homepage]" value="" size="60" maxlength="128" class="form-text" />
+<div class="form-field__description description"></div>
+</div>
+</div><div class="text--centered margin-top-two form-actions form-wrapper" id="edit-actions"><input class="form__button cta cta--secondary form-submit" type="submit" id="edit-submit" name="op" value="Save" /></div><div class="honeypot-textfield"><div class="form-item form-field form__field form-type-textfield form-item-homepage">
+  <label class="form-field__label" for="edit-homepage--2">Leave this field blank </label>
+ <input type="text" id="edit-homepage--2" name="homepage" value="" size="20" maxlength="128" class="form-text" />
+<div class="form-field__description description"></div>
+</div>
+</div></div></form>  </section>
+</div>
+
+  </div>
+        <div class="l-region l-region--content-bottom">
+    <div id="block-nodeblock-60459" class="block block--nodeblock block--nodeblock-60459">
+        <div class="block__content">
+    <div  about="/node/60459" typeof="sioc:Item foaf:Document" class="ds-1col node node--block internal-node view-mode-full  node--full node--block--full clearfix">
+
+  
+  <div class="field field--name-body field--type-text-with-summary field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><section class="section bg--dark-gray-2">
+<div class="content-container text--centered">
+<div class="tableau-blog-subscription__wrapper">
+<h2>Subscribe to our blog</h2>
+<div id="form" class="block block--tableau-blog block--tableau-blog-blog-subscription">
+        <div class="block__content">
+    <form data-form-eloqua="true" data-asaf-area-wrapper-id="asaf-1519751145-form-area-wrapper" class="premium-access-ajax is-premium-teaser tableau-blog-subscription-form" action="/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" method="post" id="tableau-blog-subscription-form" accept-charset="UTF-8"><div><div class="form-compact form-wrapper" id="edit-compact"><div class="form-field--inline form-item form-field form__field has-float-label form-type-textfield form-item-email">
+  <label class="form-field__label" for="edit-email">Business E-mail <span class="form-required" title="This field is required.">*</span></label>
+ <input class="form-field__control form-text required" placeholder="Business E-mail" type="text" id="edit-email" name="email" value="" size="60" maxlength="128" />
+<div class="form-field__description description"></div>
+</div>
+<input class=" asaf-control-asaf_submit premium-access-ajax__trigger form-submit" type="submit" id="asaf-1519751145-compact-actions-submit" name="op" value="Subscribe" /><button onclick="$(this).closest('form').find('.form-submit').click();return false;" class="cta">Subscribe</button></div><div class="messaging suffix padded-box padded-box--one text--label"><a href="/privacy" target="_blank">We respect your privacy</a></div><input type="hidden" name="form_build_id" value="form-bfrLES60rYod67XU40IxQI2-ex98C4qdcIOPvuGvBJ0" />
+<input type="hidden" name="form_id" value="tableau_blog_subscription_form" />
+<input type="hidden" name="eloqua_api_cid" value="" />
+<input type="hidden" name="elqFormName" value="subscription" />
+<input type="hidden" name="lead_source" value="Content Subscription" />
+<input type="hidden" name="lead_source_detail" value="Blog Subscription" />
+<input type="hidden" name="campaign_id" value="70160000000Z8In" />
+<input type="hidden" name="blog_optin" value="1" />
+<input type="hidden" name="asaf_form" value="c72fda741a40495198e6a1c8c528c489" />
+<input type="hidden" name="asaf_form_path" value="about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" />
+<input type="hidden" name="asaf_id_prefix" value="asaf-1519751145" />
+</div></form>  </div>
+</div>
+
+</div>
+</div>
+</section></div></div></div></div>
+
+  </div>
+</div>
+  </div>
+    </div>
+  </div>
+
+  <!--noindex:begin-->
+  <footer class="global-footer section section--padded-two bg--dark-gray-3">
+    <nav class="content-container content-container--wide">
+      <div class="global-footer__first clearfix">
+          <div class="l-region l-region--footer-first">
+    <div id="block-locale-language" role="complementary" class="block block--locale block--locale-language">
+        <div class="block__content">
+    <div class="global-footer__language"><a id="lang-dropdown" class="anchor-link"></a><span class="selected">English</span><ul class="language-switcher-locale-url global-footer__language__options plain-list"><li class="en first active"><a href="/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" class="language-link active" xml:lang="en" hreflang="en">English</a></li>
+<li class="zh-hans"><a href="/zh-cn/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" class="language-link" xml:lang="zh-hans-cn" hreflang="zh-hans-cn">简体中文</a></li>
+<li class="fr"><a href="/fr-fr/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" class="language-link" xml:lang="fr" hreflang="fr">Français</a></li>
+<li class="de"><a href="/de-de/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" class="language-link" xml:lang="de" hreflang="de">Deutsch</a></li>
+<li class="ja"><a href="/ja-jp/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" class="language-link" xml:lang="ja" hreflang="ja">日本語</a></li>
+<li class="ko"><a href="/ko-kr/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" class="language-link" xml:lang="ko" hreflang="ko">한국어</a></li>
+<li class="pt-br"><a href="/pt-br/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" class="language-link" xml:lang="pt-br" hreflang="pt-br">Português</a></li>
+<li class="es last"><a href="/es-es/about/blog/2016/4/examining-data-viz-rules-dont-use-red-green-together-53463" class="language-link" xml:lang="es" hreflang="es">Español</a></li>
+</ul></div>  </div>
+</div>
+<nav id="block-menu-block-tableau-megamenu-2" role="navigation" class="block block--menu-block global-footer__menu block--menu-block-tableau-megamenu-2">
+      
+  <div class="menu-block-wrapper menu-block-tableau_megamenu-2 menu-name-menu-footer-menu parent-mlid-0 menu-level-1">
+  <ul class="link-list link-list--inline"><li class="first leaf menu-mlid-54148"><a href="https://trust.tableau.com">System Status</a></li>
+<li class="leaf menu-mlid-52791"><a href="/about/blog">Blog</a></li>
+<li class="leaf menu-mlid-52795"><a href="/academic">Academic</a></li>
+<li class="leaf menu-mlid-52792"><a href="https://careers.tableau.com">Careers</a></li>
+<li class="last leaf menu-mlid-52793"><a href="/about/contact#contact_sales">Contact Us</a></li>
+</ul></div>
+</nav>
+<div id="block-nodeblock-51464" class="block block--nodeblock block--nodeblock-51464 global-footer__links">
+        <div class="block__content">
+    <div  about="/node/51464" typeof="sioc:Item foaf:Document" class="ds-1col node node--block internal-node view-mode-full  node--full node--block--full clearfix">
+
+  
+  <div class="field field--name-body field--type-text-with-summary field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded">  <ul class="link-list link-list--inline ">
+    <li>
+      <a href="https://www.tableau.com/legal">Legal</a>
+    </li>
+    <li>
+      <a href="https://www.tableau.com/privacy">Privacy</a>
+    </li>
+    <li>
+      <a href="http://kb.tableau.com/articles/knowledgebase/uninstalling-tableau-desktop">Uninstall</a>
+    </li>
+  </ul>
+
+
+</div></div></div></div>
+
+  </div>
+</div>
+  </div>
+      </div>
+      <div class="global-footer__second clearfix">
+          <div class="l-region l-region--footer-second">
+    <div id="block-nodeblock-45342" class="block block--nodeblock global-footer__social block--nodeblock-45342">
+        <div class="block__content">
+    <div  about="/node/45342" typeof="sioc:Item foaf:Document" class="ds-1col node node--block internal-node view-mode-full  node--full node--block--full clearfix">
+
+  
+  <div class="field field--name-body field--type-text-with-summary field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><ul class="link-list link-list--inline "><li>
+        <a data-name="social-interact" data-location="linkedin" href="https://www.linkedin.com/company/tableau-software" target="_blank" class=""><i class="icon icon--social-linkedin"></i></a>
+    </li>
+<li>
+        <a data-name="social-interact" data-location="facebook" href="https://www.tableau.com/facebook" target="_blank" class=""><i class="icon icon--social-facebook"></i></a>
+    </li>
+<li>
+        <a data-name="social-interact" data-location="twitter" href="https://www.twitter.com/tableau" target="_blank" class=""><i class="icon icon--social-twitter"></i></a>
+    </li>
+</ul></div></div></div></div>
+
+  </div>
+</div>
+<div id="block-nodeblock-45343" class="block block--nodeblock block--nodeblock-45343">
+        <div class="block__content">
+    <div  about="/node/45343" typeof="sioc:Item foaf:Document" class="ds-1col node node--block internal-node view-mode-full  node--full node--block--full clearfix">
+
+  
+  <div class="field field--name-body field--type-text-with-summary field--label-hidden"><div class="field__items"><div class="field__item even" property="content:encoded"><p class="copy-right text--label text--medium-body">© 2003-2018 Tableau Software. All Rights Reserved</p>
+</div></div></div></div>
+
+  </div>
+</div>
+  </div>
+      </div>
+    </nav>
+  </footer>
+  <!--noindex:end-->
+
+</div>
+  <script>var Tabia = window.Tabia || {};</script>
+<script src="https://www.tableau.com/sites/default/files/js/js_lqM_zzq5iCadVIW-c0inEkbUq6UkEEiEDrKtxQmYofw.js"></script>
+<script>dataLayer.push({"event":"jqueryLoaded"});</script>
+<script src="https://www.tableau.com/sites/default/files/js/js_gKezowQaq0G-kCWUVNpcCiGwpIf8iQxq39p0UM6NF5s.js"></script>
+<script>$ = jQuery;</script>
+<script src="https://www.tableau.com/sites/default/files/js/js_bCm9hmS5mrNmmLhBidcd9QUMooHyyoRpUHdCVfc1Q8s.js"></script>
+<script>Drupal.settings.getLanguagePreferencePath = "/sites/all/modules/lang_dropdown_remind/lang_dropdown_remind.callback.php";</script>
+<script src="https://www.tableau.com/sites/default/files/js/js_f-oZfPTJaL1hxsfi1pY3XJnGl4Wuh869qZQXk5inm-Q.js"></script>
+<script src="https://www.tableau.com/sites/default/files/js/js_ikutVS0xHW2mTR9GI01rwVdQDeakJC9Qz1TJKQqwX_s.js"></script>
+<script src="https://www.tableau.com/sites/default/files/js/js_vrY4tr43PlGYhW6N5EaTBoBg7PRpQBXAVmxMWk-QU84.js"></script>
+<script src="https://www.tableau.com/sites/default/files/js/js_u-EsdkrnvvWVDK4roN95Df-7-WwGDwUAHaamk2-dJY4.js"></script>
+<script>(function(w,d,s,p,v,e,r) {w['$petametrics_var']=v;w[v]=w[v]||function(){(w[v].q=w[v].q||[]).push(arguments)};w[v].l=1*new Date();e=d.createElement(s),r=d.getElementsByTagName(s)[0];e.async=1;e.src=p;r.parentNode.insertBefore(e,r)})(window,document,'script','//cdn.petametrics.com/v49djjrs7hb09n8h.js','$p');
+$p('init', 'v49djjrs7hb09n8h');
+$p('send', 'pageview');</script>
+<script src="https://www.tableau.com/sites/default/files/js/js_Q9qg_TIr4NeI9dHpK0KcFV8joSYdeoxW5GMMSMji41g.js"></script>
+<script>dataLayer.push({"event":"comment_node_blog_post_form_loaded"});</script>
+<script>dataLayer.push({"event":"tableau_blog_subscription_form_loaded"});</script>
+<script src="https://www.tableau.com/sites/default/files/js/js_NGubD9cwcXviv-WbUEr5tE0OIlZdRMZgyaJLXLQJEMM.js"></script>
+<script src="https://www.tableau.com/sites/default/files/js/js_4anWJfilhfwSSyzyr-7aqXTuaiyaHuguZ64sxYAMepc.js"></script>
+<script src="https://www.tableau.com/sites/default/files/js/js_y_OuQo-iuiiX1AoaG8pQs0m1A9VvvFBe20eBUQrfJ1U.js"></script>
+<script src="https://www.tableau.com/sites/default/files/js/js_aA6e9Isq1ge9MjBdxVMTzjiPSNsfhYOMHg891x6rghE.js"></script>
+<script>jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"tabwow","theme_token":"mj639NF0LFaMWd2kdfwf9zb4qNmdydNxfNQcZYuzJ38","jquery_version":"1.10","js":{"0":1,"1":1,"sites\/all\/modules\/jquery_update\/replace\/jquery\/1.10\/jquery.min.js":1,"sites\/all\/libraries\/tabia\/tabia.ajaxSetup.js":1,"misc\/jquery.once.js":1,"2":1,"sites\/all\/libraries\/modernizr\/modernizr.min.js":1,"sites\/all\/libraries\/underscore\/underscore.min.js":1,"sites\/all\/libraries\/ua-parser-js\/ua-parser.min.js":1,"sites\/all\/libraries\/tabia\/tabia.util.js":1,"sites\/all\/libraries\/tabia\/tabia.social.js":1,"misc\/drupal.js":1,"sites\/all\/themes\/omega\/omega\/js\/no-js.js":1,"3":1,"sites\/all\/modules\/behave\/js\/behave.min.js":1,"sites\/all\/themes\/tabwow\/js\/tabwow.pre.behaviors.js":1,"misc\/autocomplete.js":1,"sites\/all\/libraries\/lazysizes\/lazysizes.min.js":1,"sites\/all\/libraries\/tabia\/logger-new-relic.js":1,"sites\/all\/libraries\/tabia\/mobile-check.js":1,"sites\/all\/libraries\/jquery-waypoints\/jquery.waypoints.min.js":1,"sites\/all\/libraries\/jquery-waypoints\/shortcuts\/sticky.min.js":1,"sites\/all\/libraries\/jquery-waypoints\/shortcuts\/inview.min.js":1,"sites\/all\/libraries\/tabia\/param-pass.js":1,"sites\/all\/libraries\/jquery.doTimeout\/jquery.ba-dotimeout.min.js":1,"sites\/all\/libraries\/tabia\/google-analytics-behaviors.js":1,"sites\/all\/libraries\/scrollreveal\/dist\/scrollreveal.min.js":1,"sites\/all\/libraries\/tabia\/custom-tracking.js":1,"sites\/all\/libraries\/vue\/vue.min.js":1,"sites\/all\/libraries\/tabia\/ezconvert.js":1,"sites\/all\/libraries\/tabia\/ezconvert.tableau.js":1,"sites\/all\/libraries\/tabia\/eloqua-attribution.js":1,"sites\/all\/libraries\/tabia\/eloqua-behaviors.js":1,"sites\/all\/libraries\/data-layer-helper\/data-layer-helper.js":1,"4":1,"sites\/all\/libraries\/json2\/json2.min.js":1,"sites\/all\/libraries\/jstorage\/jstorage.min.js":1,"sites\/all\/libraries\/groucho\/groucho.min.js":1,"sites\/all\/libraries\/hoverintent\/jquery.hoverIntent.minified.js":1,"sites\/all\/modules\/tableau_custom\/tableau_menu_blocks\/js\/tableau_menu.js":1,"sites\/all\/libraries\/tabia\/warnings.js":1,"sites\/all\/libraries\/tabia\/form-autofocus.js":1,"sites\/all\/libraries\/tabia\/jqueue.js":1,"sites\/all\/libraries\/jquery.validate\/jquery.validate.min.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/ui\/minified\/jquery.ui.effect.min.js":1,"sites\/all\/libraries\/moment\/min\/moment-with-locales.min.js":1,"sites\/all\/libraries\/moment-timezone\/builds\/moment-timezone-with-data-2012-2022.min.js":1,"sites\/all\/modules\/jquery_update\/replace\/ui\/external\/jquery.cookie.js":1,"sites\/all\/modules\/jquery_update\/replace\/misc\/jquery.form.min.js":1,"misc\/ajax.js":1,"sites\/all\/modules\/jquery_update\/js\/jquery_update.js":1,"sites\/all\/libraries\/coveo\/js\/CoveoJsSearch.Searchbox.min.js":1,"sites\/all\/modules\/fancy_file_delete\/js\/fancyfiledelete.js":1,"sites\/all\/modules\/lang_dropdown_remind\/js\/getLanguagePreference.js":1,"sites\/all\/modules\/tableau_custom\/tableau_eloqua_implementation\/js\/contact-details.js":1,"sites\/all\/modules\/tableau_custom\/tableau_eloqua_implementation\/js\/automagic.js":1,"sites\/all\/modules\/tableau_custom\/tableau_sitewide_tweaks\/js\/track-userAgent.js":1,"sites\/all\/modules\/tableau_custom\/tableau_sitewide_tweaks\/js\/content-mappers.js":1,"5":1,"sites\/all\/modules\/liftigniter\/liftigniter.js":1,"misc\/progress.js":1,"sites\/all\/modules\/asaf\/js\/asaf.js":1,"sites\/all\/modules\/premium_access_ajax\/js\/premium-access-ajax-overlay.js":1,"sites\/all\/modules\/tableau_custom\/tableau_user_registration_tweaks\/js\/validate.js":1,"sites\/all\/modules\/eloqua_api\/js\/form_attachment.js":1,"sites\/all\/modules\/tableau_custom\/tableau_eloqua_implementation\/js\/queue-activity-posts.js":1,"sites\/all\/modules\/coveo\/js\/coveo.searchbox.init.js":1,"misc\/textarea.js":1,"sites\/all\/modules\/tableau_custom\/tableau_fields\/js\/social-widgets.js":1,"modules\/filter\/filter.js":1,"sites\/all\/modules\/mollom\/mollom.js":1,"sites\/all\/modules\/lang_dropdown_remind\/js\/attachToLangDropdown.js":1,"sites\/all\/modules\/datalayer\/datalayer.js":1,"sites\/all\/modules\/tableau_custom\/tableau_demandbase_integration\/data_mapping\/country_region.js":1,"sites\/all\/modules\/tableau_custom\/tableau_demandbase_integration\/data_mapping\/general_mappers.js":1,"sites\/all\/modules\/tableau_custom\/tableau_demandbase_integration\/demandbase-integration.js":1,"sites\/all\/modules\/tableau_custom\/tableau_demandbase_integration\/callbacks\/ip-callback.js":1,"sites\/all\/modules\/hide_submit\/hide_submit.js":1,"6":1,"7":1,"sites\/all\/modules\/easy_social\/js\/easy_social_async_lib.js":1,"sites\/all\/modules\/eloqua_api\/js\/tracking.js":1,"sites\/all\/modules\/tableau_custom_features\/tableau_recommended\/js\/lift-igniter.js":1,"sites\/all\/components\/corp-components\/build\/js\/scripts.js":1,"sites\/all\/themes\/tabwow\/js\/tabwow.behaviors.js":1,"sites\/all\/libraries\/tabia\/brightcove.js":1},"css":{"sites\/all\/themes\/omega\/omega\/css\/modules\/system\/system.base.css":1,"sites\/all\/modules\/mollom\/mollom.css":1,"sites\/all\/modules\/tableau_custom_features\/tableau_user_registration\/tableau_user_registration.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/premium_access_ajax\/css\/premium-access-ajax.css":1,"sites\/all\/themes\/omega\/omega\/css\/modules\/user\/user.base.css":1,"sites\/all\/themes\/omega\/omega\/css\/modules\/user\/user.theme.css":1,"sites\/all\/libraries\/slick\/slick\/slick.css":1,"sites\/all\/modules\/tableau_custom_features\/tableau_recommended\/tableau_recommended.css":1,"sites\/all\/themes\/tabwow\/css\/global.css":1,"sites\/all\/themes\/tabwow\/css\/i18n.css":1,"sites\/all\/themes\/tabwow\/css\/brightcove-players.css":1,"sites\/all\/themes\/tabwow\/css\/3play.css":1,"sites\/all\/themes\/tabwow\/css\/maxlength.css":1,"sites\/all\/components\/corp-components\/build\/css\/style.css":1,"sites\/all\/themes\/tabwow\/css\/coveo.css":1,"0":1,"sites\/all\/themes\/omega\/omega\/css\/modules\/filter\/filter.theme.css":1}},"liftIgniter":{"widgets":{"blog-widget":{"max":"4","items":[],"fields":["title","bundle","language","url","thumbnail"],"requiredFields":["title","bundle","language","url"],"opts":{"preferred_bundle":"blog_post","preferred_bundle_max_count":2}}},"fields":["language","title","thumbnail","type","bundle"],"apiKey":"v49djjrs7hb09n8h","useWaypoints":1,"useLang":1,"langDefaultNoPrefix":1,"forceSameProtocol":1,"transformCallbacks":[]},"hide_submit":{"hide_submit_status":true,"hide_submit_method":"disable","hide_submit_css":"animated-stripes","hide_submit_abtext":"","hide_submit_atext":"","hide_submit_hide_css":"hide-submit-processing","hide_submit_hide_text":"Processing...","hide_submit_hide_fx":false,"hide_submit_reset_time":5000},"easy_social":{"external_scripts":["\/\/connect.facebook.net\/en_US\/all.js#xfbml=1\u0026appId=","\/\/connect.facebook.net\/en_US\/all.js#xfbml=1\u0026appId="]},"premiumAccessAjax":{"event":"premium-access-ajax"},"premiumAccessAjaxOverlay":{"message":"Loading..."},"ajax":{"asaf-1519751145-compact-actions-submit":{"callback":"asaf_ajax_callback","wrapper":"asaf-1519751145-form-area-wrapper","progress":{"type":"throbber","message":""},"event":"premium-access-ajax","url":"\/system\/ajax\/asaf\/pagecache","submit":{"_triggering_element_name":"op","_triggering_element_value":"Subscribe"}}},"urlIsAjaxTrusted":{"\/system\/ajax\/asaf\/pagecache":true,"\/about\/blog\/2016\/4\/examining-data-viz-rules-dont-use-red-green-together-53463":true,"\/comment\/reply\/53463":true},"asaf":{"submitByEnter":false},"deferImage":{"deferClass":"lazyload"},"tableauEloqua":{"elqDetailsTTL":"86400000","contactLocalstorage":1,"campaignActivityTTL":"86400000","campaignActivityGuidTimeout":"20000","searchEngines":{"Daum":"search.daum.net","Eniro":"eniro.","Google":"www.google.","Yahoo":"search.yahoo.com","Yahoo Japan":"search.yahoo.co.jp","Bing":"bing.com","AOL":"search.aol.","Ask":"ask.com","Altavista":"altavista.","Netscape":"search.netscape.","CNN":"cnn.com\/SEARCH","About":"about.com","Mamma":"mamma.","Alltheweb":"alltheweb.","Voila":"voila.","Virgilio":"search.virgilio.","Baidu":"baidu.com","Alice":"alice.","Yandex":"yandex.","Najdi":"najdi.","Seznam":"seznam.","Search":"www.search.com","Wirtulana":"wp.","O*NET":"online.onetcenter.","Szukacz":"szukacz.","Yam":"yam.","PCHome":"pchome.","Kvasir":"kvasir.","Sesam":"sesam.","Ozu":"ozu.","Terra":"terra.","Mynet":"mynet.","Ekolay":"ekolay.","Rambler":"rambler."},"gaTrackId":"UA-625217-46","desktopDownload":{"campaignId":"70132000000KBDC","leadSource":"Free Trial","leadSourceDetail":"14 Day Desktop Trial Request"},"serverDownload":{"campaignId":"70132000000KBDB","leadSource":"Free Trial","leadSourceDetail":"14 Day Server Trial Request"},"readerDownload":{"campaignId":"70132000000KBDL","leadSource":"Free Trial","leadSourceDetail":"Tableau Reader Request"},"queueForms":["tableau_premium_access_button_anon_form"],"eventCancel":1},"tabEvents":{"markRegistered":true},"tabPartners":{"tabPartnerSubmitUrl":"https:\/\/www.salesforce.com\/servlet\/servlet.WebToLead?encoding=UTF-8"},"tableauBrightcove":{"account":"3798483592001","autoCaptions":1},"tableauSite":{"watchLogLevel":"5","watchLogErrorLevel":"3","imgFailWhitelist":["a.company-target.com","ad.doubleclick.net","bat.bing.com","bat.r.msn.com","ib.adnxs.com"],"entityBundleNice":{"blog_post":"Blog Post","customer_story":"Customer Story","event_in_person":"Event","event_live_training":"Free Live Training","event_ondemand_training":"Free Training","event_paid_in_person":"Classroom Training","event_user_group":"User Group Event","live_webinar":"Live Webinar","page":"Resource","press_release":"Press Release","product_release":"Product Release and Download","resource_page":"Resource","series":"Series","solution":"Solution","visualization":"Visualization","webinar":"On-Demand Webinar","whitepaper":"Whitepaper"},"product":{"currentVersion":"10.5.1"}},"coveo":{"searchEndpoint":"https:\/\/platform.cloud.coveo.com\/rest\/search","searchPagePath":"\/search","searchToken":"eyJhbGciOiJIUzI1NiJ9.eyJmaWx0ZXIiOiIoQHN5c3NvdXJjZT09KFwiU2l0ZW1hcCAtIGNhcmVlcnMudGFibGVhdS5jb21cIixcIlNpdGVtYXAgLSBwdWJsaWMudGFibGVhdS5jb21cIixcIllvdVR1YmUgLSBUYWJsZWF1U1dcIixcIldlYiAtIHBhcnRuZXJzdW1taXQudGFibGVhdS5jb21cIixcIldlYiAtIG9udG91ci50YWJsZWF1LmNvbVwiLFwiV2ViIC0gcmVzZWFyY2gudGFibGVhdS5jb21cIixcIldlYiAtIGludmVzdG9ycy50YWJsZWF1LmNvbVwiLFwiV2ViIC0gQ29uZmVyZW5jZXNcIixcIldlYiAtIHRhYmxlYXUuY29tXCIsXCJTaXRlbWFwIC0gdGFibGVhdS5jb20gcmVjZW50IDIgaG91cnNcIixcIlNpdGVtYXAgLSBvbmxpbmVoZWxwLnRhYmxlYXUuY29tXCIpIE9SIChAc291cmNlPT1cIkppdmUgLSBQcm9kXCIgQHN5c2ZvbGRpbmdjaGlsZCkgT1IgKEBzb3VyY2U9PVwiU2FsZXNmb3JjZSAtIEtub3dsZWRnZSAtIFByb2RcIiBAc2ZrYmlzdmlzaWJsZWlucGtiPT1cIlRydWVcIiBAc3lzZG9jdW1lbnR0eXBlPD5cImFydGljbGVhdHRhY2htZW50XCIpKSBAc3lzZmlsZXR5cGU8PihcInBkZlwiLFwieGxzXCIsXCJ6aXBcIixcInBwdFwiLFwiZG9jXCIpIiwidjgiOmZhbHNlLCJvcmdhbml6YXRpb24iOiJ0YWJsZWF1c29mdHdhcmUiLCJ1c2VySWRzIjpbeyJwcm92aWRlciI6IkVtYWlsIFNlY3VyaXR5IFByb3ZpZGVyIiwibmFtZSI6InBsYXRmb3JtQGNvdmVvLmNvbSIsInR5cGUiOiJVc2VyIn1dLCJyb2xlcyI6WyJxdWVyeUV4ZWN1dG9yIl0sImV4cCI6MTUxOTgzNjcyMiwiaWF0IjoxNTE5NzUwMzIyfQ.S4GwdGV67QK8RG89cxr3CIKoGWbBaXF0ffU1-Jmj6x0","customSearchExpressions":[""],"initOptions":{"Facet":{"valueCaption":{"blog_post":"Blog Post\r","customer_story":"Customer Story\r","event_in_person":"Event\r","event_live_training":"Free Live Training\r","event_ondemand_training":"Free Training\r","event_paid_in_person":"Classroom Training\r","event_user_group":"User Group Event\r","live_webinar":"Live Webinar\r","page":"Resource\r","press_release":"Press Release\r","resource_page":"Resource\r","series":"Series\r","stories_topic_page":"Solution\r","visualization":"Visualization\r","webinar":"On-Demand Webinar\r","whitepaper":"Whitepaper\r","featured_speaker":"Person"}},"SearchInterface":{"enableAutomaticResponsiveMode":"false","loadingAnimation":"false"},"facet-products-version":{"customSort":["Current","Not Specified","Unspecified","Not version specific","2028.4","2028.3","2028.2","2028.1","2027.4","2027.3","2027.2","2027.1","2026.4","2026.3","2026.2","2026.1","2025.4","2025.3","2025.2","2025.1","2024.4","2024.3","2024.2","2024.1","2023.4","2023.3","2023.2","2023.1","2022.4","2022.3","2022.2","2022.1","2021.4","2021.3","2021.2","2021.1","2021.4","2021.3","2021","22021.1","2020.4","2020.3","2020.2","2020.1","2019.4","2019.3","2019.2","2019.1","2018.4","2018.3","2018.2","2018.1","11.9","11.8","11.7","11.6","11.5","11.4","11.3","11.2","11.1","11.0","10.9","10.8","10.7","10.6","10.5","10.4","10.3","10.2","10.1","10.0","9.9","9.8","9.7","9.6","9.5","9.4","9.3","9.2","9.1","9.0","8.9","8.8","8.7","8.6","8.5","8.4","8.3","8.2","8.1","8.0"]},"facet-support-version":{"customSort":["Current","Not Specified","Unspecified","Not version specific","2028.4","2028.3","2028.2","2028.1","2027.4","2027.3","2027.2","2027.1","2026.4","2026.3","2026.2","2026.1","2025.4","2025.3","2025.2","2025.1","2024.4","2024.3","2024.2","2024.1","2023.4","2023.3","2023.2","2023.1","2022.4","2022.3","2022.2","2022.1","2021.4","2021.3","2021.2","2021.1","2021.4","2021.3","2021","22021.1","2020.4","2020.3","2020.2","2020.1","2019.4","2019.3","2019.2","2019.1","2018.4","2018.3","2018.2","2018.1","11.9","11.8","11.7","11.6","11.5","11.4","11.3","11.2","11.1","11.0","10.9","10.8","10.7","10.6","10.5","10.4","10.3","10.2","10.1","10.0","9.9","9.8","9.7","9.6","9.5","9.4","9.3","9.2","9.1","9.0","8.9","8.8","8.7","8.6","8.5","8.4","8.3","8.2","8.1","8.0"]},"facet-learning-version":{"customSort":["Current","Not Specified","Unspecified","Not version specific","2028.4","2028.3","2028.2","2028.1","2027.4","2027.3","2027.2","2027.1","2026.4","2026.3","2026.2","2026.1","2025.4","2025.3","2025.2","2025.1","2024.4","2024.3","2024.2","2024.1","2023.4","2023.3","2023.2","2023.1","2022.4","2022.3","2022.2","2022.1","2021.4","2021.3","2021.2","2021.1","2021.4","2021.3","2021","22021.1","2020.4","2020.3","2020.2","2020.1","2019.4","2019.3","2019.2","2019.1","2018.4","2018.3","2018.2","2018.1","11.9","11.8","11.7","11.6","11.5","11.4","11.3","11.2","11.1","11.0","10.9","10.8","10.7","10.6","10.5","10.4","10.3","10.2","10.1","10.0","9.9","9.8","9.7","9.6","9.5","9.4","9.3","9.2","9.1","9.0","8.9","8.8","8.7","8.6","8.5","8.4","8.3","8.2","8.1","8.0"]}}},"lang_dropdown_remind":{"markup":"\u003Cdiv class=\u0022container-12 global-notification section section--padded-one bg--dark-gray-3\u0022\u003E\r\n  \u003Cdiv class=\u0022innermost grid-12 global-notification__wrapper content-container content-container--wide\u0022\u003E\r\n    \u003Cdiv class=\u0022global-notification__message\u0022\u003E!message\u003C\/div\u003E\r\n    !close_button\r\n  \u003C\/div\u003E\r\n\u003C\/div\u003E","messages":{"default":"This content is available in your preferred language. Navigate there using \u003Ca id=\u0022trigger-langdropdown\u0022 href=\u0022#lang-dropdown\u0022\u003Ethe language drop down menu\u003C\/a\u003E.","en":"This content is available in your preferred language. Navigate there using \u003Ca id=\u0022trigger-langdropdown\u0022 href=\u0022#lang-dropdown\u0022\u003Ethe language drop down menu\u003C\/a\u003E.","zh":"\u672c\u9875\u9762\u63d0\u4f9b\u60a8\u9996\u9009\u8bed\u8a00\u7684\u7248\u672c\u3002 \u4f7f\u7528\u003Ca id=\u0022trigger-langdropdown\u0022 href=\u0022#lang-dropdown\u0022\u003E\u8bed\u8a00\u4e0b\u62c9\u83dc\u5355\u003C\/a\u003E\u8f6c\u5230\u60a8\u9700\u8981\u7684\u7248\u672c\u3002","fr":"Cette page est disponible dans votre langue d\u0027usage. Acc\u00e9dez-y \u00e0 l\u0027aide du \u003Ca id=\u0022trigger-langdropdown\u0022 href=\u0022#lang-dropdown\u0022\u003Emenu d\u00e9roulant des langues\u003C\/a\u003E.","de":"Diese Seite ist in Ihrer bevorzugten Sprache verf\u00fcgbar. Verwenden Sie \u003Ca id=\u0022trigger-langdropdown\u0022 href=\u0022#lang-dropdown\u0022\u003Edas Sprachenmen\u00fc\u003C\/a\u003E, um diese auszuw\u00e4hlen.","ja":"\u3053\u306e\u30da\u30fc\u30b8\u306e\u8868\u793a\u8a00\u8a9e\u306f\u5909\u66f4\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002 \u003Ca id=\u0022trigger-langdropdown\u0022 href=\u0022#lang-dropdown\u0022\u003E\u8a00\u8a9e\u30c9\u30ed\u30c3\u30d7\u30c0\u30a6\u30f3\u30e1\u30cb\u30e5\u30fc\u003C\/a\u003E\u3067\u8868\u793a\u8a00\u8a9e\u3092\u9078\u629e\u3057\u3066\u304f\u3060\u3055\u3044\u3002","ko":"\uc774 \ud398\uc774\uc9c0\ub294 \ub2e4\uc591\ud55c \uc5b8\uc5b4\ub85c \uc81c\uacf5\ub429\ub2c8\ub2e4. \u003Ca id=\u0022trigger-langdropdown\u0022 href=\u0022#lang-dropdown\u0022\u003E\uc5b8\uc5b4 \ub4dc\ub86d\ub2e4\uc6b4 \uba54\ub274\u003C\/a\u003E\uc5d0\uc11c \uc5b8\uc5b4\ub97c \uc120\ud0dd\ud558\uc2ed\uc2dc\uc624.","pt":"Esta p\u00e1gina est\u00e1 dispon\u00edvel no idioma de sua prefer\u00eancia. Selecione o idioma desejado no \u003Ca id=\u0022trigger-langdropdown\u0022 href=\u0022#lang-dropdown\u0022\u003Emenu suspenso\u003C\/a\u003E.","es":"Esta p\u00e1gina est\u00e1 disponible en su idioma preferido. Navegue hasta all\u00ed con el \u003Ca id=\u0022trigger-langdropdown\u0022 href=\u0022#lang-dropdown\u0022\u003Emen\u00fa desplegable de idiomas\u003C\/a\u003E."},"close":{"default":""},"repeat":"30","prependto":".global-nav"},"dataLayer":{"languages":{"en":{"language":"en","name":"English","native":"English","direction":"0","enabled":"1","plurals":"0","formula":"","domain":"","prefix":"","weight":"-10","javascript":""},"zh-hans":{"language":"zh-hans","name":"Chinese","native":"\u7b80\u4f53\u4e2d\u6587","direction":"0","enabled":"1","plurals":"2","formula":"($n!=1)","domain":"","prefix":"zh-cn","weight":"-9","javascript":"kpw3x-l1CppQF589kuVchru38YJi9m8iaY19APf95hw"},"fr":{"language":"fr","name":"French","native":"Fran\u00e7ais","direction":"0","enabled":"1","plurals":"2","formula":"($n!=1)","domain":"","prefix":"fr-fr","weight":"-8","javascript":"EClTysSnApNTK54iPJkVIUxfDMvDFdWOiBerHRQQBJY"},"de":{"language":"de","name":"German","native":"Deutsch","direction":"0","enabled":"1","plurals":"2","formula":"($n!=1)","domain":"","prefix":"de-de","weight":"-7","javascript":"9YRtVntV9EOe94PJ4q1B5qZRZCMjtMtgpoigpnVR3iI"},"ja":{"language":"ja","name":"Japanese","native":"\u65e5\u672c\u8a9e","direction":"0","enabled":"1","plurals":"2","formula":"($n!=1)","domain":"","prefix":"ja-jp","weight":"-6","javascript":"bMjgpj0C6pW1yTuDdtTe8LC0qWRN6X-bm_QKxdKgisU"},"ko":{"language":"ko","name":"Korean","native":"\ud55c\uad6d\uc5b4","direction":"0","enabled":"1","plurals":"2","formula":"($n!=1)","domain":"","prefix":"ko-kr","weight":"-5","javascript":"3rrVMlIYsiXFW1KE-eYQqzBx-mf9sUUPZx-z2GkBO8I"},"pt-br":{"language":"pt-br","name":"Portuguese","native":"Portugu\u00eas","direction":"0","enabled":"1","plurals":"2","formula":"($n!=1)","domain":"","prefix":"pt-br","weight":"-4","javascript":"VcUnSae6N3FZYdg9dXsytR78Z-KitmKpdbMklThEZhU"},"es":{"language":"es","name":"Spanish","native":"Espa\u00f1ol","direction":"0","enabled":"1","plurals":"2","formula":"($n\u003E1)","domain":"","prefix":"es-es","weight":"-3","javascript":"_NIqzyvY6aLBi81oUvZv6mnrMKZ3RUFfdSAEbzeVEaA"},"ar":{"language":"ar","name":"Arabic","native":"\u0627\u0644\u0639\u064e\u0631\u064e\u0628\u0650\u064a\u064e\u0651\u0629\u200e\u200e","direction":"1","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"ar-eg","weight":"0","javascript":"Vb92sTpwZre10__sKFMxKJZxUfRPuMO7zhkAvSeTWfs"},"en-AU":{"language":"en-AU","name":"Australia","native":"Australia","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"en-au","weight":"0","javascript":""},"zh-HK":{"language":"zh-HK","name":"Chinese, Hong Kong","native":"\u9999\u6e2f (\u7e41\u9ad4\u4e2d\u6587)","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"zh-hk","weight":"0","javascript":""},"zh-hant":{"language":"zh-hant","name":"Chinese, Traditional","native":"\u53f0\u7063 (\u7e41\u9ad4\u4e2d\u6587)","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"zh-tw","weight":"0","javascript":"PVL-xn0pEFa3gumSiSyIaIkvBv4kazQtx2Oet5AP68Y"},"cs":{"language":"cs","name":"Czech","native":"\u010ce\u0161tina","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"cs-cz","weight":"0","javascript":""},"nl":{"language":"nl","name":"Dutch","native":"Nederlands","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"nl-nl","weight":"0","javascript":"mJ1R_1bUIgfgoM7EoGG2VNa4q3z5TJqIvRBD7i6QNjQ"},"fi":{"language":"fi","name":"Finnish","native":"Suomi","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"fi-fi","weight":"0","javascript":"XoCoeyzbYk6KCI9hqkaFrz_YLSqm-_DY4g3eoxPTty8"},"he":{"language":"he","name":"Hebrew","native":"\u05e2\u05d1\u05e8\u05d9\u05ea","direction":"1","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"he-il","weight":"0","javascript":""},"it":{"language":"it","name":"Italian","native":"Italiano","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"it-it","weight":"0","javascript":"p_aWqSq9hJVtqxoWMhAeN2kNVP00RilD3wpBrVVrKMQ"},"en-NZ":{"language":"en-NZ","name":"New Zealand","native":"New Zealand","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"en-nz","weight":"0","javascript":""},"pl":{"language":"pl","name":"Polish","native":"Polski","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"pl-pl","weight":"0","javascript":"o2D9sH8qKcUNUVLY9hPvmadCQ6u8A1k4WxLJiXEH8Kc"},"pt-pt":{"language":"pt-pt","name":"Portuguese, Portugal","native":"Portugu\u00eas","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"pt-pt","weight":"0","javascript":"ewks2Pjm28-_SNq_9cExmySWywSxmtimXiCWe06gGug"},"ro":{"language":"ro","name":"Romanian","native":"Rom\u00e2n\u0103","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"ro-ro","weight":"0","javascript":""},"ru":{"language":"ru","name":"Russian","native":"\u0420\u0443\u0441\u0441\u043a\u0438\u0439","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"ru-ru","weight":"0","javascript":"p44dzcXiydD__bdAwp2eVpCbOWw6zEu9JX5Qdi4AZKU"},"en-SG":{"language":"en-SG","name":"Singapore","native":"Singapore","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"en-sg","weight":"0","javascript":""},"sv":{"language":"sv","name":"Swedish","native":"Svenska","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"sv-se","weight":"0","javascript":"qVYj2Be0VtoH3Z_0sWLD6D-6Veza-Laf3djWbxhHkEI"},"tr":{"language":"tr","name":"Turkish","native":"T\u00fcrk\u00e7e","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"tr-tr","weight":"0","javascript":"WHJQAXPmfXj--EERedztKqsr5Cs5Z_Xgon7PtTcWprM"},"en-gb":{"language":"en-gb","name":"United Kingdom","native":"United Kingdom","direction":"0","enabled":"0","plurals":"0","formula":"","domain":"","prefix":"en-gb","weight":"0","javascript":"loSwy_5QwRK5NQGvXQWFPqhzjyxfcbB7oMTOGvlAzW4"}},"defaultLang":"en"},"eloqua_api":{"trackingRemoteUrl":"https:\/\/img.en25.com\/i\/elqCfg.min.js","siteId":"840","firstPartyCookieHost":"clicks.tableau.com"},"semiAnonymous":{"recordForms":["user_register_form","tableau_premium_access_button_form"],"recordFormFields":["elqFormName","lead_source","lead_source_detail","campaign_id"]},"tableau_demandbase_integration":{"ipapi":"https:\/\/api.demandbase.com\/api\/v2\/ip.json","dbfkey":"cc0a2382b7e4a6b12a70697c5ee5cdd316e09468","dbgakey":"3ecdb30321ac806f543dca6d764ad91f8c3ffa1c","timeout":5000,"snippet":false,"everythingRegions":["21","150","39","154","155"],"geoOnlyCountries":["JP","AU","NZ"],"enabledCountries":["US","CA"],"allowUserFacingFill":0,"checkFrequency":100,"checkMax":80,"stashTtl":86400000},"tableau_menu_blocks":{"hoverintent_sensitivity":"7","hoverintent_interval":"100","hoverintent_timeout":"200","dropdown_effect":"fade","dropdown_effect_time":"200"},"tableauPremium":{"regDelay":"3","viewTimer":"10"}});</script>
+  <!--[if lte IE 9]>
+  <script src="/sites/all/libraries/jquery-placeholder/jquery.placeholder.min.js"></script>
+  <script src="/sites/all/libraries/tabia/placeholder-polyfill.js"></script>
+  <![endif]-->
+  <div style="position: absolute; top: -250px; left: -250px;"><a href="https://www.tableau.com/crazy.php">non-humans click here</a></div><script>$(document).trigger('tabAjaxMegaMenu:ready');</script>
+  <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"6259888ee2","applicationID":"2485134","transactionName":"NAZRbRYDV0NRW0FcDA1McloQC1ZeH0pQRhcUEGxJBQVcb1NZWVkBAgBY","queueTime":0,"applicationTime":736,"atts":"GEFGG14ZRBwSWRcPGB4e","errorBeacon":"bam.nr-data.net","agent":""}</script><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"6259888ee2","applicationID":"2485134","transactionName":"NAZRbRYDV0NRW0FcDA1MZksNTRZZXlxQTU0TC0M=","queueTime":0,"applicationTime":21,"atts":"GEFSG14ZRE0=","errorBeacon":"bam.nr-data.net","agent":""}</script></body>
+</html>
