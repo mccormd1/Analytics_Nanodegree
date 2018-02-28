@@ -9,6 +9,7 @@
 *.mp4
 *.db
 *.tsv
+*.xlsx
 
 # R files
 *.RData
