@@ -90,3 +90,6 @@ target/
 !twitter_archive_master.csv
 !image-predictions.tsv
 !twitter-archive-enhanced.csv
+
+# Data story telling project exemptions
+!Final_Project/codebook.xlsx
