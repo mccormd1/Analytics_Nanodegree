@@ -94,3 +94,4 @@ target/
 
 # Data story telling project exemptions
 !codebook.xlsx
+!bayareavacation2005-2008_flightset.csv
