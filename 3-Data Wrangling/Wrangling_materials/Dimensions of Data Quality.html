@@ -11775,7 +11775,26 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Dimensions-of-Data-Quality">Dimensions of Data Quality<a class="anchor-link" href="#Dimensions-of-Data-Quality">&#182;</a></h1><h4 id="By:-Devin-McCormack">By: Devin McCormack<a class="anchor-link" href="#By:-Devin-McCormack">&#182;</a></h4><p>There is no consistent definition of these dimensions, but they can broadly be sorted into four buckets of decreasing order of severity:</p>
+<h1 id="Dimensions-of-Data-Quality">Dimensions of Data Quality<a class="anchor-link" href="#Dimensions-of-Data-Quality">&#182;</a></h1><h4 id="By:-Devin-McCormack">By: Devin McCormack<a class="anchor-link" href="#By:-Devin-McCormack">&#182;</a></h4><h2 id="0.-Types-of-data.">0. Types of data.<a class="anchor-link" href="#0.-Types-of-data.">&#182;</a></h2><p>The general broad categories of data are <strong>Quantitative</strong> or measureable amounts, and <strong>Qualitative</strong> or descriptive characteristics.</p>
+<h3 id="Quantitative-variables:">Quantitative variables:<a class="anchor-link" href="#Quantitative-variables:">&#182;</a></h3><p>There are two major categories within quantitative variables: <em>Continuous</em> and <em>Descrete</em>. All quantitative variables require an inherent quality of "distance" where closer numbers are more related than further numbers, and therefore you can perform math with the values. Although all quantitative variables are numerical, do not assume numbers are quantitative. Zip code is a example number where there isn't a quantitative value to the number.</p>
+<ul>
+<li><strong>Continuous Variables:</strong> infinitely divisible units, such as a height, weight distance, etc.</li>
+</ul>
+<ul>
+<li><strong>Discrete Variables:</strong> A tally, or a non-divisible unit. only whole quantities. Like population, or </li>
+</ul>
+<h3 id="Qualitative-variables:">Qualitative variables:<a class="anchor-link" href="#Qualitative-variables:">&#182;</a></h3><p>There are three major categories of qualitative variables, <strong>Binomial</strong>, <strong>Ordinal</strong>, and <strong>Nominal</strong>. The major distinctions between them are the ability to order the qualitative values in a meaningful way. They may be numbers, but the numbers are not mathematical in nature, even if there is a strong order to them.</p>
+<ul>
+<li><strong>Binomial Variables:</strong> These are true/false type variables, with only two possible values.</li>
+</ul>
+<ul>
+<li><strong>Ordinal Variables:</strong> These are variables where you can assign a meaningful order to the values with respect to the specific question. For examples, Awful, Bad, Okay, Good, and Great has a strong order, but our concept of distance is limited to the fact that some categories are closer than others - we have no concept of how much closer they are. These can often be binned quantitative variables as well if they are tied to a relativistic conceptual model, like short, medium, tall. Note that some orders, like alphabetical, may not merit calling it ordinal if the order adds no value to the variable.</li>
+</ul>
+<ul>
+<li><strong>Nominal Variables:</strong> All other variables are likely nominal. These are things like names. Nominal variables lack any semblance of "distance". The nominality/ordinality of a specific variable is heavily dependent on the question posed. </li>
+</ul>
+<p>NOW THEN. On to the dimensions of data quality.</p>
+<h1 id="Dimensions">Dimensions<a class="anchor-link" href="#Dimensions">&#182;</a></h1><p>There is no consistent definition of these dimensions, but they can broadly be sorted into four buckets of decreasing order of severity:</p>
 <h2 id="1.-Completeness">1. Completeness<a class="anchor-link" href="#1.-Completeness">&#182;</a></h2><p>Data is complete if all essential variables are measured, and there are no missing/null values. Data can be incomplete but usable.</p>
 <p>Check if we have all the data we need/want. Essential data should be 100% complete.</p>
 <blockquote><h3 id="Questions-to-ask:">Questions to ask:<a class="anchor-link" href="#Questions-to-ask:">&#182;</a></h3><ul>
