@@ -1,0 +1,151 @@
+---
+title: "EDA Template"
+author: "Devin McCormack"
+date: "2/22/2018"
+output: html_document
+---
+
+
+## Data Overview
+Here you introduce the data sources, the intent of the EDA, etc. It should motivate your Exploration.
+
+# Load Data
+
+```{r message=FALSE, warning=FALSE, load_data }
+#library(tidyverse)
+# library(gridExtra)
+#edadata<-read.csv("datasource.csv")
+```
+
+# Data Cleaning
+Here you explore data structure and clean data if necessary. Note data formats, types and meaning
+
+```{r data_cleaning}
+#summary(edadata)
+#str(edadata)
+```
+
+```{r change_datatypes}
+# 
+# # change to factor
+# edadata$factorvar<-as.factor(edadata$factorvar)
+# 
+# # change to datetime (check strptime for format options)
+# edadata$datevar<-as.POSIXct(edadata$datevar,format = "%F %T")
+# 
+# # change factor to numeric (when there are NAs that are important)
+# edadata$numbersandNA<-as.numeric(levels(edadata$numbersandNA))[edadata$numbersandNA]
+
+```
+
+```{r "reorder_factors, drop_variables, rename_variables"}
+
+# # if you want facotrs displayed in a certain order, set it up if not done already
+# edadata$factorvar<-factor(edadata$factorvar, levels = c("First", "Second", "Third", "Fourth"))
+# 
+# # drop variables
+# edadata<-dplyr::select(edadata,-var.todrop) # note: select is also used in another package
+# 
+# # rename variables
+# edadata<-rename(edadata,new_name=old_name)
+
+```
+
+# Visualizations
+
+## Univariate Analysis
+
+```{r "univariate_plot name"}
+
+#ggplot(data=edadata,aes(x=variable1))+
+#  geom_bar()
+```
+
+Communicate what is important about this visualization after EVERY plot. Iterate.
+
+### Univariate Summary
+#### What is the structure of your dataset?
+
+#### What is/are the main feature(s) of interest in your dataset?
+
+#### What other features in the dataset do you think will help support your investigation into your feature(s) of interest?
+
+#### Did you create any new variables from existing variables in the dataset?
+
+#### Of the features you investigated, were there any unusual distributions? Did you perform any operations on the data to tidy, adjust, or change the form of the data? If so, why did you do this?
+
+
+## Bivariate Analysis
+
+Start with a ggpairs, as it plots all the bivariates at once.
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.width=8.5, fig.height=8.5,"ggpairs analysis"}
+# library(GGally)
+# library(scales)
+# library(memisc)
+# 
+# ggpairs(edadata)
+```
+
+
+```{r "bivariate_plot name"}
+# ggplot(data=edadata,aes(x=variable1,y=variable2))+
+#   geom_point()
+# 
+# with(edadata,cor.test())
+```
+re-plot interesting pairs with better scaling etc. Explore correlations as well.
+
+### Bivariate Summary
+#### Talk about some of the relationships you observed in this part of the investigation. How did the feature(s) of interest vary with other features in the dataset?
+
+#### Did you observe any interesting relationships between the other features (not the main feature(s) of interest)?
+
+#### What was the strongest relationship you found?
+
+
+## Multivariate Analysis
+
+```{r "multivariate_plot name"}
+# ggplot(data=edadata,aes(x=variable1,y=variable2,color=variable3))+
+#   geom_point()
+```
+
+use color, size, etc to explore more complex interactions. look for color banding, transformations towards linearity, and other things to inform building a simple model.
+
+
+
+## Modeling Data
+optional part, use a model to try to fit data.
+
+```{r "Modeling with ordinal regression"}
+# 
+# m1 <- polr(quality ~ variable1, data = edadata, Hess=TRUE)
+# m2 <- update(m1, ~ . + variable2)
+# m3 <- update(m2, ~ . + variable3)
+# 
+# mtable(m1, m2, m3)
+
+```
+
+### Multivariate Summary
+#### Talk about some of the relationships you observed in this part of the investigation. Were there features that strengthened each other in terms of looking at your feature(s) of interest?
+
+#### Were there any interesting or surprising interactions between features?
+
+#### OPTIONAL: Did you create any models with your dataset? Discuss the strengths and limitations of your model.
+
+# Final Plots
+
+
+```{r final_plot1}
+# copied from above
+```
+Highlight the most impactful and interesting plots from above, giving a standalone discription of the plot and what it shows.
+
+# Grand Summary and Reflection
+
+Reflect on data quality - the difficulties and deficits of the data - and potential options to expand data collection to remedy deficits.
+
+Reflect on data structure that appeals to common beliefs about the data, structure that challenges preconceived notions, and most importantly any surprising and un-thought-of structure that stands out.
+
+Note on next steps (collect more data, further exploration, machine learning)
