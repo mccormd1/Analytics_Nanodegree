@@ -11776,12 +11776,12 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Dimensions-of-Data-Quality">Dimensions of Data Quality<a class="anchor-link" href="#Dimensions-of-Data-Quality">&#182;</a></h1><h4 id="By:-Devin-McCormack">By: Devin McCormack<a class="anchor-link" href="#By:-Devin-McCormack">&#182;</a></h4><h2 id="0.-Types-of-data.">0. Types of data.<a class="anchor-link" href="#0.-Types-of-data.">&#182;</a></h2><p>The general broad categories of data are <strong>Quantitative</strong> or measureable amounts, and <strong>Qualitative</strong> or descriptive characteristics.</p>
-<h3 id="Quantitative-variables:">Quantitative variables:<a class="anchor-link" href="#Quantitative-variables:">&#182;</a></h3><p>There are two major categories within quantitative variables: <em>Continuous</em> and <em>Descrete</em>. All quantitative variables require an inherent quality of "distance" where closer numbers are more related than further numbers, and therefore you can perform math with the values. Although all quantitative variables are numerical, do not assume numbers are quantitative. Zip code is a example number where there isn't a quantitative value to the number.</p>
+<h3 id="Quantitative-variables:">Quantitative variables:<a class="anchor-link" href="#Quantitative-variables:">&#182;</a></h3><p>There are two major categories within quantitative variables: <strong>Continuous</strong> and <strong>Descrete</strong>. All quantitative variables require an inherent quality of "distance" where closer numbers are more related than further numbers, and therefore you can perform math with the values. Although all quantitative variables are numerical, do not assume numbers are quantitative. Zip code is a example number where there isn't a quantitative value to the number.</p>
 <ul>
 <li><strong>Continuous Variables:</strong> infinitely divisible units, such as a height, weight distance, etc.</li>
 </ul>
 <ul>
-<li><strong>Discrete Variables:</strong> A tally, or a non-divisible unit. only whole quantities. Like population, or </li>
+<li><strong>Discrete Variables:</strong> A tally, or a non-divisible unit. only whole quantities. Like population, or goals scored </li>
 </ul>
 <h3 id="Qualitative-variables:">Qualitative variables:<a class="anchor-link" href="#Qualitative-variables:">&#182;</a></h3><p>There are three major categories of qualitative variables, <strong>Binomial</strong>, <strong>Ordinal</strong>, and <strong>Nominal</strong>. The major distinctions between them are the ability to order the qualitative values in a meaningful way. They may be numbers, but the numbers are not mathematical in nature, even if there is a strong order to them.</p>
 <ul>
@@ -11791,11 +11791,11 @@ div#notebook {
 <li><strong>Ordinal Variables:</strong> These are variables where you can assign a meaningful order to the values with respect to the specific question. For examples, Awful, Bad, Okay, Good, and Great has a strong order, but our concept of distance is limited to the fact that some categories are closer than others - we have no concept of how much closer they are. These can often be binned quantitative variables as well if they are tied to a relativistic conceptual model, like short, medium, tall. Note that some orders, like alphabetical, may not merit calling it ordinal if the order adds no value to the variable.</li>
 </ul>
 <ul>
-<li><strong>Nominal Variables:</strong> All other variables are likely nominal. These are things like names. Nominal variables lack any semblance of "distance". The nominality/ordinality of a specific variable is heavily dependent on the question posed. </li>
+<li><strong>Nominal Variables:</strong> All other variables are likely nominal. These are things like names. Nominal variables lack any semblance of "distance". The nominality/ordinality of a specific variable is heavily dependent on the question posed. "Cat" and "Cactus" are nominal variables, but if we are building a NLP model, we may use a Levenshtein distance to create a distance measure by comparing letter composition. Words would then be framed with respect to size and letter composition (potentially quantitative measures) instead of their semantic content. Semantic content itself has clusterable distance (Cat is closer to a lion than a dog in certain semantic sense - biological - and closer to a dog in others - domestication/pet status. Either way, requires a 3 way comparison to create distance.)</li>
 </ul>
 <p>NOW THEN. On to the dimensions of data quality.</p>
 <h1 id="Dimensions">Dimensions<a class="anchor-link" href="#Dimensions">&#182;</a></h1><p>There is no consistent definition of these dimensions, but they can broadly be sorted into four buckets of decreasing order of severity:</p>
-<h2 id="1.-Completeness">1. Completeness<a class="anchor-link" href="#1.-Completeness">&#182;</a></h2><p>Data is complete if all essential variables are measured, and there are no missing/null values. Data can be incomplete but usable.</p>
+<h2 id="1.-Completeness">1. Completeness<a class="anchor-link" href="#1.-Completeness">&#182;</a></h2><p>Data is complete if all essential variables are measured, and there are no missing/null values. Data can be incomplete but usable, but more complete data is <em>always</em> better (in the sense of analytic possibility)</p>
 <p>Check if we have all the data we need/want. Essential data should be 100% complete.</p>
 <blockquote><h3 id="Questions-to-ask:">Questions to ask:<a class="anchor-link" href="#Questions-to-ask:">&#182;</a></h3><ul>
 <li>Do we have all the records that we should? </li>
@@ -11806,6 +11806,7 @@ div#notebook {
 <li>Important data columns missing</li>
 <li>Unequal number of observations across different sources for same observational unit</li>
 <li>NaNs in cells</li>
+<li>Missing timepoints</li>
 </ul>
 </blockquote>
 <h2 id="2.-Validity">2. Validity<a class="anchor-link" href="#2.-Validity">&#182;</a></h2><p>Data is valid if if conforms to the syntax(format, type, range) of its definition.</p>
@@ -11817,15 +11818,16 @@ div#notebook {
 <li>Does the data conform to primary/foreign key constraints?</li>
 </ul>
 <h3 id="Examples:">Examples:<a class="anchor-link" href="#Examples:">&#182;</a></h3><ul>
-<li>date stored as am object string (instead of datetime), zipcode stored as a float (instead of integer), assigned sex as an object string (instead of category)</li>
+<li>date stored as an object string (instead of datetime), zipcode stored as a float (instead of integer), assigned sex as an object string (instead of category), numberical id as a string (instead of integer)</li>
 <li>Negative height, zip codes with only 4 digits, names with digits in them</li>
 <li>mutiple rows for the same primary key</li>
 </ul>
 </blockquote>
-<h2 id="3.-Accuracy">3. Accuracy<a class="anchor-link" href="#3.-Accuracy">&#182;</a></h2><p>Data is accurate if it correctly describes the real world object or even being described.</p>
+<h2 id="3.-Accuracy">3. Accuracy<a class="anchor-link" href="#3.-Accuracy">&#182;</a></h2><p>Data is accurate if it correctly describes the real world object or event being described.</p>
 <p>Check if the data is correct. Assessing accuracy may require specific domain knowledge.</p>
 <blockquote><h3 id="Questions-to-ask:">Questions to ask:<a class="anchor-link" href="#Questions-to-ask:">&#182;</a></h3><ul>
-<li>Were there any data entry errors?</li>
+<li>Were there any data entry errors? (or was this instrumented properly?)</li>
+<li>Does this encompass all ways an event can occur? (are there edge cases that are not captured?)</li>
 <li>Even if valid, does it make sense?</li>
 <li>Do we have the means to check accuracy? - calculations or references?</li>
 </ul>
@@ -11833,6 +11835,7 @@ div#notebook {
 <li>Highly unlikely weight measurement (10 lbs for a full grown adult)</li>
 <li>Default or filler data (John Doe, 1234 Main Street)</li>
 <li>calculated variables do not match the variables that create it (bmi not consistent with height and weight measurements)</li>
+<li>Data indicates completion of step 2 before step 1 when that is not physically possible</li>
 </ul>
 </blockquote>
 <h2 id="4.-Consistency">4. Consistency<a class="anchor-link" href="#4.-Consistency">&#182;</a></h2><p>Data is consistent when there is no difference when comparing two or more representations of a thing against a definition.</p>
@@ -11844,7 +11847,7 @@ div#notebook {
 <h3 id="Examples:">Examples:<a class="anchor-link" href="#Examples:">&#182;</a></h3><ul>
 <li>State names spelled fully for some observations, but abbreviations for others (Ohio and OH in same dataset)</li>
 <li>dates (birth date, visit date) encoded differently</li>
-<li>a patient_id is associated with the same name across multiple tables.</li>
+<li>a patient_id is associated with the same name (specifically, the same <em>identity</em>) across multiple tables.</li>
 </ul>
 </blockquote>
 
